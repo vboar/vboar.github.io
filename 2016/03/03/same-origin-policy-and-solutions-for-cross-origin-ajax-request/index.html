@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Vboar's Blog" />
+  <meta name="keywords" content="Web,安全,AJAX," />
 
 
 
@@ -59,15 +59,19 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vboar's Blog">
-<meta property="og:url" content="http://kass.top/index.html">
+<meta name="description" content="之前写Web项目的时候一般都是用AJAX调用服务器提供的接口获得数据，但后来遇到了AJAX由于不同源而不用跨域请求的问题。为了实现AJAX跨域请求，我重新回顾了之前在《面向Web的计算》课上讲过的同源策略（Same Origin Policy, SOP），并了解AJAX跨域请求的几种常见的解决方案。结合网上的一些文章和参考资料，整理出下面的关于同源策略和AJAX跨域请求解决方案的笔记。
+同源策略（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同源策略和AJAX跨域请求的解决方案">
+<meta property="og:url" content="http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/index.html">
 <meta property="og:site_name" content="Vboar's Blog">
-<meta property="og:description">
+<meta property="og:description" content="之前写Web项目的时候一般都是用AJAX调用服务器提供的接口获得数据，但后来遇到了AJAX由于不同源而不用跨域请求的问题。为了实现AJAX跨域请求，我重新回顾了之前在《面向Web的计算》课上讲过的同源策略（Same Origin Policy, SOP），并了解AJAX跨域请求的几种常见的解决方案。结合网上的一些文章和参考资料，整理出下面的关于同源策略和AJAX跨域请求解决方案的笔记。
+同源策略（">
+<meta property="og:updated_time" content="2016-03-03T17:18:50.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vboar's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="同源策略和AJAX跨域请求的解决方案">
+<meta name="twitter:description" content="之前写Web项目的时候一般都是用AJAX调用服务器提供的接口获得数据，但后来遇到了AJAX由于不同源而不用跨域请求的问题。为了实现AJAX跨域请求，我重新回顾了之前在《面向Web的计算》课上讲过的同源策略（Same Origin Policy, SOP），并了解AJAX跨域请求的几种常见的解决方案。结合网上的一些文章和参考资料，整理出下面的关于同源策略和AJAX跨域请求解决方案的笔记。
+同源策略（">
 
 
 
@@ -85,7 +89,7 @@
   };
 </script>
 
-  <title> Vboar's Blog </title>
+  <title> 同源策略和AJAX跨域请求的解决方案 | Vboar's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -104,9 +108,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -207,15 +209,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-
-    
-      
 
   
   
@@ -235,10 +231,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/" itemprop="url">
-                  同源策略和AJAX跨域请求的解决方案
-                </a>
+                同源策略和AJAX跨域请求的解决方案
               
             
           </h1>
@@ -315,9 +308,7 @@
       
 
       
-        
-          
-            <p>之前写Web项目的时候一般都是用AJAX调用服务器提供的接口获得数据，但后来遇到了AJAX由于不同源而不用跨域请求的问题。为了实现AJAX跨域请求，我重新回顾了之前在《面向Web的计算》课上讲过的同源策略（Same Origin Policy, SOP），并了解AJAX跨域请求的几种常见的解决方案。结合网上的一些文章和参考资料，整理出下面的关于同源策略和AJAX跨域请求解决方案的笔记。</p>
+        <p>之前写Web项目的时候一般都是用AJAX调用服务器提供的接口获得数据，但后来遇到了AJAX由于不同源而不用跨域请求的问题。为了实现AJAX跨域请求，我重新回顾了之前在《面向Web的计算》课上讲过的同源策略（Same Origin Policy, SOP），并了解AJAX跨域请求的几种常见的解决方案。结合网上的一些文章和参考资料，整理出下面的关于同源策略和AJAX跨域请求解决方案的笔记。</p>
 <h3 id="同源策略（Same-Origin-Policy-SOP）"><a href="#同源策略（Same-Origin-Policy-SOP）" class="headerlink" title="同源策略（Same Origin Policy, SOP）"></a>同源策略（Same Origin Policy, SOP）</h3><p>同源策略，它是由 Netscape 提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略。</p>
 <p>所谓同源，是指域名、协议、端口都相同。如果两个页面的域名、协议和端口都相同，那么这两个页面就同源，属于同一个域（Domain ）。</p>
 <p><a href="http://kass.top">http://kass.top</a> 和 <a href="http://www.kass.top" target="_blank" rel="external">http://www.kass.top</a> 不同源，因为域名不同<br><a href="http://kass.top">http://kass.top</a> 和 <a href="https://kass.top">https://kass.top</a> 不同源，因为协议不同<br><a href="http://kass.top:80">http://kass.top:80</a> 和 <a href="http://kass.top:8080">http://kass.top:8080</a> 不同源，因为端口不同<br><a href="http://kass.top/tags">http://kass.top/tags</a> 和 <a href="http://kass.top/about">http://kass.top/about</a> 同源</p>
@@ -388,151 +379,55 @@
 <li><a href="http://www.jianshu.com/p/9d0fb4f47cc0" target="_blank" rel="external">Javascript跨域问题小记 - 射覆 - 简书</a></li>
 </ul>
 
-          
-        
       
     </div>
 
     <div>
       
+        
+      
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/02/start-up-my-blog/" itemprop="url">
-                  真的开始写博客了>_<#
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-02T16:01:17+08:00" content="2016-03-02">
-              2016-03-02
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/日常/" itemprop="url" rel="index">
-                    <span itemprop="name">日常</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/Web/" rel="tag">#Web</a>
           
-
+            <a href="/tags/安全/" rel="tag">#安全</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/02/start-up-my-blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/02/start-up-my-blog/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/AJAX/" rel="tag">#AJAX</a>
           
-
-          
-
-          
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>之前很多次都搭建了自己的博客，说要开始写博客，然而从大一都大三都没有实现= = 这几天忽然意识到自己真的已经大三了，而且要找实习了！！！然后发现自己两年多好像并没有学到什么东西…也就写了几个水水的大作业和项目。平时遇到什么问题和困难就百度谷歌一下，当时懂了就解决掉那个问题，然而过了很久之后…还是不懂…看别人写的技术博客感觉很有意思，然而过了很久什么都不记得…人懒啊，以至于读书笔记、学习笔记都不怎么写，更不用说博客了…那，去应聘的时候，我有什么资本说我很牛逼呢，凭什么让别人招了我。</p>
-<p>于是，这次真的下定决心了，即便花掉不少时间，也要认真地写博客，一是巩固自己对这方面的理解，二是将来可以回头看看，可以捡回来，说不定还有什么新的理解。</p>
-<p>新搭建的博客托管在GitHub Pages上。就近几天吧大致确定了自己未来的发展方向，目前暂时以Web前端开发为主吧，那博客的内容大多应该是围绕前端开发的吧= =</p>
-<p>最后希望自己能坚持下去，也希望内推面试要成功过啊！！！加油！！！</p>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/02/start-up-my-blog/" rel="next" title="真的开始写博客了>_<#">
+                <i class="fa fa-chevron-left"></i> 真的开始写博客了>_<#
+              </a>
+            
+          </div>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -540,6 +435,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/"
+           data-title="同源策略和AJAX跨域请求的解决方案" data-url="http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -559,8 +462,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -645,6 +557,23 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#同源策略（Same-Origin-Policy-SOP）"><span class="nav-number">1.</span> <span class="nav-text">同源策略（Same Origin Policy, SOP）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如果不遵循同源策略，会这么样呢？"><span class="nav-number">1.1.</span> <span class="nav-text">如果不遵循同源策略，会这么样呢？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX跨域请求的解决方案"><span class="nav-number">2.</span> <span class="nav-text">AJAX跨域请求的解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过CORS进行跨域"><span class="nav-number">2.1.</span> <span class="nav-text">通过CORS进行跨域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用JSONP实现跨域请求"><span class="nav-number">2.2.</span> <span class="nav-text">使用JSONP实现跨域请求</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -718,6 +647,167 @@
   
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 
