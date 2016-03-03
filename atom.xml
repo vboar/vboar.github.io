@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://kass.top/"/>
+  <link href="http://blog.kass.top/"/>
   <updated>2016-03-03T17:18:50.694Z</updated>
-  <id>http://kass.top/</id>
+  <id>http://blog.kass.top/</id>
   
   <author>
     <name>Justin Wong</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>同源策略和AJAX跨域请求的解决方案</title>
-    <link href="http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/"/>
-    <id>http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/</id>
+    <link href="http://blog.kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/"/>
+    <id>http://blog.kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/</id>
     <published>2016-03-02T19:06:21.000Z</published>
     <updated>2016-03-03T17:18:50.694Z</updated>
     
@@ -100,23 +100,23 @@
     
     </summary>
     
-      <category term="Web" scheme="http://kass.top/categories/Web/"/>
+      <category term="Web" scheme="http://blog.kass.top/categories/Web/"/>
     
-      <category term="安全" scheme="http://kass.top/categories/Web/%E5%AE%89%E5%85%A8/"/>
+      <category term="安全" scheme="http://blog.kass.top/categories/Web/%E5%AE%89%E5%85%A8/"/>
     
     
-      <category term="Web" scheme="http://kass.top/tags/Web/"/>
+      <category term="Web" scheme="http://blog.kass.top/tags/Web/"/>
     
-      <category term="安全" scheme="http://kass.top/tags/%E5%AE%89%E5%85%A8/"/>
+      <category term="安全" scheme="http://blog.kass.top/tags/%E5%AE%89%E5%85%A8/"/>
     
-      <category term="AJAX" scheme="http://kass.top/tags/AJAX/"/>
+      <category term="AJAX" scheme="http://blog.kass.top/tags/AJAX/"/>
     
   </entry>
   
   <entry>
     <title>真的开始写博客了&gt;_&lt;#</title>
-    <link href="http://kass.top/2016/03/02/start-up-my-blog/"/>
-    <id>http://kass.top/2016/03/02/start-up-my-blog/</id>
+    <link href="http://blog.kass.top/2016/03/02/start-up-my-blog/"/>
+    <id>http://blog.kass.top/2016/03/02/start-up-my-blog/</id>
     <published>2016-03-02T08:01:17.000Z</published>
     <updated>2016-03-02T08:19:32.975Z</updated>
     
@@ -132,10 +132,10 @@
     
     </summary>
     
-      <category term="日常" scheme="http://kass.top/categories/%E6%97%A5%E5%B8%B8/"/>
+      <category term="日常" scheme="http://blog.kass.top/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="日常" scheme="http://kass.top/tags/%E6%97%A5%E5%B8%B8/"/>
+      <category term="日常" scheme="http://blog.kass.top/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
