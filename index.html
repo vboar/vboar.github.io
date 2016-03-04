@@ -236,6 +236,127 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/04/a-brain-teaser-in-an-interview/" itemprop="url">
+                  之前面试遇到的一道智力题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-04T12:20:31+08:00" content="2016-03-04">
+              2016-03-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/04/a-brain-teaser-in-an-interview/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/04/a-brain-teaser-in-an-interview/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>大二的时候参加了一次某外企实习生招聘的群面，其中有一道题目是智力题，题目大致就是这样的：</p>
+<blockquote>
+<p>给一个瞎子52张扑克牌，并告诉他里面恰好有10张牌是正面朝上的。要求这个瞎子把牌分成两堆，使得每堆牌里正面朝上的牌的张数一样多。瞎子应该怎么做？（瞎子摸不出牌是正面或者是反面，但是却可以随意翻动每一张牌）</p>
+</blockquote>
+<p>当给出这道题目的时候，我还不知道这究竟是道什么类型的题目，该往什么方向去思考。当时是三个人一组一起讨论，我们一开始的思路都是偏向于概率论之类的数学思维上…所以最后也没能找到正确的答案。后来面试结束的时候，有同学就赶紧百度，结果发现答案却如此简单，只要找对了方向就好…</p>
+<p>我们先把52张牌分成两堆A和B，A堆中10张，B堆中42张。那么假设A堆中有m张正面，则有(10-m)张反面，B堆中有n张正面，则有(42-n)张反面。我们知道，m+n=10。那么可以把A堆翻过来，那么有(10-m)张正面，m张反面。显然这时候10-m=n，所以两堆牌里正面朝上的牌数一样多。</p>
+<p>当时没想出来的原因主要还是被题目的条件迷惑到了，他说“使得每堆牌里正面朝上的牌的张数一样多”，这并不需要保证两堆牌中每堆正面的牌都是5张，只要相同就可以了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/" itemprop="url">
                   同源策略和AJAX跨域请求的解决方案
                 </a>
@@ -320,7 +441,7 @@
             <p>之前写Web项目的时候一般都是用AJAX调用服务器提供的接口获得数据，但后来遇到了AJAX由于不同源而不用跨域请求的问题。为了实现AJAX跨域请求，我重新回顾了之前在《面向Web的计算》课上讲过的同源策略（Same Origin Policy, SOP），并了解AJAX跨域请求的几种常见的解决方案。结合网上的一些文章和参考资料，整理出下面的关于同源策略和AJAX跨域请求解决方案的笔记。</p>
 <h3 id="同源策略（Same-Origin-Policy-SOP）"><a href="#同源策略（Same-Origin-Policy-SOP）" class="headerlink" title="同源策略（Same Origin Policy, SOP）"></a>同源策略（Same Origin Policy, SOP）</h3><p>同源策略，它是由 Netscape 提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略。</p>
 <p>所谓同源，是指域名、协议、端口都相同。如果两个页面的域名、协议和端口都相同，那么这两个页面就同源，属于同一个域（Domain ）。</p>
-<p><a href="http://kass.top">http://kass.top</a> 和 <a href="http://www.kass.top" target="_blank" rel="external">http://www.kass.top</a> 不同源，因为域名不同<br><a href="http://kass.top">http://kass.top</a> 和 <a href="https://kass.top">https://kass.top</a> 不同源，因为协议不同<br><a href="http://kass.top:80">http://kass.top:80</a> 和 <a href="http://kass.top:8080">http://kass.top:8080</a> 不同源，因为端口不同<br><a href="http://kass.top/tags">http://kass.top/tags</a> 和 <a href="http://kass.top/about">http://kass.top/about</a> 同源</p>
+<p><a href="http://kass.top" target="_blank" rel="external">http://kass.top</a> 和 <a href="http://www.kass.top" target="_blank" rel="external">http://www.kass.top</a> 不同源，因为域名不同<br><a href="http://kass.top" target="_blank" rel="external">http://kass.top</a> 和 <a href="https://kass.top" target="_blank" rel="external">https://kass.top</a> 不同源，因为协议不同<br><a href="http://kass.top:80" target="_blank" rel="external">http://kass.top:80</a> 和 <a href="http://kass.top:8080" target="_blank" rel="external">http://kass.top:8080</a> 不同源，因为端口不同<br><a href="http://kass.top/tags" target="_blank" rel="external">http://kass.top/tags</a> 和 <a href="http://kass.top/about" target="_blank" rel="external">http://kass.top/about</a> 同源</p>
 <p>同源策略限制了一个源中加载文本或脚本与来自其他源中资源的交互方式，简单的说就是一个源上的JS 只能访问当前源的资源。不同源的客户端脚本(javascript、ActionScript)在没明确授权的情况下，不能读写对方的资源。这些资源包括：DOM、通过AJAX请求的网络资源、cookie等。需要遵循同源策略的地方有：跨frame脚本、跨window脚本、cookie访问、XMLHttpRequest请求等。</p>
 <p>那为什么像script、style、img标签可以引入不同源的文本或脚本呢？因为同源策略本身是在Web前端的安全性和灵活性选择了一个平衡点，同源策略允许这些标签跨域引用资源而不必部署在同一台服务器上。</p>
 <h4 id="如果不遵循同源策略，会这么样呢？"><a href="#如果不遵循同源策略，会这么样呢？" class="headerlink" title="如果不遵循同源策略，会这么样呢？"></a>如果不遵循同源策略，会这么样呢？</h4><p>1.链接跳转的问题：假设有一个钓鱼页面 <a href="http://money.com/" target="_blank" rel="external">http://money.com/</a> ，诱导用户在这个页面上打开 <a href="http://www.alipay.com/" target="_blank" rel="external">http://www.alipay.com/</a> （使用window.open打开），这时候钓鱼页面就可以获取支付宝页面窗口的句柄即window对象，即获得了对支付宝页面的控制权，账号密码什么的也就轻而易举地获得了。<br>2.AJAX请求的问题： 假设在 <a href="http://money.com/" target="_blank" rel="external">http://money.com/</a> 页面发起一个对 <a href="http://www.alipay.com/" target="_blank" rel="external">http://www.alipay.com/</a> 某接口的AJAX请求，如果不遵循同源策略，那么这样的请求是允许的，此次HTTP请求所带的cookie当然是 <a href="http://www.alipay.com/" target="_blank" rel="external">http://www.alipay.com/</a> 下的cookie，有了cookie，还有什么信息是不能获得的呢？</p>
@@ -571,7 +692,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -579,7 +700,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -588,7 +709,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
