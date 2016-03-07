@@ -1544,7 +1544,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6bff1c;
+  background: #be6f60;
 }
 .sidebar-nav {
   margin: 0 0 20px;
@@ -2383,4 +2383,7 @@ hr {
     width: auto;
     text-align: center;
   }
+}
+ul {
+  list-style-type: circle;
 }
