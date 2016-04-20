@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.kass.top/"/>
-  <updated>2016-03-15T13:36:21.515Z</updated>
+  <updated>2016-04-20T13:39:41.343Z</updated>
   <id>http://blog.kass.top/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS中的单位：px、em和rem</title>
+    <link href="http://blog.kass.top/2016/04/20/px-em-rem-in-CSS/"/>
+    <id>http://blog.kass.top/2016/04/20/px-em-rem-in-CSS/</id>
+    <published>2016-04-20T12:35:27.000Z</published>
+    <updated>2016-04-20T13:39:41.343Z</updated>
+    
+    <content type="html">&lt;p&gt;最近我一直在做一个项目叫 &lt;a href=&quot;http://mebox.top/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;米盒&lt;/a&gt;（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~&lt;/p&gt;
+&lt;h3 id=&quot;px、em和rem&quot;&gt;&lt;a href=&quot;#px、em和rem&quot; class=&quot;headerlink&quot; title=&quot;px、em和rem&quot;&gt;&lt;/a&gt;px、em和rem&lt;/h3&gt;&lt;p&gt;px：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的。&lt;br&gt;em：相对长度单位，相对于当前对象内文本的字体尺寸。&lt;br&gt;rem：即root em，相对长度单位，相对于HTML根元素的字体尺寸。&lt;/p&gt;
+&lt;p&gt;浏览器的默认设定：&lt;br&gt;大多数浏览器中html和body标签中的默认字体尺寸是100%。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;100% = 16px = 1em = 1rem&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;改变html标签的字体尺寸会影响到使用em和rem作为尺寸单位的标签，但px不受影响。&lt;br&gt;例子：&lt;a href=&quot;https://jsfiddle.net/vboar/bs5dmjko/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jsfiddle.net/vboar/bs5dmjko/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;简化font-size的计算：&lt;br&gt;将html的font-size设为62.5%，那么1em=10px，1.6em=16px。&lt;br&gt;例子：&lt;a href=&quot;https://jsfiddle.net/vboar/25goahse/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jsfiddle.net/vboar/25goahse/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;em和rem的区别：&lt;br&gt;em的值不是固定的，而且会继承父元素的字体尺寸；%也是会继承父元素的字体尺寸的。&lt;br&gt;而rem则仅仅相对于html根元素的字体尺寸而言，与父元素字体尺寸无关。&lt;br&gt;例子：&lt;a href=&quot;https://jsfiddle.net/vboar/1baoLbh7/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jsfiddle.net/vboar/1baoLbh7/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;单位的最佳实践：&lt;br&gt;使用rem，并使用px作为备用单位，因为rem不支持IE8及其以下版本。&lt;br&gt;例子：&lt;a href=&quot;https://jsfiddle.net/vboar/Lpqpmans/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jsfiddle.net/vboar/Lpqpmans/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;px、em、rem单位转换小工具：&lt;br&gt;地址：&lt;a href=&quot;http://pxtoem.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://pxtoem.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000002702464&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于CSS中的字体尺寸设置 - iLeo - SegmentFault&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.huolg.net/html5/html5_basis/641&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;css中px和em,rem的区别&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近我一直在做一个项目叫 &lt;a href=&quot;http://mebox.top/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;米盒&lt;/a&gt;（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="http://blog.kass.top/tags/Web/"/>
+    
+      <category term="CSS" scheme="http://blog.kass.top/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title>之前面试遇到的一道智力题</title>
