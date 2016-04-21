@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.kass.top/"/>
-  <updated>2016-04-20T13:39:41.343Z</updated>
+  <updated>2016-04-21T05:43:59.349Z</updated>
   <id>http://blog.kass.top/</id>
   
   <author>
@@ -14,6 +14,151 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Javascript中的正则表达式</title>
+    <link href="http://blog.kass.top/2016/04/21/Regular-Expressions-in-Javascript/"/>
+    <id>http://blog.kass.top/2016/04/21/Regular-Expressions-in-Javascript/</id>
+    <published>2016-04-21T05:43:12.000Z</published>
+    <updated>2016-04-21T05:43:59.349Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="http://blog.kass.top/tags/Web/"/>
+    
+      <category term="Javascript" scheme="http://blog.kass.top/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>三四月份的暑期实习面试经历</title>
+    <link href="http://blog.kass.top/2016/04/21/interviews-in-March-and-April/"/>
+    <id>http://blog.kass.top/2016/04/21/interviews-in-March-and-April/</id>
+    <published>2016-04-21T02:29:49.000Z</published>
+    <updated>2016-04-21T05:44:07.727Z</updated>
+    
+    <content type="html">&lt;p&gt;三四月份我主要投了三家的暑期实习，分别是阿里、网易和腾讯，当然也有投其他的一些公司，但经历过面试的也只有这三家了。阿里是内推一面过了一个月之后显示已回绝，网易和腾讯还在等面试结果……不管怎么说，多参加一些面试总归是好的~&lt;/p&gt;
+&lt;h3 id=&quot;阿里——淘宝FED前端&quot;&gt;&lt;a href=&quot;#阿里——淘宝FED前端&quot; class=&quot;headerlink&quot; title=&quot;阿里——淘宝FED前端&quot;&gt;&lt;/a&gt;阿里——淘宝FED前端&lt;/h3&gt;&lt;p&gt;阿里是3月6日学长内推过去的简历，然后3月7日下午就收到了电面电话，下面是我回忆的整个面试过程（过了一个多月可能有些忘掉了）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;面试官让我进行一分钟的自我介绍，然后我……没想到电面这么突然，并没有准备什么，所以只说了十多秒……&lt;/li&gt;
+&lt;li&gt;然后面试官开始问简历上面的 &lt;a href=&quot;http://mebox.top/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;米盒&lt;/a&gt; 项目，并且他那边打开看了下，感觉他觉得不怎么样，然后让我介绍了下项目。&lt;/li&gt;
+&lt;li&gt;面试官问：你在团队和项目中负责什么部分？略。&lt;/li&gt;
+&lt;li&gt;面试官问：你作为组长，怎么管理小组、代码统一？我答统一编码规范blablabla……&lt;/li&gt;
+&lt;li&gt;面试官问：你的项目有用到什么技术吗？我觉得这个答得很烂，因为我说没有用到什么技术，只是简单的Html、CSS、JS……&lt;/li&gt;
+&lt;li&gt;面试官问：你在项目中遇到最大的困难是什么？我答了跨域问题以及解决方案，怎么解决。&lt;/li&gt;
+&lt;li&gt;面试官问：你现在在一个创业团队里，为什么要来阿里实习？略。&lt;/li&gt;
+&lt;li&gt;最后面试官问我还有什么问题，我就问他对我们的项目有什么看法，他说他主要是看面试者在面试中的表现，而不是看项目本身，而且他在大学的时候自己也有创业，而且他觉得90%的创业终究都会失败……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大概就这样扯了差不多20分钟吧，然后面试官说会在这周内出结果，然后就没有然后了，直到4月7日招聘官网上的状态变成了已回绝。&lt;/p&gt;
+&lt;h3 id=&quot;网易——杭研互联网产品前端开发&quot;&gt;&lt;a href=&quot;#网易——杭研互联网产品前端开发&quot; class=&quot;headerlink&quot; title=&quot;网易——杭研互联网产品前端开发&quot;&gt;&lt;/a&gt;网易——杭研互联网产品前端开发&lt;/h3&gt;&lt;p&gt;网易是从 &lt;a href=&quot;http://www.nowcoder.com/162396&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;牛客网&lt;/a&gt; 那里拿到的内推码，然后就可以参加笔试了额，自我感觉笔试题做了不怎么样，最后两道JS编程题感觉都是凭感觉去写，结果4月7日收到了4月14日去杭州的面试通知短信和邮件，并且做完了一个测评（IQ题、EQ题、语言能力题、数学题等等）。&lt;br&gt;网易的所有面试都是在一个大厅里的，嗯，摆布得很有规则。&lt;/p&gt;
+&lt;h4 id=&quot;一面&quot;&gt;&lt;a href=&quot;#一面&quot; class=&quot;headerlink&quot; title=&quot;一面&quot;&gt;&lt;/a&gt;一面&lt;/h4&gt;&lt;p&gt;一面的面试官是个哥哥，一面大概有半个小时吧，下面是面试过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;还是先让我自我介绍，然后他就开始看简历。在有阿里的教训之后，我当然会好好的准备一下自我介绍了。&lt;/li&gt;
+&lt;li&gt;然后还是让我说一下 &lt;a href=&quot;http://mebox.top/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;米盒&lt;/a&gt; 项目，并且打开了网站，问我负责哪些部分，并且挑了个不是我写的问我这要怎么实现。&lt;/li&gt;
+&lt;li&gt;下面就是一大堆常规问题了，有直接答的，也有画图的、写代码的：&lt;ul&gt;
+&lt;li&gt;CSS盒模型、如何使width包括padding和border。&lt;/li&gt;
+&lt;li&gt;写一个4个等分的div在同一行的布局；让div之间有空隙。&lt;/li&gt;
+&lt;li&gt;写一个匿名自执行函数。&lt;/li&gt;
+&lt;li&gt;说说你对闭包的理解。&lt;/li&gt;
+&lt;li&gt;CSS中的动画怎么实现（写一个大框架）。&lt;/li&gt;
+&lt;li&gt;简单说一下TCP的三次握手。&lt;/li&gt;
+&lt;li&gt;HTTP状态码有哪些。&lt;/li&gt;
+&lt;li&gt;DOM事件有哪些阶段（捕获和冒泡），还具体闻到了event的细节。&lt;/li&gt;
+&lt;li&gt;call和apply的区别，知道bind吗。&lt;/li&gt;
+&lt;li&gt;面向对象的特性，写一个JS里的继承（还关联到了各种继承方式的不同）。&lt;/li&gt;
+&lt;li&gt;数据结构和算法：树的广度优先遍历用什么数据结构实现。&lt;/li&gt;
+&lt;li&gt;等等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;最后面试官问我还有什么问题，我问他网易对实习生的期望和要求是什么，实习生进去之后要做些什么。他说实习生要尽快融入团队和熟悉项目，然后就可以写一些项目的小部分了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;二面&quot;&gt;&lt;a href=&quot;#二面&quot; class=&quot;headerlink&quot; title=&quot;二面&quot;&gt;&lt;/a&gt;二面&lt;/h4&gt;&lt;p&gt;二面的面试官是位和蔼的叔叔，二面的时间比较短，貌似只有十几分钟的样子，下面是面试过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自我介绍&lt;/li&gt;
+&lt;li&gt;面试官先问了我，我的CSS和JS哪个强一点，我一开始还以为问的是CSS和JS哪个厉害，然后才明白问的是我的能力，就说差不多……&lt;/li&gt;
+&lt;li&gt;让我惊讶的是二面的面试官问的是下面的这些问题：&lt;ul&gt;
+&lt;li&gt;CSS3的新特性&lt;/li&gt;
+&lt;li&gt;Html5的新特性&lt;/li&gt;
+&lt;li&gt;清除浮动的方法和原理&lt;/li&gt;
+&lt;li&gt;Javascript中的原型&lt;/li&gt;
+&lt;li&gt;等等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;有没有看过jQuery的源码。&lt;/li&gt;
+&lt;li&gt;有没有用过网易的XXX框架。&lt;/li&gt;
+&lt;li&gt;有没有了解过freemark。&lt;/li&gt;
+&lt;li&gt;平时怎么学习前端，我说看书籍和网上的教程，书籍的话最近看《CSS权威指南》、《CSS设计指南》、《Javascript高级程序设计》、《Javascript权威指南》。都看完了吗，权威指南这么厚，我说没有，最近还在看，要把代码敲一遍，效果更好。&lt;/li&gt;
+&lt;li&gt;什么时候能实习，我说七月份开始，可以实习六个月。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;HR面&quot;&gt;&lt;a href=&quot;#HR面&quot; class=&quot;headerlink&quot; title=&quot;HR面&quot;&gt;&lt;/a&gt;HR面&lt;/h4&gt;&lt;p&gt;HR面主要是一个大姐姐，旁边还坐着一个“阿姨”，时间的话大概十多分钟吧：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自我介绍&lt;/li&gt;
+&lt;li&gt;介绍一下米盒&lt;/li&gt;
+&lt;li&gt;我在项目中负责什么&lt;/li&gt;
+&lt;li&gt;工作城市是什么&lt;/li&gt;
+&lt;li&gt;还聊了一些其他的东西，具体的不记得了&lt;/li&gt;
+&lt;li&gt;最后我问了她不同部门之间是如何沟通和交流的，她说当然有借助很多工具，但更重要的是面对面的沟通和交流。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;网易面试结束之后，花了两个多快三个小时绕着西湖走了一圈，真的是累坏了……&lt;/p&gt;
+&lt;h3 id=&quot;腾讯——前端开发&quot;&gt;&lt;a href=&quot;#腾讯——前端开发&quot; class=&quot;headerlink&quot; title=&quot;腾讯——前端开发&quot;&gt;&lt;/a&gt;腾讯——前端开发&lt;/h3&gt;&lt;p&gt;腾讯的话三月份学长帮我内推完并没有什么反馈，最后还是参加了统一的笔试，虽然大部分都是c++题，没有前端题，但很幸运的是居然过了，于是从4月15日开始参加面试。腾讯的面试是在一间酒店里的，然后面试官是在单独的一间房间里。&lt;/p&gt;
+&lt;h4 id=&quot;一面-1&quot;&gt;&lt;a href=&quot;#一面-1&quot; class=&quot;headerlink&quot; title=&quot;一面&quot;&gt;&lt;/a&gt;一面&lt;/h4&gt;&lt;p&gt;一面在4月15日上午10点多，面试官是一个大哥哥，感觉面试时间还蛮长的，也有半个多小时了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自我介绍&lt;/li&gt;
+&lt;li&gt;Javascript中有哪些基本数据类型&lt;/li&gt;
+&lt;li&gt;CSS盒模型，如何使width包括padding和border&lt;/li&gt;
+&lt;li&gt;代码题，写输出：this的理解&lt;/li&gt;
+&lt;li&gt;判断是不是数组&lt;/li&gt;
+&lt;li&gt;Javascript中的原型是干什么的&lt;/li&gt;
+&lt;li&gt;说一下原生Ajax&lt;/li&gt;
+&lt;li&gt;输入www.qq.com发生了什么&lt;/li&gt;
+&lt;li&gt;要不要到深圳来，深圳招的人比较多&lt;/li&gt;
+&lt;li&gt;智力题：给两个杯子，一个300ml，一个500ml，水无限，量出400ml的水。在面试官的指导下我才答出来。500ml杯装满水倒进300ml杯中，倒掉300ml杯中的水，500ml杯中剩下200ml倒进300ml杯中，然后500ml杯装满水倒满300ml杯中，则500ml杯中剩400ml水。&lt;/li&gt;
+&lt;li&gt;有什么问题要问他，我就问腾讯对实习生的期望和要求是什么，他说对实习生的期望不高，主要是人才储备，达到双赢的局面。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;二面-1&quot;&gt;&lt;a href=&quot;#二面-1&quot; class=&quot;headerlink&quot; title=&quot;二面&quot;&gt;&lt;/a&gt;二面&lt;/h4&gt;&lt;p&gt;二面是在4月16日上午11点左右，面试官也算是个大哥哥吧，面了大概二十多分钟。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自我介绍&lt;/li&gt;
+&lt;li&gt;性能优化的手段&lt;/li&gt;
+&lt;li&gt;兼容性相关的内容&lt;/li&gt;
+&lt;li&gt;你觉得jQuery还有什么不足&lt;/li&gt;
+&lt;li&gt;对于项目的监控，有没有做&lt;/li&gt;
+&lt;li&gt;像ReactJS和Vuejs有什么买点&lt;/li&gt;
+&lt;li&gt;跨域的问题&lt;/li&gt;
+&lt;li&gt;前端安全问题，XSS和CSRF，如何解决&lt;/li&gt;
+&lt;li&gt;项目中遇到的最大的困难，怎么解决&lt;/li&gt;
+&lt;li&gt;大学课程对于前端的学习有没有什么作用&lt;/li&gt;
+&lt;li&gt;平时有没有关注什么关于前端的社区和博客&lt;/li&gt;
+&lt;li&gt;有没有特别佩服的人，怎么努力&lt;/li&gt;
+&lt;li&gt;职业规划，怎么努力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;HR面-1&quot;&gt;&lt;a href=&quot;#HR面-1&quot; class=&quot;headerlink&quot; title=&quot;HR面&quot;&gt;&lt;/a&gt;HR面&lt;/h4&gt;&lt;p&gt;HR面是在4月16日下午五点左右，面了十分钟左右，面试官个漂亮的姐姐~&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自我介绍&lt;/li&gt;
+&lt;li&gt;为什么选择前端&lt;/li&gt;
+&lt;li&gt;为什么选择软件工程&lt;/li&gt;
+&lt;li&gt;为什么在南京上大学&lt;/li&gt;
+&lt;li&gt;工作城市的选择&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;腾讯应该是目前最想去的公司吧，然而现在还是等待面试结果中……&lt;/p&gt;
+&lt;h3 id=&quot;小结&quot;&gt;&lt;a href=&quot;#小结&quot; class=&quot;headerlink&quot; title=&quot;小结&quot;&gt;&lt;/a&gt;小结&lt;/h3&gt;&lt;p&gt;通过这几次面试，发现自己还是有很多知识漏洞的，基本的CSS和JS还有很多没有掌握的地方，希望继续努力吧，把那几本书再认真看一遍，同时也要学习一些框架、工具和新技术。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;三四月份我主要投了三家的暑期实习，分别是阿里、网易和腾讯，当然也有投其他的一些公司，但经历过面试的也只有这三家了。阿里是内推一面过了一个月之后显示已回绝，网易和腾讯还在等面试结果……不管怎么说，多参加一些面试总归是好的~&lt;/p&gt;
+&lt;h3 id=&quot;阿里——淘宝FED前端&quot;&gt;&lt;
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="http://blog.kass.top/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS中的单位：px、em和rem</title>

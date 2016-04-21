@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Web,CSS," />
+  <meta name="keywords" content="Web,Javascript," />
 
 
 
@@ -59,19 +59,16 @@
 
 
 
-<meta name="description" content="最近我一直在做一个项目叫 米盒（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~
-px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的">
+<meta name="description">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS中的单位：px、em和rem">
-<meta property="og:url" content="http://blog.kass.top/2016/04/20/px-em-rem-in-CSS/index.html">
+<meta property="og:title" content="Javascript中的正则表达式">
+<meta property="og:url" content="http://blog.kass.top/2016/04/21/Regular-Expressions-in-Javascript/index.html">
 <meta property="og:site_name" content="Vboar's Blog">
-<meta property="og:description" content="最近我一直在做一个项目叫 米盒（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~
-px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的">
-<meta property="og:updated_time" content="2016-04-20T13:39:41.343Z">
+<meta property="og:description">
+<meta property="og:updated_time" content="2016-04-21T05:43:59.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS中的单位：px、em和rem">
-<meta name="twitter:description" content="最近我一直在做一个项目叫 米盒（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~
-px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的">
+<meta name="twitter:title" content="Javascript中的正则表达式">
+<meta name="twitter:description">
 
 
 
@@ -89,7 +86,7 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
   };
 </script>
 
-  <title> CSS中的单位：px、em和rem | Vboar's Blog </title>
+  <title> Javascript中的正则表达式 | Vboar's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -221,7 +218,7 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
             
             
               
-                CSS中的单位：px、em和rem
+                Javascript中的正则表达式
               
             
           </h1>
@@ -233,8 +230,8 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-20T20:35:27+08:00" content="2016-04-20">
-              2016-04-20
+            <time itemprop="dateCreated" datetime="2016-04-21T13:43:12+08:00" content="2016-04-21">
+              2016-04-21
             </time>
           </span>
 
@@ -244,8 +241,8 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/20/px-em-rem-in-CSS/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/20/px-em-rem-in-CSS/" itemprop="commentsCount"></span>
+                <a href="/2016/04/21/Regular-Expressions-in-Javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/Regular-Expressions-in-Javascript/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -267,22 +264,7 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
       
 
       
-        <p>最近我一直在做一个项目叫 <a href="http://mebox.top/" target="_blank" rel="external">米盒</a>（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~</p>
-<h3 id="px、em和rem"><a href="#px、em和rem" class="headerlink" title="px、em和rem"></a>px、em和rem</h3><p>px：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的。<br>em：相对长度单位，相对于当前对象内文本的字体尺寸。<br>rem：即root em，相对长度单位，相对于HTML根元素的字体尺寸。</p>
-<p>浏览器的默认设定：<br>大多数浏览器中html和body标签中的默认字体尺寸是100%。</p>
-<blockquote>
-<p>100% = 16px = 1em = 1rem</p>
-</blockquote>
-<p>改变html标签的字体尺寸会影响到使用em和rem作为尺寸单位的标签，但px不受影响。<br>例子：<a href="https://jsfiddle.net/vboar/bs5dmjko/" target="_blank" rel="external">https://jsfiddle.net/vboar/bs5dmjko/</a></p>
-<p>简化font-size的计算：<br>将html的font-size设为62.5%，那么1em=10px，1.6em=16px。<br>例子：<a href="https://jsfiddle.net/vboar/25goahse/" target="_blank" rel="external">https://jsfiddle.net/vboar/25goahse/</a></p>
-<p>em和rem的区别：<br>em的值不是固定的，而且会继承父元素的字体尺寸；%也是会继承父元素的字体尺寸的。<br>而rem则仅仅相对于html根元素的字体尺寸而言，与父元素字体尺寸无关。<br>例子：<a href="https://jsfiddle.net/vboar/1baoLbh7/" target="_blank" rel="external">https://jsfiddle.net/vboar/1baoLbh7/</a></p>
-<p>单位的最佳实践：<br>使用rem，并使用px作为备用单位，因为rem不支持IE8及其以下版本。<br>例子：<a href="https://jsfiddle.net/vboar/Lpqpmans/" target="_blank" rel="external">https://jsfiddle.net/vboar/Lpqpmans/</a></p>
-<p>px、em、rem单位转换小工具：<br>地址：<a href="http://pxtoem.com/" target="_blank" rel="external">http://pxtoem.com/</a></p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="https://segmentfault.com/a/1190000002702464" target="_blank" rel="external">关于CSS中的字体尺寸设置 - iLeo - SegmentFault</a></li>
-<li><a href="http://www.huolg.net/html5/html5_basis/641" target="_blank" rel="external">css中px和em,rem的区别</a></li>
-</ul>
-
+        
       
     </div>
 
@@ -298,7 +280,7 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
           
             <a href="/tags/Web/" rel="tag">#Web</a>
           
-            <a href="/tags/CSS/" rel="tag">#CSS</a>
+            <a href="/tags/Javascript/" rel="tag">#Javascript</a>
           
         </div>
       
@@ -307,17 +289,13 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/04/a-brain-teaser-in-an-interview/" rel="next" title="之前面试遇到的一道智力题">
-                <i class="fa fa-chevron-left"></i> 之前面试遇到的一道智力题
+              <a href="/2016/04/21/interviews-in-March-and-April/" rel="next" title="三四月份的暑期实习面试经历">
+                <i class="fa fa-chevron-left"></i> 三四月份的暑期实习面试经历
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/21/interviews-in-March-and-April/" rel="prev" title="三四月份的暑期实习面试经历">
-                三四月份的暑期实习面试经历 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -332,10 +310,10 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/20/px-em-rem-in-CSS/"
-     data-title="CSS中的单位：px、em和rem"
+        <div class="ds-share flat" data-thread-key="2016/04/21/Regular-Expressions-in-Javascript/"
+     data-title="Javascript中的正则表达式"
      data-content=""
-     data-url="http://blog.kass.top/2016/04/20/px-em-rem-in-CSS/">
+     data-url="http://blog.kass.top/2016/04/21/Regular-Expressions-in-Javascript/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -362,8 +340,8 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/20/px-em-rem-in-CSS/"
-           data-title="CSS中的单位：px、em和rem" data-url="http://blog.kass.top/2016/04/20/px-em-rem-in-CSS/">
+      <div class="ds-thread" data-thread-key="2016/04/21/Regular-Expressions-in-Javascript/"
+           data-title="Javascript中的正则表达式" data-url="http://blog.kass.top/2016/04/21/Regular-Expressions-in-Javascript/">
       </div>
     
   </div>
@@ -484,7 +462,7 @@ px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#px、em和rem"><span class="nav-number">1.</span> <span class="nav-text">px、em和rem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
