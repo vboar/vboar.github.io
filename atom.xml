@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kass.top/"/>
-  <updated>2016-04-21T05:43:59.349Z</updated>
+  <updated>2016-04-22T14:25:15.292Z</updated>
   <id>http://kass.top/</id>
   
   <author>
@@ -17,19 +17,141 @@
   
   <entry>
     <title>Javascript中的正则表达式</title>
-    <link href="http://kass.top/2016/04/21/Regular-Expressions-in-Javascript/"/>
-    <id>http://kass.top/2016/04/21/Regular-Expressions-in-Javascript/</id>
-    <published>2016-04-21T05:43:12.000Z</published>
-    <updated>2016-04-21T05:43:59.349Z</updated>
+    <link href="http://kass.top/2016/04/22/Regular-Expressions-in-Javascript/"/>
+    <id>http://kass.top/2016/04/22/Regular-Expressions-in-Javascript/</id>
+    <published>2016-04-22T05:43:12.000Z</published>
+    <updated>2016-04-22T14:25:15.292Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;p&gt;JavaScript中的正则表达式和Perl的语法类似，虽然缺少了某些语言（特别是Perl）所支持的高级正则表达式特性，但功能已经非常强大的，平时的话已经足够用了。&lt;/p&gt;
+&lt;h3 id=&quot;定义方式&quot;&gt;&lt;a href=&quot;#定义方式&quot; class=&quot;headerlink&quot; title=&quot;定义方式&quot;&gt;&lt;/a&gt;定义方式&lt;/h3&gt;&lt;p&gt;JavaScript中的正则表达式可以通过两种方式定义：&lt;/p&gt;
+&lt;p&gt;1.使用正则表达式字面量定义&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; expression = &lt;span class=&quot;regexp&quot;&gt;/ pattern /&lt;/span&gt; flags ;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;2.使用RegExp构造函数创建&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; expression = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;RegExp&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;pattern&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;flags&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;pattern表示模式，可以包含字符类、限定符、分组、向前查找和反向引用。&lt;br&gt;flags表示标志（可选），每个正则表达式可以包含一个或多个标志，用以标明正则表达式的行为。&lt;/p&gt;
+&lt;p&gt;正则表达式的匹配模式支持下列3个标志：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;g：全局（global）模式，即模式将被应用于整个字符串，而不是只发现第一个匹配项&lt;/li&gt;
+&lt;li&gt;i：不区分大小写（case-insensitive）模式&lt;/li&gt;
+&lt;li&gt;m：多行（multiline）模式，即到达一行文本末尾会继续查找下一行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一些实例：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 匹配字符串中所有“love”的实例，不区分大小写&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern1 = &lt;span class=&quot;regexp&quot;&gt;/love/gi&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;RegExp&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;love&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;gi&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 匹配字符串中所有“\love”的实例，不区分大小写&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern3 = &lt;span class=&quot;regexp&quot;&gt;/\\love/gi&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern4 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;RegExp&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;\\\\love&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;gi&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// 双重转义&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;两种定义方式的区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两种定义方式定义的是完全等价的正则表达式&lt;/li&gt;
+&lt;li&gt;由于通过RegExp构造函数创建正则表达式传入的参数是字符串，所以需要对元字符进行双重转义&lt;/li&gt;
+&lt;li&gt;ECMAScript3中，正则表达式字面量始终会共享同一个RegExp实例，而使用构造函数创建的每一个新RegExp实例都是一个新实例&lt;/li&gt;
+&lt;li&gt;ECMAScript5中，两种定义方式是一致的，每次都创建新的RegExp实例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;RegExp实例属性&quot;&gt;&lt;a href=&quot;#RegExp实例属性&quot; class=&quot;headerlink&quot; title=&quot;RegExp实例属性&quot;&gt;&lt;/a&gt;RegExp实例属性&lt;/h3&gt;&lt;p&gt;RegExp对象的实例具有以下属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;global：布尔值，表示是否设置了 g 标志&lt;/li&gt;
+&lt;li&gt;ignoreCase：布尔值，表示是否设置了 i 标志&lt;/li&gt;
+&lt;li&gt;multiline：布尔值，表示是否设置了 m 标志&lt;/li&gt;
+&lt;li&gt;source：正则表达式的字符串表示，按照字面量形式返回，而不是使用构造函数创建时传入的字符串（非双重转义）&lt;/li&gt;
+&lt;li&gt;lastIndex：整数，表示开始搜索下一个匹配项的字符位置，从0算起&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;RegExp实例方法&quot;&gt;&lt;a href=&quot;#RegExp实例方法&quot; class=&quot;headerlink&quot; title=&quot;RegExp实例方法&quot;&gt;&lt;/a&gt;RegExp实例方法&lt;/h3&gt;&lt;p&gt;RegExp对象的实例有三个方法：test、exec和compile。&lt;/p&gt;
+&lt;p&gt;test方法：&lt;br&gt;检测指定字符串是否含有某个子串（或者匹配模式），输入是字符串，输出是true或者false。&lt;br&gt;如果模式带有g标志，每次调用test方法会继续往下查找（根据lastIndex）。&lt;/p&gt;
+&lt;p&gt;test的例子：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;I\&#39;m from China and you\&#39;re from China too.&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p1 = &lt;span class=&quot;regexp&quot;&gt;/China/&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p1.test(s); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p2 = &lt;span class=&quot;regexp&quot;&gt;/China/g&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.test(s); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.lastIndex; &lt;span class=&quot;comment&quot;&gt;// 14&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.test(s); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.lastIndex; &lt;span class=&quot;comment&quot;&gt;// 37&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.test(s); &lt;span class=&quot;comment&quot;&gt;// false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.test(s); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;exec方法：&lt;br&gt;提取指定字符串中的符合要求的子串（或者匹配模式），输入是要应用模式的字符串，返回一个数组存放匹配结果；如果没有，则返回null。&lt;br&gt;返回的数组有两个额外的属性：index和input，index表示匹配项的第一个字符在字符串中的位置，input表示传入的字符串。&lt;br&gt;在数组中，第一项是与整个模式匹配的字符串，其他项是与模式中的捕获组匹配的字符串（可无）。&lt;br&gt;如果模式带有g标志，每次调用exec方法会继续往下查找（根据lastIndex，lastIndex是下一次开始查找的位置）。&lt;/p&gt;
+&lt;p&gt;exec的例子：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;I\&#39;m from China and you\&#39;re from China too.&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p1 = &lt;span class=&quot;regexp&quot;&gt;/Ch(i(n)a)/g&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; m1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    m1 = p1.exec(s);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(m1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(p1.lastIndex);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(m1 !== &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;result:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&quot;China&quot;, &quot;ina&quot;, &quot;n&quot;, index: 9, input: &quot;I&#39;m from China and you&#39;re from China too.&quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&quot;China&quot;, &quot;ina&quot;, &quot;n&quot;, index: 31, input: &quot;I&#39;m from China and you&#39;re from China too.&quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;null&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;compile方法：&lt;br&gt;主要用于改变当前匹配模式（pattern）。&lt;/p&gt;
+&lt;h3 id=&quot;RegExp构造函数属性&quot;&gt;&lt;a href=&quot;#RegExp构造函数属性&quot; class=&quot;headerlink&quot; title=&quot;RegExp构造函数属性&quot;&gt;&lt;/a&gt;RegExp构造函数属性&lt;/h3&gt;&lt;p&gt;RegExp构造函数属性类似于其他语言中的静态属性，适用于作用域中的所有正则表达式，并基于所执行的最近一次正则表达式操作而变化。&lt;br&gt;这些属性分别有一个长属性名和短属性名。&lt;/p&gt;
+&lt;p&gt;RegExp构造函数属性列举如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;长属性名&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;短属性名&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;input&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;$_&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;最近一次要匹配的字符串&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;lastMatch&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;$&amp;amp;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;最近一次的匹配项&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;lastParen&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;$+&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;最近一次匹配的捕获组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;multiline&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;$*&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;布尔值，表示是否所有表达式都使用多行模式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;leftContext&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;$`&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;input字符串中lastMatch之前的文本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;rightContext&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;$’&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;input字符串中lastMatch之后的文本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;长属性名可以通过点方式访问，短属性名则需要通过方括号语法访问。&lt;br&gt;除了上面的属性外，还有RegExp.$1, …, RegExp.$9这9个属性，分别存储第一，…，第九个匹配的捕获组，点或方括号语法都能访问到。&lt;/p&gt;
+&lt;h3 id=&quot;方括号、元字符和量词&quot;&gt;&lt;a href=&quot;#方括号、元字符和量词&quot; class=&quot;headerlink&quot; title=&quot;方括号、元字符和量词&quot;&gt;&lt;/a&gt;方括号、元字符和量词&lt;/h3&gt;&lt;p&gt;方括号用于查找某个范围内的字符：&lt;br&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-4-22/91834367.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;元字符是拥有特殊含义的字符：&lt;br&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-4-22/41149787.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;《JS高程》说道：正则表达式中的元字符包括：( ) [ ] { } \ ^ $ | ? * + . （正则表达式转义）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其中，\s表示任意空白字符，\S表示任意非空白字符。空白字符有：空格符、制表符、回车符、换行符、垂直换行符和换页符。&lt;br&gt;\b代表单词的开头或结尾，即单词边界，匹配的只是一个位置，而不是一个字符。&lt;/p&gt;
+&lt;p&gt;量词：&lt;br&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-4-22/28452881.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;贪婪匹配和懒惰匹配&quot;&gt;&lt;a href=&quot;#贪婪匹配和懒惰匹配&quot; class=&quot;headerlink&quot; title=&quot;贪婪匹配和懒惰匹配&quot;&gt;&lt;/a&gt;贪婪匹配和懒惰匹配&lt;/h3&gt;&lt;p&gt;贪婪匹配：匹配项的长度越长越好；懒惰匹配：匹配项尽可能短小。&lt;br&gt;懒惰匹配就是在贪婪匹配的基础上加?号（懒惰限定符）。&lt;/p&gt;
+&lt;p&gt;例子：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;Welcome to Nanjing University in Nanjing!&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p1 = &lt;span class=&quot;regexp&quot;&gt;/.*Nanjing/&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p2 = &lt;span class=&quot;regexp&quot;&gt;/.*?Nanjing/&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(p1.exec(s));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(p2.exec(s));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;String中与正则表达式相关的方法&quot;&gt;&lt;a href=&quot;#String中与正则表达式相关的方法&quot; class=&quot;headerlink&quot; title=&quot;String中与正则表达式相关的方法&quot;&gt;&lt;/a&gt;String中与正则表达式相关的方法&lt;/h3&gt;&lt;p&gt;String中与正则表达式相关的方法分别是search、match、replace、split，传入的参数可以是字符串也可以是正则表达式。&lt;/p&gt;
+&lt;p&gt;search方法：&lt;br&gt;功能：搜索指定字符串中是否含有某子串（或者匹配模式），如有则返回子串在原串中的初始位置，如没有，返回-1。&lt;br&gt;search方法和test方法类似，只不过还可以返回位置，而且search方法会忽略g标志。&lt;br&gt;search方法和String的indexOf方法也类似，不过indexOf可以从指定位置开始查找，并且不支持正则表达式。&lt;/p&gt;
+&lt;p&gt;search的例子：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;Welcome to Nanjing University in Nanjing!&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p = &lt;span class=&quot;regexp&quot;&gt;/nanjing/i&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.search(p)); &lt;span class=&quot;comment&quot;&gt;// 11&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(p.test(s)); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.indexOf(&lt;span class=&quot;string&quot;&gt;&#39;Nanjing&#39;&lt;/span&gt;)); &lt;span class=&quot;comment&quot;&gt;// 11&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;match方法：&lt;br&gt;功能：从指定字符串中查找子串或者匹配模式，找到返回数组，没找到返回null。&lt;br&gt;match方法是exec方法的轻量版，无g标志和exec一致，有g标志直接返回一个字符串数组，信息量比exec要少。&lt;/p&gt;
+&lt;p&gt;match的例子：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;Welcome to Nanjing University in Nanjing!&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p1 = &lt;span class=&quot;regexp&quot;&gt;/nanjing/i&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p2 = &lt;span class=&quot;regexp&quot;&gt;/nanjing/gi&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.match(p1));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.match(p2));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;replace方法：&lt;br&gt;功能：用另一个子串替换指定字符串中的某一子串（或者匹配模式），返回替换后新的字符串。&lt;br&gt;接收两个参数，第一个参数是要替换的子串或正则表达式，第二个参数是用于替换的子串。&lt;br&gt;如果带有g标志，则全部替换，如果没有则替换第一处。&lt;/p&gt;
+&lt;p&gt;replace的例子：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;Welcome to Nanjing University in Nanjing!&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.replace(&lt;span class=&quot;string&quot;&gt;&#39;Nanjing&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Beijing&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.replace(&lt;span class=&quot;regexp&quot;&gt;/Nanjing/&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Beijing&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.replace(&lt;span class=&quot;regexp&quot;&gt;/Nanjing/g&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Beijing&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;用于替换的字符串中的$具有特定的含义：&lt;br&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-4-22/30472325.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;例子：将 Justin, Wong 替换成 Wong Justin&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; name = &lt;span class=&quot;string&quot;&gt;&quot;Justin, Wong&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(name.replace(&lt;span class=&quot;regexp&quot;&gt;/(\w+)\s*,\s*(\w+)/&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;$2 $1&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;例子：用原串替换某子串&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&quot;Welcome to Nanjing University&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.replace(&lt;span class=&quot;regexp&quot;&gt;/to/&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;$`&#39;&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&#39;$&amp;amp;&#39;&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&#39;$\&#39;&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;replace方法的第二个参数还可以是函数。这个函数的第一个参数是匹配到的子串，接下来的参数是与模式中的子表达式匹配的字符串，可以有 0 个或多个这样的参数。接下来的参数是一个整数，声明了匹配在stringObject中出现的位置。最后一个参数是stringObject本身。后两个参数可以省略。&lt;/p&gt;
+&lt;p&gt;例子：把字符串中所有单词的首字母都转换为大写&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;welcome to Nanjing university&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; r = s.replace(&lt;span class=&quot;regexp&quot;&gt;/\b\w+\b/g&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;word&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; word.substring(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;).toUpperCase() + word.substring(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(r);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;split方法：&lt;br&gt;功能：将一个字符串分割成字符串数组。&lt;br&gt;接收两个参数，第一个参数是分割符（字符串或正则表达式），第二个参数是返回数组的最大长度（可选）。&lt;/p&gt;
+&lt;p&gt;split的例子：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;Welcome to Nanjing University&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.split(&lt;span class=&quot;string&quot;&gt;&quot; &quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.split(&lt;span class=&quot;regexp&quot;&gt;/\s+/&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.split(&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.split(&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;正则表达式的反向引用&quot;&gt;&lt;a href=&quot;#正则表达式的反向引用&quot; class=&quot;headerlink&quot; title=&quot;正则表达式的反向引用&quot;&gt;&lt;/a&gt;正则表达式的反向引用&lt;/h3&gt;&lt;p&gt;捕获组（子表达式）捕获到的内容，可以在正则表达式内部进行引用，即反向引用。&lt;br&gt;作用：查找或限定重复、查找或限定指定标识配对出现、等等&lt;br&gt;表示：\1, \2, …, \99&lt;/p&gt;
+&lt;p&gt;例子：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;njunjueducncn&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern = &lt;span class=&quot;regexp&quot;&gt;/(\w+)\1/g&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = s.match(pattern);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(a);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;例子：找出字符串中出现次数最多的字符&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt;.prototype.getMost = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.split(&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;).sort().join(&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern = &lt;span class=&quot;regexp&quot;&gt;/(\w)\1*/g&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = s.match(pattern);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a.sort(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;a, b&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a.length &amp;lt; b.length;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; letter = a[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;][&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; num = a[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].length;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; letter + &lt;span class=&quot;string&quot;&gt;&#39;: &#39;&lt;/span&gt; + num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;aaabbbcccaaabbbccccccdddaaaccddeeeee&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.getMost());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;正则表达式的零宽断言&quot;&gt;&lt;a href=&quot;#正则表达式的零宽断言&quot; class=&quot;headerlink&quot; title=&quot;正则表达式的零宽断言&quot;&gt;&lt;/a&gt;正则表达式的零宽断言&lt;/h3&gt;&lt;p&gt;(?=exp)即零宽度正预测先行断言，它断言自身出现的位置的后面能匹配表达式exp。&lt;br&gt;(?!exp)即零宽度负预测先行断言，它断言此位置的后面不能匹配表达式exp。&lt;br&gt;JavaScript只支持前瞻，不支持后瞻。&lt;/p&gt;
+&lt;p&gt;例子：获取字符串中以ing结尾的单词的前半部分&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;I love dancing but he likes singing&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern = &lt;span class=&quot;regexp&quot;&gt;/\b\w+(?=ing\b)/g&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; ans = s.match(pattern);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(ans);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;例子：获取第五位不是i的单词的前四位&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;I love dancing but he likes singing&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern = &lt;span class=&quot;regexp&quot;&gt;/\b\w&amp;#123;4&amp;#125;(?!i)/g&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; ans = s.match(pattern);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(ans);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;例子：给字符串加千分符&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt;.prototype.getAns = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern = &lt;span class=&quot;regexp&quot;&gt;/(?=((?!\b)\d&amp;#123;3&amp;#125;)+$)/g&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.replace(pattern, &lt;span class=&quot;string&quot;&gt;&#39;,&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s = &lt;span class=&quot;string&quot;&gt;&#39;1000000000000&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(s.getAns());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;正则表达式相关教程、资源和工具&quot;&gt;&lt;a href=&quot;#正则表达式相关教程、资源和工具&quot; class=&quot;headerlink&quot; title=&quot;正则表达式相关教程、资源和工具&quot;&gt;&lt;/a&gt;正则表达式相关教程、资源和工具&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://c.biancheng.net/cpp/u/zhengze/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;正则表达式教程 - C语言中文网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.runoob.com/regexp/regexp-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;正则表达式 - 菜鸟教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://regex101.com/#javascript&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Online regex tester and debugger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.debuggex.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Debuggex&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;《JavaScript高级程序设计》 5.4 RegExp类型&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.codeceo.com/article/javascript-reg-expression.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我所认识的JavaScript正则表达式 - codeceo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript RegExp 对象 - W3School&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000000699097&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript学习总结（八）正则表达式 - trigkit4 - segmentfault&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
     
     <summary type="html">
+    
+      &lt;p&gt;JavaScript中的正则表达式和Perl的语法类似，虽然缺少了某些语言（特别是Perl）所支持的高级正则表达式特性，但功能已经非常强大的，平时的话已经足够用了。&lt;/p&gt;
+&lt;h3 id=&quot;定义方式&quot;&gt;&lt;a href=&quot;#定义方式&quot; class=&quot;headerlink&quot; t
     
     </summary>
     
     
-      <category term="Web" scheme="http://kass.top/tags/Web/"/>
+      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="Javascript" scheme="http://kass.top/tags/Javascript/"/>
     
@@ -40,9 +162,9 @@
     <link href="http://kass.top/2016/04/21/interviews-in-March-and-April/"/>
     <id>http://kass.top/2016/04/21/interviews-in-March-and-April/</id>
     <published>2016-04-21T02:29:49.000Z</published>
-    <updated>2016-04-21T05:44:07.727Z</updated>
+    <updated>2016-04-22T07:46:17.428Z</updated>
     
-    <content type="html">&lt;p&gt;三四月份我主要投了三家的暑期实习，分别是阿里、网易和腾讯，当然也有投其他的一些公司，但经历过面试的也只有这三家了。阿里是内推一面过了一个月之后显示已回绝，网易和腾讯还在等面试结果……不管怎么说，多参加一些面试总归是好的~&lt;/p&gt;
+    <content type="html">&lt;p&gt;三四月份我主要投了三家的暑期实习，分别是阿里、网易和腾讯，当然也有投其他的一些公司，但经历过面试的也只有这三家了。阿里是内推一面过了一个月之后显示已回绝，腾讯已经挂了，网易在等面试结果……不管怎么说，多参加一些面试总归是好的~&lt;/p&gt;
 &lt;h3 id=&quot;阿里——淘宝FED前端&quot;&gt;&lt;a href=&quot;#阿里——淘宝FED前端&quot; class=&quot;headerlink&quot; title=&quot;阿里——淘宝FED前端&quot;&gt;&lt;/a&gt;阿里——淘宝FED前端&lt;/h3&gt;&lt;p&gt;阿里是3月6日学长内推过去的简历，然后3月7日下午就收到了电面电话，下面是我回忆的整个面试过程（过了一个多月可能有些忘掉了）：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;面试官让我进行一分钟的自我介绍，然后我……没想到电面这么突然，并没有准备什么，所以只说了十多秒……&lt;/li&gt;
@@ -144,14 +266,14 @@
 &lt;li&gt;为什么在南京上大学&lt;/li&gt;
 &lt;li&gt;工作城市的选择&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;腾讯应该是目前最想去的公司吧，然而现在还是等待面试结果中……&lt;/p&gt;
+&lt;p&gt;腾讯应该是目前最想去的公司吧，然而现在还是等待面试结果中……&lt;br&gt;4.22 更新：已经显示“目前的岗位可能并不适合你”，也就是挂了吧……&lt;/p&gt;
 &lt;h3 id=&quot;小结&quot;&gt;&lt;a href=&quot;#小结&quot; class=&quot;headerlink&quot; title=&quot;小结&quot;&gt;&lt;/a&gt;小结&lt;/h3&gt;&lt;p&gt;通过这几次面试，发现自己还是有很多知识漏洞的，基本的CSS和JS还有很多没有掌握的地方，希望继续努力吧，把那几本书再认真看一遍，同时也要学习一些框架、工具和新技术。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;三四月份我主要投了三家的暑期实习，分别是阿里、网易和腾讯，当然也有投其他的一些公司，但经历过面试的也只有这三家了。阿里是内推一面过了一个月之后显示已回绝，网易和腾讯还在等面试结果……不管怎么说，多参加一些面试总归是好的~&lt;/p&gt;
-&lt;h3 id=&quot;阿里——淘宝FED前端&quot;&gt;&lt;
+      &lt;p&gt;三四月份我主要投了三家的暑期实习，分别是阿里、网易和腾讯，当然也有投其他的一些公司，但经历过面试的也只有这三家了。阿里是内推一面过了一个月之后显示已回绝，腾讯已经挂了，网易在等面试结果……不管怎么说，多参加一些面试总归是好的~&lt;/p&gt;
+&lt;h3 id=&quot;阿里——淘宝FED前端
     
     </summary>
     
@@ -165,7 +287,7 @@
     <link href="http://kass.top/2016/04/20/px-em-rem-in-CSS/"/>
     <id>http://kass.top/2016/04/20/px-em-rem-in-CSS/</id>
     <published>2016-04-20T12:35:27.000Z</published>
-    <updated>2016-04-22T05:17:28.295Z</updated>
+    <updated>2016-04-22T07:52:09.705Z</updated>
     
     <content type="html">&lt;p&gt;最近我一直在做一个项目叫 &lt;a href=&quot;http://mebox.top/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;米盒&lt;/a&gt;（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~&lt;/p&gt;
 &lt;h3 id=&quot;px、em和rem&quot;&gt;&lt;a href=&quot;#px、em和rem&quot; class=&quot;headerlink&quot; title=&quot;px、em和rem&quot;&gt;&lt;/a&gt;px、em和rem&lt;/h3&gt;&lt;p&gt;px：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的。&lt;br&gt;em：相对长度单位，相对于当前对象内文本的字体尺寸。&lt;br&gt;rem：即root em，相对长度单位，相对于HTML根元素的字体尺寸。&lt;/p&gt;
@@ -191,7 +313,7 @@
     </summary>
     
     
-      <category term="Web" scheme="http://kass.top/tags/Web/"/>
+      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="CSS" scheme="http://kass.top/tags/CSS/"/>
     
@@ -233,7 +355,7 @@
     <link href="http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/"/>
     <id>http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/</id>
     <published>2016-03-02T19:06:21.000Z</published>
-    <updated>2016-03-15T13:36:24.813Z</updated>
+    <updated>2016-04-22T07:52:17.756Z</updated>
     
     <content type="html">&lt;p&gt;之前写Web项目的时候一般都是用AJAX调用服务器提供的接口获得数据，但后来遇到了AJAX由于不同源而不用跨域请求的问题。为了实现AJAX跨域请求，我重新回顾了之前在《面向Web的计算》课上讲过的同源策略（Same Origin Policy, SOP），并了解AJAX跨域请求的几种常见的解决方案。结合网上的一些文章和参考资料，整理出下面的关于同源策略和AJAX跨域请求解决方案的笔记。&lt;/p&gt;
 &lt;h3 id=&quot;同源策略（Same-Origin-Policy-SOP）&quot;&gt;&lt;a href=&quot;#同源策略（Same-Origin-Policy-SOP）&quot; class=&quot;headerlink&quot; title=&quot;同源策略（Same Origin Policy, SOP）&quot;&gt;&lt;/a&gt;同源策略（Same Origin Policy, SOP）&lt;/h3&gt;&lt;p&gt;同源策略，它是由 Netscape 提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略。&lt;/p&gt;
@@ -316,7 +438,7 @@
     </summary>
     
     
-      <category term="Web" scheme="http://kass.top/tags/Web/"/>
+      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="安全" scheme="http://kass.top/tags/%E5%AE%89%E5%85%A8/"/>
     
@@ -329,7 +451,7 @@
     <link href="http://kass.top/2016/03/02/start-up-my-blog/"/>
     <id>http://kass.top/2016/03/02/start-up-my-blog/</id>
     <published>2016-03-02T08:01:17.000Z</published>
-    <updated>2016-03-15T13:36:28.463Z</updated>
+    <updated>2016-04-22T07:52:27.036Z</updated>
     
     <content type="html">&lt;p&gt;之前很多次都搭建了自己的博客，说要开始写博客，然而从大一都大三都没有实现= = 这几天忽然意识到自己真的已经大三了，而且要找实习了！！！然后发现自己两年多好像并没有学到什么东西…也就写了几个水水的大作业和项目。平时遇到什么问题和困难就百度谷歌一下，当时懂了就解决掉那个问题，然而过了很久之后…还是不懂…看别人写的技术博客感觉很有意思，然而过了很久什么都不记得…人懒啊，以至于读书笔记、学习笔记都不怎么写，更不用说博客了…那，去应聘的时候，我有什么资本说我很牛逼呢，凭什么让别人招了我。&lt;/p&gt;
 &lt;p&gt;于是，这次真的下定决心了，即便花掉不少时间，也要认真地写博客，一是巩固自己对这方面的理解，二是将来可以回头看看，可以捡回来，说不定还有什么新的理解。&lt;/p&gt;
