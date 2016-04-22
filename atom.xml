@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://blog.kass.top/"/>
+  <link href="http://kass.top/"/>
   <updated>2016-04-21T05:43:59.349Z</updated>
-  <id>http://blog.kass.top/</id>
+  <id>http://kass.top/</id>
   
   <author>
     <name>Justin Wong</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Javascript中的正则表达式</title>
-    <link href="http://blog.kass.top/2016/04/21/Regular-Expressions-in-Javascript/"/>
-    <id>http://blog.kass.top/2016/04/21/Regular-Expressions-in-Javascript/</id>
+    <link href="http://kass.top/2016/04/21/Regular-Expressions-in-Javascript/"/>
+    <id>http://kass.top/2016/04/21/Regular-Expressions-in-Javascript/</id>
     <published>2016-04-21T05:43:12.000Z</published>
     <updated>2016-04-21T05:43:59.349Z</updated>
     
@@ -29,16 +29,16 @@
     </summary>
     
     
-      <category term="Web" scheme="http://blog.kass.top/tags/Web/"/>
+      <category term="Web" scheme="http://kass.top/tags/Web/"/>
     
-      <category term="Javascript" scheme="http://blog.kass.top/tags/Javascript/"/>
+      <category term="Javascript" scheme="http://kass.top/tags/Javascript/"/>
     
   </entry>
   
   <entry>
     <title>三四月份的暑期实习面试经历</title>
-    <link href="http://blog.kass.top/2016/04/21/interviews-in-March-and-April/"/>
-    <id>http://blog.kass.top/2016/04/21/interviews-in-March-and-April/</id>
+    <link href="http://kass.top/2016/04/21/interviews-in-March-and-April/"/>
+    <id>http://kass.top/2016/04/21/interviews-in-March-and-April/</id>
     <published>2016-04-21T02:29:49.000Z</published>
     <updated>2016-04-21T05:44:07.727Z</updated>
     
@@ -156,14 +156,14 @@
     </summary>
     
     
-      <category term="面试" scheme="http://blog.kass.top/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://kass.top/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>CSS中的单位：px、em和rem</title>
-    <link href="http://blog.kass.top/2016/04/20/px-em-rem-in-CSS/"/>
-    <id>http://blog.kass.top/2016/04/20/px-em-rem-in-CSS/</id>
+    <link href="http://kass.top/2016/04/20/px-em-rem-in-CSS/"/>
+    <id>http://kass.top/2016/04/20/px-em-rem-in-CSS/</id>
     <published>2016-04-20T12:35:27.000Z</published>
     <updated>2016-04-20T13:39:41.343Z</updated>
     
@@ -191,16 +191,16 @@
     </summary>
     
     
-      <category term="Web" scheme="http://blog.kass.top/tags/Web/"/>
+      <category term="Web" scheme="http://kass.top/tags/Web/"/>
     
-      <category term="CSS" scheme="http://blog.kass.top/tags/CSS/"/>
+      <category term="CSS" scheme="http://kass.top/tags/CSS/"/>
     
   </entry>
   
   <entry>
     <title>之前面试遇到的一道智力题</title>
-    <link href="http://blog.kass.top/2016/03/04/a-brain-teaser-in-an-interview/"/>
-    <id>http://blog.kass.top/2016/03/04/a-brain-teaser-in-an-interview/</id>
+    <link href="http://kass.top/2016/03/04/a-brain-teaser-in-an-interview/"/>
+    <id>http://kass.top/2016/03/04/a-brain-teaser-in-an-interview/</id>
     <published>2016-03-04T04:20:31.000Z</published>
     <updated>2016-03-15T13:36:21.515Z</updated>
     
@@ -222,23 +222,23 @@
     </summary>
     
     
-      <category term="面试" scheme="http://blog.kass.top/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://kass.top/tags/%E9%9D%A2%E8%AF%95/"/>
     
-      <category term="智力题" scheme="http://blog.kass.top/tags/%E6%99%BA%E5%8A%9B%E9%A2%98/"/>
+      <category term="智力题" scheme="http://kass.top/tags/%E6%99%BA%E5%8A%9B%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>同源策略和AJAX跨域请求的解决方案</title>
-    <link href="http://blog.kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/"/>
-    <id>http://blog.kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/</id>
+    <link href="http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/"/>
+    <id>http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/</id>
     <published>2016-03-02T19:06:21.000Z</published>
     <updated>2016-03-15T13:36:24.813Z</updated>
     
     <content type="html">&lt;p&gt;之前写Web项目的时候一般都是用AJAX调用服务器提供的接口获得数据，但后来遇到了AJAX由于不同源而不用跨域请求的问题。为了实现AJAX跨域请求，我重新回顾了之前在《面向Web的计算》课上讲过的同源策略（Same Origin Policy, SOP），并了解AJAX跨域请求的几种常见的解决方案。结合网上的一些文章和参考资料，整理出下面的关于同源策略和AJAX跨域请求解决方案的笔记。&lt;/p&gt;
 &lt;h3 id=&quot;同源策略（Same-Origin-Policy-SOP）&quot;&gt;&lt;a href=&quot;#同源策略（Same-Origin-Policy-SOP）&quot; class=&quot;headerlink&quot; title=&quot;同源策略（Same Origin Policy, SOP）&quot;&gt;&lt;/a&gt;同源策略（Same Origin Policy, SOP）&lt;/h3&gt;&lt;p&gt;同源策略，它是由 Netscape 提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略。&lt;/p&gt;
 &lt;p&gt;所谓同源，是指域名、协议、端口都相同。如果两个页面的域名、协议和端口都相同，那么这两个页面就同源，属于同一个域（Domain ）。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://kass.top&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://kass.top&lt;/a&gt; 和 &lt;a href=&quot;http://www.kass.top&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kass.top&lt;/a&gt; 不同源，因为域名不同&lt;br&gt;&lt;a href=&quot;http://kass.top&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://kass.top&lt;/a&gt; 和 &lt;a href=&quot;https://kass.top&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://kass.top&lt;/a&gt; 不同源，因为协议不同&lt;br&gt;&lt;a href=&quot;http://kass.top:80&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://kass.top:80&lt;/a&gt; 和 &lt;a href=&quot;http://kass.top:8080&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://kass.top:8080&lt;/a&gt; 不同源，因为端口不同&lt;br&gt;&lt;a href=&quot;http://kass.top/tags&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://kass.top/tags&lt;/a&gt; 和 &lt;a href=&quot;http://kass.top/about&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://kass.top/about&lt;/a&gt; 同源&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://kass.top&quot;&gt;http://kass.top&lt;/a&gt; 和 &lt;a href=&quot;http://www.kass.top&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kass.top&lt;/a&gt; 不同源，因为域名不同&lt;br&gt;&lt;a href=&quot;http://kass.top&quot;&gt;http://kass.top&lt;/a&gt; 和 &lt;a href=&quot;https://kass.top&quot;&gt;https://kass.top&lt;/a&gt; 不同源，因为协议不同&lt;br&gt;&lt;a href=&quot;http://kass.top:80&quot;&gt;http://kass.top:80&lt;/a&gt; 和 &lt;a href=&quot;http://kass.top:8080&quot;&gt;http://kass.top:8080&lt;/a&gt; 不同源，因为端口不同&lt;br&gt;&lt;a href=&quot;http://kass.top/tags&quot;&gt;http://kass.top/tags&lt;/a&gt; 和 &lt;a href=&quot;http://kass.top/about&quot;&gt;http://kass.top/about&lt;/a&gt; 同源&lt;/p&gt;
 &lt;p&gt;同源策略限制了一个源中加载文本或脚本与来自其他源中资源的交互方式，简单的说就是一个源上的JS 只能访问当前源的资源。不同源的客户端脚本(javascript、ActionScript)在没明确授权的情况下，不能读写对方的资源。这些资源包括：DOM、通过AJAX请求的网络资源、cookie等。需要遵循同源策略的地方有：跨frame脚本、跨window脚本、cookie访问、XMLHttpRequest请求等。&lt;/p&gt;
 &lt;p&gt;那为什么像script、style、img标签可以引入不同源的文本或脚本呢？因为同源策略本身是在Web前端的安全性和灵活性选择了一个平衡点，同源策略允许这些标签跨域引用资源而不必部署在同一台服务器上。&lt;/p&gt;
 &lt;h4 id=&quot;如果不遵循同源策略，会这么样呢？&quot;&gt;&lt;a href=&quot;#如果不遵循同源策略，会这么样呢？&quot; class=&quot;headerlink&quot; title=&quot;如果不遵循同源策略，会这么样呢？&quot;&gt;&lt;/a&gt;如果不遵循同源策略，会这么样呢？&lt;/h4&gt;&lt;p&gt;1.链接跳转的问题：假设有一个钓鱼页面 &lt;a href=&quot;http://money.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://money.com/&lt;/a&gt; ，诱导用户在这个页面上打开 &lt;a href=&quot;http://www.alipay.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.alipay.com/&lt;/a&gt; （使用window.open打开），这时候钓鱼页面就可以获取支付宝页面窗口的句柄即window对象，即获得了对支付宝页面的控制权，账号密码什么的也就轻而易举地获得了。&lt;br&gt;2.AJAX请求的问题： 假设在 &lt;a href=&quot;http://money.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://money.com/&lt;/a&gt; 页面发起一个对 &lt;a href=&quot;http://www.alipay.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.alipay.com/&lt;/a&gt; 某接口的AJAX请求，如果不遵循同源策略，那么这样的请求是允许的，此次HTTP请求所带的cookie当然是 &lt;a href=&quot;http://www.alipay.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.alipay.com/&lt;/a&gt; 下的cookie，有了cookie，还有什么信息是不能获得的呢？&lt;/p&gt;
@@ -316,18 +316,18 @@
     </summary>
     
     
-      <category term="Web" scheme="http://blog.kass.top/tags/Web/"/>
+      <category term="Web" scheme="http://kass.top/tags/Web/"/>
     
-      <category term="安全" scheme="http://blog.kass.top/tags/%E5%AE%89%E5%85%A8/"/>
+      <category term="安全" scheme="http://kass.top/tags/%E5%AE%89%E5%85%A8/"/>
     
-      <category term="AJAX" scheme="http://blog.kass.top/tags/AJAX/"/>
+      <category term="AJAX" scheme="http://kass.top/tags/AJAX/"/>
     
   </entry>
   
   <entry>
     <title>真的开始写博客了&gt;_&lt;#</title>
-    <link href="http://blog.kass.top/2016/03/02/start-up-my-blog/"/>
-    <id>http://blog.kass.top/2016/03/02/start-up-my-blog/</id>
+    <link href="http://kass.top/2016/03/02/start-up-my-blog/"/>
+    <id>http://kass.top/2016/03/02/start-up-my-blog/</id>
     <published>2016-03-02T08:01:17.000Z</published>
     <updated>2016-03-15T13:36:28.463Z</updated>
     
@@ -344,7 +344,7 @@
     </summary>
     
     
-      <category term="日常" scheme="http://blog.kass.top/tags/%E6%97%A5%E5%B8%B8/"/>
+      <category term="日常" scheme="http://kass.top/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
