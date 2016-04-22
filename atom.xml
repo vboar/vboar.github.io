@@ -165,7 +165,7 @@
     <link href="http://kass.top/2016/04/20/px-em-rem-in-CSS/"/>
     <id>http://kass.top/2016/04/20/px-em-rem-in-CSS/</id>
     <published>2016-04-20T12:35:27.000Z</published>
-    <updated>2016-04-20T13:39:41.343Z</updated>
+    <updated>2016-04-22T05:17:28.295Z</updated>
     
     <content type="html">&lt;p&gt;最近我一直在做一个项目叫 &lt;a href=&quot;http://mebox.top/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;米盒&lt;/a&gt;（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~&lt;/p&gt;
 &lt;h3 id=&quot;px、em和rem&quot;&gt;&lt;a href=&quot;#px、em和rem&quot; class=&quot;headerlink&quot; title=&quot;px、em和rem&quot;&gt;&lt;/a&gt;px、em和rem&lt;/h3&gt;&lt;p&gt;px：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的。&lt;br&gt;em：相对长度单位，相对于当前对象内文本的字体尺寸。&lt;br&gt;rem：即root em，相对长度单位，相对于HTML根元素的字体尺寸。&lt;/p&gt;
