@@ -95,7 +95,7 @@
     <link href="http://kass.top/2016/04/22/Regular-Expressions-in-Javascript/"/>
     <id>http://kass.top/2016/04/22/Regular-Expressions-in-Javascript/</id>
     <published>2016-04-22T05:43:12.000Z</published>
-    <updated>2016-04-22T14:25:15.292Z</updated>
+    <updated>2016-04-24T05:51:19.174Z</updated>
     
     <content type="html">&lt;p&gt;JavaScript中的正则表达式和Perl的语法类似，虽然缺少了某些语言（特别是Perl）所支持的高级正则表达式特性，但功能已经非常强大的，平时的话已经足够用了。&lt;/p&gt;
 &lt;h3 id=&quot;定义方式&quot;&gt;&lt;a href=&quot;#定义方式&quot; class=&quot;headerlink&quot; title=&quot;定义方式&quot;&gt;&lt;/a&gt;定义方式&lt;/h3&gt;&lt;p&gt;JavaScript中的正则表达式可以通过两种方式定义：&lt;/p&gt;
@@ -228,7 +228,7 @@
     
       <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="Javascript" scheme="http://kass.top/tags/Javascript/"/>
+      <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
     
   </entry>
   
