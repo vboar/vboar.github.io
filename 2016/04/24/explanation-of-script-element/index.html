@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>script元素详解 | Vboar&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,JavaScript," />
+  
+
+  <meta name="description" content="script元素向HTML页面中插入JavaScript的方法就是使用&amp;lt;script&amp;gt;元素。
+&amp;lt;script&amp;gt;元素有六个属性：
+
+src：包含JavaScript代码的外部文件，可选
+type：脚本语言的内容类型（MIME类型），默认为text/javascript，可选
+charset：通过src属性指定的代码的字符集，大多数浏览器会忽略，可选
+language：表示脚本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="script元素详解">
+<meta property="og:url" content="http://kass.top/2016/04/24/explanation-of-script-element/index.html">
+<meta property="og:site_name" content="Vboar's Blog">
+<meta property="og:description" content="script元素向HTML页面中插入JavaScript的方法就是使用&amp;lt;script&amp;gt;元素。
+&amp;lt;script&amp;gt;元素有六个属性：
+
+src：包含JavaScript代码的外部文件，可选
+type：脚本语言的内容类型（MIME类型），默认为text/javascript，可选
+charset：通过src属性指定的代码的字符集，大多数浏览器会忽略，可选
+language：表示脚本">
+<meta property="og:image" content="http://vboar.qiniudn.com/16-4-24/31931666.jpg">
+<meta property="og:updated_time" content="2016-04-24T05:44:00.362Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="script元素详解">
+<meta name="twitter:description" content="script元素向HTML页面中插入JavaScript的方法就是使用&amp;lt;script&amp;gt;元素。
+&amp;lt;script&amp;gt;元素有六个属性：
+
+src：包含JavaScript代码的外部文件，可选
+type：脚本语言的内容类型（MIME类型），默认为text/javascript，可选
+charset：通过src属性指定的代码的字符集，大多数浏览器会忽略，可选
+language：表示脚本">
+<meta name="twitter:image" content="http://vboar.qiniudn.com/16-4-24/31931666.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal_style.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#script元素"><span class="toc-text">script元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正常脚本、延迟脚本（defer）和异步脚本（async）"><span class="toc-text">正常脚本、延迟脚本（defer）和异步脚本（async）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#defer和async的测试"><span class="toc-text">defer和async的测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-explanation-of-script-element" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">script元素详解</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.24</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Justin Wong</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="script元素"><a href="#script元素" class="headerlink" title="script元素"></a>script元素</h3><p>向HTML页面中插入JavaScript的方法就是使用<code>&lt;script&gt;</code>元素。</p>
+<p><code>&lt;script&gt;</code>元素有六个属性：</p>
+<ul>
+<li>src：包含JavaScript代码的外部文件，可选</li>
+<li>type：脚本语言的内容类型（MIME类型），默认为text/javascript，可选</li>
+<li>charset：通过src属性指定的代码的字符集，大多数浏览器会忽略，可选</li>
+<li>language：表示脚本语言，大多数浏览器会忽略，已废弃</li>
+<li>async：异步脚本，只对外部脚本文件有效，可选</li>
+<li>defer：延迟脚本，只对外部脚本文件有效，可选</li>
+</ul>
+<p>使用<code>&lt;script&gt;</code>元素的方式有两种：直接在页面中嵌入JavaScript代码和包含外部JavaScript文件。</p>
+<p>一些需要注意的问题：</p>
+<ul>
+<li>使用嵌入代码时，不能在代码中包含<code>&lt;/script&gt;</code>字符串，必须通过转义<code>&lt;\/script&gt;</code></li>
+<li>使用外部代码时，不应该在<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>标签之间包含额外的代码，否则嵌入的代码将被忽略</li>
+<li><code>&lt;script&gt;</code>元素的src属性是不需要遵循同源策略的</li>
+<li>在不考虑async和defer的情况下，<code>&lt;script&gt;</code>元素位置的最佳实践是放在<code>&lt;/body&gt;</code>标签的前面。如果放在<code>&lt;head&gt;</code>元素中，浏览器会因先下载执行js代码而阻塞页面渲染从而出现白屏页面</li>
+<li>浏览器在处理HTML页面渲染和JavaScript脚本执行的时候是单一进程的,所以在当浏览器在渲染HTML遇到了<code>&lt;script&gt;</code>标签会先去执行标签内的代码(如果是使用src属性加载的外链文件,则先下载再执行),在这个过程中,页面渲染和交互都会被阻塞</li>
+</ul>
+<h3 id="正常脚本、延迟脚本（defer）和异步脚本（async）"><a href="#正常脚本、延迟脚本（defer）和异步脚本（async）" class="headerlink" title="正常脚本、延迟脚本（defer）和异步脚本（async）"></a>正常脚本、延迟脚本（defer）和异步脚本（async）</h3><ol>
+<li><p><code>&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</code><br>正常脚本，没有defer或async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该<code>&lt;script&gt;</code>标签后面的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行（阻塞页面解析和渲染）。</p>
+</li>
+<li><p><code>&lt;script defer src=&quot;main.js&quot;&gt;&lt;/script&gt;</code><br>延迟脚本，加载后续文档元素的过程将和main.js的加载并行进行（异步），但是main.js的执行要在所有元素解析完成之后、DOMContentLoaded事件触发之前完成。<br>延迟脚本保证执行的先后顺序。</p>
+</li>
+<li><p><code>&lt;script async src=&quot;main.js&quot;&gt;&lt;/script&gt;</code><br>异步脚本，加载和渲染后续文档元素的过程将和main.js的加载与执行并行进行（异步，注意js的执行和页面渲染不会同时进行）。<br>异步脚本下载好了就会立即执行。<br>异步脚本一定会在页面的load事件前执行，但可能会在DOMContentLoaded事件触发之前或之后执行。<br>异步脚本不保证执行的先后顺序。</p>
+</li>
+</ol>
+<p><img src="http://vboar.qiniudn.com/16-4-24/31931666.jpg" alt=""></p>
+<p>上图中绿色代表HTML解析，蓝色代表脚本下载，红色代表脚本执行。</p>
+<p>从上图得到的一些结论：</p>
+<ul>
+<li>对于延迟和异步脚本，脚本的下载是异步的，表现为不阻塞HTML解析和页面渲染</li>
+<li>对于正常和异步脚本，脚本在下载完成之后会立即执行</li>
+<li>对于异步脚本，脚本的下载和执行是乱序的，完全不考虑脚本的依赖关系，适用于不依赖其他脚本和不作为其他脚本的依赖的脚本</li>
+</ul>
+<h3 id="defer和async的测试"><a href="#defer和async的测试" class="headerlink" title="defer和async的测试"></a>defer和async的测试</h3><p>测试来自 <a href="https://segmentfault.com/a/1190000000339118" target="_blank" rel="external">script关于async与defer属性的测试 - miser -segmentfault</a>，使用nodejs作为server端。</p>
+<p>server代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">if</span> (req.url == <span class="string">'/test1'</span>) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            res.end(<span class="string">"console.log('test1');"</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span> * <span class="number">5</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.url == <span class="string">'/test2'</span>) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            res.end(<span class="string">"console.log('test2');"</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span> * <span class="number">3</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.end(<span class="string">"console.log('test3');"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).listen(<span class="number">8081</span>, <span class="string">'127.0.0.1'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:8081/'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>HTML代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>script async defer<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'onload'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'DOMContentLoaded'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://127.0.0.1:8081/test1"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://127.0.0.1:8081/test2"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://127.0.0.1:8081/test3"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>测试结果：</p>
+<ul>
+<li>不设置defer和async：test1、test2、test3、DOMContentLoaded、onload（阻塞解析和渲染）</li>
+<li>设置全部为defer：test1、test2、test3、DOMContentLoaded、onload（全部延迟，可能有部分浏览器DOMContentLoaded事件最先执行）</li>
+<li>设置test1为defer：test2、test3、test1、DOMContentLoaded、onload（test1延迟）</li>
+<li>设置test1、test2为defer：test3、test1、test2、DOMContentLoaded、onload（defer保证顺序）</li>
+<li>设置全部为async：DOMContentLoaded、test3、test2、test1、onload（全部异步，async不保证顺序）</li>
+<li>设置test1为async：test2、test3、DOMContentLoaded、test1、onload</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>《JavaScript高级程序设计》 第2章</li>
+<li><a href="https://segmentfault.com/q/1010000000640869" target="_blank" rel="external">defer和async的区别 - segmentfault</a></li>
+<li><a href="https://segmentfault.com/a/1190000004379833" target="_blank" rel="external">高性能JavaScript学习笔记-执行与加载 - 咸魚君 - segmentfault</a></li>
+<li><a href="https://segmentfault.com/a/1190000000339118" target="_blank" rel="external">script关于async与defer属性的测试 - miser -segmentfault</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="script元素详解" data-url="http://kass.top/2016/04/24/explanation-of-script-element/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vboar"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
