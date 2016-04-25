@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript中的变量 | Vboar&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,JavaScript," />
+  
+
+  <meta name="description" content="基本知识
+变量、函数名、操作符区分大小写
+标识符不能使用关键字、保留字、true、false、null
+JavaScript中有六种数据类型，其中有五种基本数据类型：Undefined、Null、Boolean、Number、String，一种复杂数据类型：Object（引用类型）
+
+基本类型和引用类型的值
+基本类型值指的是简单的数据段，引用类型值指的是由一个或多个值构成的对象。
+基本类型是按值访">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的变量">
+<meta property="og:url" content="http://kass.top/2016/04/25/variables-in-javascript/index.html">
+<meta property="og:site_name" content="Vboar's Blog">
+<meta property="og:description" content="基本知识
+变量、函数名、操作符区分大小写
+标识符不能使用关键字、保留字、true、false、null
+JavaScript中有六种数据类型，其中有五种基本数据类型：Undefined、Null、Boolean、Number、String，一种复杂数据类型：Object（引用类型）
+
+基本类型和引用类型的值
+基本类型值指的是简单的数据段，引用类型值指的是由一个或多个值构成的对象。
+基本类型是按值访">
+<meta property="og:image" content="http://vboar.qiniudn.com/16-4-25/2786091.jpg">
+<meta property="og:image" content="http://vboar.qiniudn.com/16-4-25/9305179.jpg">
+<meta property="og:updated_time" content="2016-04-25T12:14:04.449Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中的变量">
+<meta name="twitter:description" content="基本知识
+变量、函数名、操作符区分大小写
+标识符不能使用关键字、保留字、true、false、null
+JavaScript中有六种数据类型，其中有五种基本数据类型：Undefined、Null、Boolean、Number、String，一种复杂数据类型：Object（引用类型）
+
+基本类型和引用类型的值
+基本类型值指的是简单的数据段，引用类型值指的是由一个或多个值构成的对象。
+基本类型是按值访">
+<meta name="twitter:image" content="http://vboar.qiniudn.com/16-4-25/2786091.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal_style.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本知识"><span class="toc-text">基本知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本类型和引用类型的值"><span class="toc-text">基本类型和引用类型的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量值的复制"><span class="toc-text">变量值的复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数参数的传递"><span class="toc-text">函数参数的传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类型检测"><span class="toc-text">类型检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-variables-in-javascript" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">JavaScript中的变量</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.25</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Justin Wong</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h3><ul>
+<li>变量、函数名、操作符区分大小写</li>
+<li>标识符不能使用关键字、保留字、true、false、null</li>
+<li>JavaScript中有六种数据类型，其中有五种基本数据类型：Undefined、Null、Boolean、Number、String，一种复杂数据类型：Object（引用类型）</li>
+</ul>
+<h3 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h3><ul>
+<li>基本类型值指的是简单的数据段，引用类型值指的是由一个或多个值构成的对象。</li>
+<li>基本类型是按值访问的，引用类型的值是保存在内存中的对象，是“按引用访问”的。</li>
+<li>对于基本类型的值，不能为它添加属性，而对于引用类型的值，可以添加、改变或删除其属性和方法。</li>
+</ul>
+<h3 id="变量值的复制"><a href="#变量值的复制" class="headerlink" title="变量值的复制"></a>变量值的复制</h3><p>对于基本类型值的复制，见下面的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = num1;</span><br></pre></td></tr></table></figure></p>
+<p>如果从一个变量向另一个变量复制基本类型的值，会在变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上。复制后两个变量是相互独立的。</p>
+<p><img src="http://vboar.qiniudn.com/16-4-25/2786091.jpg" alt=""></p>
+<p>对于引用类型值的复制，见下面的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br></pre></td></tr></table></figure></p>
+<p>如果从一个变量向另一个变量复制引用类型的值，会将存储在变量对象中的值复制到为新变量分配的空间中，这个值是指向位于堆中的对象的指针。复制后两个变量将引用同一个对象。</p>
+<p><img src="http://vboar.qiniudn.com/16-4-25/9305179.jpg" alt=""></p>
+<h3 id="函数参数的传递"><a href="#函数参数的传递" class="headerlink" title="函数参数的传递"></a>函数参数的传递</h3><p>所有函数的参数都是<strong>按值传递</strong>的，类似于上述变量值的复制。对于基本类型值，被传递的值会复制给函数内的一个局部变量（即arguments对象中的一个元素）；对于引用类型值，会把指向对象的指针复制给函数内的一个局部变量，所以在函数内对这个局部变量的操作会影响到函数外部的那个对象，因为二者指向的是同一个对象。</p>
+<p>一个例子证明引用类型值的传递不是引用传递：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    obj.a = <span class="string">"Hello"</span>;</span><br><span class="line">    obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    obj.a = <span class="string">"World"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">test(obj);</span><br><span class="line"><span class="built_in">console</span>.log(obj.a); <span class="comment">// "Hello"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="类型检测"><a href="#类型检测" class="headerlink" title="类型检测"></a>类型检测</h3><p>基本数据类型一般使用typeof操作符检测：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"Hello World"</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> d = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> e;</span><br><span class="line"><span class="keyword">var</span> f = <span class="regexp">/love/</span>;</span><br><span class="line"><span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> h = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b); <span class="comment">// number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> c); <span class="comment">// boolean</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> d); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> e); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> f); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> g); <span class="comment">// function</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> h); <span class="comment">// object</span></span><br></pre></td></tr></table></figure></p>
+<p>引用类型一般使用instanceof操作符检测，检测某个值是什么类型的对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> c = <span class="regexp">/love/</span>;</span><br><span class="line"><span class="keyword">var</span> d = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(b <span class="keyword">instanceof</span> Person); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(b <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(c <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(d <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>引用类型还可以用对象实例的constructor属性进行类型检测：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a.constructor === <span class="built_in">Array</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(a.constructor === <span class="built_in">Object</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></p>
+<p>但这种方式的局限性很大，因为仅仅是通过检测实例的构造函数，而且constructor属性也可能被人为修改。</p>
+<p>instanceof和constructor的局限性在于：不同的iframe中创建的数组不会共享prototype属性，所以会导致instanceof和constructor无法正确判断类型。</p>
+<p>可以使用Object.prototype.toString.call来检测类型，这个方式可以跨iframe检测类型：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(a).slice(<span class="number">8</span>, <span class="number">-1</span>) === <span class="string">'Array'</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>Object.prototype.toString()的原理：</p>
+<ul>
+<li>Get the [[Class]] property of this object.</li>
+<li>Compute a string value by concatenating the three strings “[object “, Result (1), and “]”.</li>
+<li>Return Result (2).</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>《JavaScript高级程序设计》 第3、4章</li>
+<li><a href="http://cnodejs.org/topic/561cb6bfdd986b5c39ff1c7e" target="_blank" rel="external">JavaScript类型检测 - dandananddada - cnodejs</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="JavaScript中的变量" data-url="http://kass.top/2016/04/25/variables-in-javascript/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vboar"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
