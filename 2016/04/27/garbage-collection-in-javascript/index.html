@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript垃圾收集机制 | Vboar&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,JavaScript," />
+  
+
+  <meta name="description" content="JavaScript具有自动垃圾收集机制（GC），即执行上下文/执行环境（EC）会负责管理代码执行过程中使用的内存。
+垃圾收集机制的原理：垃圾收集器会按照固定的时间间隔或代码执行中预定的收集时间，来周期性地找出那些不再继续使用的变量，然后释放其占用的内存。
+因此，垃圾收集器必须跟踪哪个变量有用哪个变量没用，对于那些不再有用的变量打上标记，以便将来回收其占用的内存。用于标识无用变量的策略通常有两种：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript垃圾收集机制">
+<meta property="og:url" content="http://kass.top/2016/04/27/garbage-collection-in-javascript/index.html">
+<meta property="og:site_name" content="Vboar's Blog">
+<meta property="og:description" content="JavaScript具有自动垃圾收集机制（GC），即执行上下文/执行环境（EC）会负责管理代码执行过程中使用的内存。
+垃圾收集机制的原理：垃圾收集器会按照固定的时间间隔或代码执行中预定的收集时间，来周期性地找出那些不再继续使用的变量，然后释放其占用的内存。
+因此，垃圾收集器必须跟踪哪个变量有用哪个变量没用，对于那些不再有用的变量打上标记，以便将来回收其占用的内存。用于标识无用变量的策略通常有两种：">
+<meta property="og:updated_time" content="2016-04-27T02:51:28.069Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript垃圾收集机制">
+<meta name="twitter:description" content="JavaScript具有自动垃圾收集机制（GC），即执行上下文/执行环境（EC）会负责管理代码执行过程中使用的内存。
+垃圾收集机制的原理：垃圾收集器会按照固定的时间间隔或代码执行中预定的收集时间，来周期性地找出那些不再继续使用的变量，然后释放其占用的内存。
+因此，垃圾收集器必须跟踪哪个变量有用哪个变量没用，对于那些不再有用的变量打上标记，以便将来回收其占用的内存。用于标识无用变量的策略通常有两种：">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal_style.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#标记清除"><span class="toc-text">标记清除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用计数"><span class="toc-text">引用计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管理内存"><span class="toc-text">管理内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考材料"><span class="toc-text">参考材料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-garbage-collection-in-javascript" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">JavaScript垃圾收集机制</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Justin Wong</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>JavaScript具有自动垃圾收集机制（GC），即执行上下文/执行环境（EC）会负责管理代码执行过程中使用的内存。</p>
+<p>垃圾收集机制的原理：垃圾收集器会按照固定的时间间隔或代码执行中预定的收集时间，来周期性地找出那些不再继续使用的变量，然后释放其占用的内存。</p>
+<p>因此，垃圾收集器必须跟踪哪个变量有用哪个变量没用，对于那些不再有用的变量打上标记，以便将来回收其占用的内存。用于标识无用变量的策略通常有两种：标记清除和引用计数。</p>
+<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p>标记清除（mark-and-sweep）是JavaScript中最常用的垃圾收集方式，从2012年起，所有现代浏览器都使用了标记清除垃圾回收算法。</p>
+<p>标记清除：<br>当变量进入环境（如在函数中声明一个变量）时，将这个变量标记为“进入环境”，而且从逻辑上永远不能释放进入环境的变量。当变量离开环境时，标记为“离开环境”。<br>垃圾收集器在运行时会给存储在内存中的所有变量加上标记，然后去掉环境中的变量以及被环境中的变量引用的变量的标记。在此之后再被加上标记的变量将被视为准备删除的变量，因为环境中的变量已经无法访问到这些变量。最后，垃圾收集器完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。</p>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>引用计数即跟踪记录每一个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是1。如果同一个值又被赋给另一个变量，则该值的引用次数加1。如果包含对该值引用的变量又取得另一个值，则这个值的引用次数减1。当这个值的引用次数为0时，则表示无法再访问这个值，表示可以将其占用的内存回收。当垃圾收集器下次运行时，就会释放那些引用次数为0的值所占用的内存。</p>
+<p>引用计数会引发一个严重的问题：循环引用。循环引用是指对象A中包含一个指向对象B的指针，而对象B中也包含一个指向对象A的指针。</p>
+<p>一个例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">problem</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> objectA = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    <span class="keyword">var</span> objectB = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    objectA.someOtherObject = objectB;</span><br><span class="line">    objectB.anotherObject = objectA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上述例子中，两个对象的引用次数永远不会是0，也就是永远不会被回收。如果该函数被重复多次调用，就会导致大量内存无法回收。</p>
+<h3 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h3><p>虽然JavaScript具有自动垃圾收集机制，但有时候也需要手动管理和优化内存，因为确保占用最少的内存可以让页面获得更好的性能。</p>
+<p>优化内存占用的最佳方式，是为执行中的代码只保存必要的数据。一旦数据不再有用，就将该值设置为null来释放其引用，即解除引用。这适用于大多数全局变量和全局对象的属性，局部变量会在其离开环境时自动被解除引用。<br>解除引用的目的不是立即回收占用内存，而是让值脱离执行环境，以便垃圾收集器下次运行时回收。<br>为了确保有效回收内存，应及时解除不再使用的全局变量、全局对象属性以及循环引用变量的引用。</p>
+<h3 id="参考材料"><a href="#参考材料" class="headerlink" title="参考材料"></a>参考材料</h3><ul>
+<li>《JavaScript高级程序设计》 4.3 垃圾收集</li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="JavaScript垃圾收集机制" data-url="http://kass.top/2016/04/27/garbage-collection-in-javascript/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vboar"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

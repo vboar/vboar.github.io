@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kass.top/"/>
-  <updated>2016-04-26T13:02:39.053Z</updated>
+  <updated>2016-04-27T02:51:28.069Z</updated>
   <id>http://kass.top/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript垃圾收集机制</title>
+    <link href="http://kass.top/2016/04/27/garbage-collection-in-javascript/"/>
+    <id>http://kass.top/2016/04/27/garbage-collection-in-javascript/</id>
+    <published>2016-04-26T16:17:14.000Z</published>
+    <updated>2016-04-27T02:51:28.069Z</updated>
+    
+    <content type="html">&lt;p&gt;JavaScript具有自动垃圾收集机制（GC），即执行上下文/执行环境（EC）会负责管理代码执行过程中使用的内存。&lt;/p&gt;
+&lt;p&gt;垃圾收集机制的原理：垃圾收集器会按照固定的时间间隔或代码执行中预定的收集时间，来周期性地找出那些不再继续使用的变量，然后释放其占用的内存。&lt;/p&gt;
+&lt;p&gt;因此，垃圾收集器必须跟踪哪个变量有用哪个变量没用，对于那些不再有用的变量打上标记，以便将来回收其占用的内存。用于标识无用变量的策略通常有两种：标记清除和引用计数。&lt;/p&gt;
+&lt;h3 id=&quot;标记清除&quot;&gt;&lt;a href=&quot;#标记清除&quot; class=&quot;headerlink&quot; title=&quot;标记清除&quot;&gt;&lt;/a&gt;标记清除&lt;/h3&gt;&lt;p&gt;标记清除（mark-and-sweep）是JavaScript中最常用的垃圾收集方式，从2012年起，所有现代浏览器都使用了标记清除垃圾回收算法。&lt;/p&gt;
+&lt;p&gt;标记清除：&lt;br&gt;当变量进入环境（如在函数中声明一个变量）时，将这个变量标记为“进入环境”，而且从逻辑上永远不能释放进入环境的变量。当变量离开环境时，标记为“离开环境”。&lt;br&gt;垃圾收集器在运行时会给存储在内存中的所有变量加上标记，然后去掉环境中的变量以及被环境中的变量引用的变量的标记。在此之后再被加上标记的变量将被视为准备删除的变量，因为环境中的变量已经无法访问到这些变量。最后，垃圾收集器完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。&lt;/p&gt;
+&lt;h3 id=&quot;引用计数&quot;&gt;&lt;a href=&quot;#引用计数&quot; class=&quot;headerlink&quot; title=&quot;引用计数&quot;&gt;&lt;/a&gt;引用计数&lt;/h3&gt;&lt;p&gt;引用计数即跟踪记录每一个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是1。如果同一个值又被赋给另一个变量，则该值的引用次数加1。如果包含对该值引用的变量又取得另一个值，则这个值的引用次数减1。当这个值的引用次数为0时，则表示无法再访问这个值，表示可以将其占用的内存回收。当垃圾收集器下次运行时，就会释放那些引用次数为0的值所占用的内存。&lt;/p&gt;
+&lt;p&gt;引用计数会引发一个严重的问题：循环引用。循环引用是指对象A中包含一个指向对象B的指针，而对象B中也包含一个指向对象A的指针。&lt;/p&gt;
+&lt;p&gt;一个例子：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;problem&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; objectA = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; objectB = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    objectA.someOtherObject = objectB;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    objectB.anotherObject = objectA;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;上述例子中，两个对象的引用次数永远不会是0，也就是永远不会被回收。如果该函数被重复多次调用，就会导致大量内存无法回收。&lt;/p&gt;
+&lt;h3 id=&quot;管理内存&quot;&gt;&lt;a href=&quot;#管理内存&quot; class=&quot;headerlink&quot; title=&quot;管理内存&quot;&gt;&lt;/a&gt;管理内存&lt;/h3&gt;&lt;p&gt;虽然JavaScript具有自动垃圾收集机制，但有时候也需要手动管理和优化内存，因为确保占用最少的内存可以让页面获得更好的性能。&lt;/p&gt;
+&lt;p&gt;优化内存占用的最佳方式，是为执行中的代码只保存必要的数据。一旦数据不再有用，就将该值设置为null来释放其引用，即解除引用。这适用于大多数全局变量和全局对象的属性，局部变量会在其离开环境时自动被解除引用。&lt;br&gt;解除引用的目的不是立即回收占用内存，而是让值脱离执行环境，以便垃圾收集器下次运行时回收。&lt;br&gt;为了确保有效回收内存，应及时解除不再使用的全局变量、全局对象属性以及循环引用变量的引用。&lt;/p&gt;
+&lt;h3 id=&quot;参考材料&quot;&gt;&lt;a href=&quot;#参考材料&quot; class=&quot;headerlink&quot; title=&quot;参考材料&quot;&gt;&lt;/a&gt;参考材料&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;《JavaScript高级程序设计》 4.3 垃圾收集&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript具有自动垃圾收集机制（GC），即执行上下文/执行环境（EC）会负责管理代码执行过程中使用的内存。&lt;/p&gt;
+&lt;p&gt;垃圾收集机制的原理：垃圾收集器会按照固定的时间间隔或代码执行中预定的收集时间，来周期性地找出那些不再继续使用的变量，然后释放其占用的内存。&lt;/
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript中的执行上下文和作用域</title>
