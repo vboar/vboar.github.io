@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kass.top/"/>
-  <updated>2016-04-27T16:29:04.595Z</updated>
+  <updated>2016-04-28T15:54:51.100Z</updated>
   <id>http://kass.top/</id>
   
   <author>
@@ -16,11 +16,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaScript数据结构——数组</title>
+    <link href="http://kass.top/2016/04/28/array-data-structure-in-javascript/"/>
+    <id>http://kass.top/2016/04/28/array-data-structure-in-javascript/</id>
+    <published>2016-04-28T15:51:00.000Z</published>
+    <updated>2016-04-28T15:54:51.100Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://book.douban.com/subject/10546125/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《JavaScript高级程序设计》 5.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://book.douban.com/subject/26639401/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《学习JavaScript数据结构与算法》 第2章&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://book.douban.com/subject/10546125/&quot; targ
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript中的this</title>
     <link href="http://kass.top/2016/04/27/this-value-in-javascript/"/>
     <id>http://kass.top/2016/04/27/this-value-in-javascript/</id>
     <published>2016-04-27T05:18:27.000Z</published>
-    <updated>2016-04-27T16:29:04.595Z</updated>
+    <updated>2016-04-28T15:52:47.743Z</updated>
     
     <content type="html">&lt;p&gt;JavaScript中的this是执行上下文（execution context, EC）的一个属性，而不是变量对象（variable object, VO）的一个属性。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;activeExeutionContext = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    VO: &amp;#123;...&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this: thisValue&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;this和上下文的可执行代码类型直接相关。this的值在进入上下文阶段就确定了，并且在执行代码阶段不能改变。&lt;/p&gt;
@@ -95,8 +120,6 @@
     </summary>
     
     
-      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
     
   </entry>
@@ -106,7 +129,7 @@
     <link href="http://kass.top/2016/04/27/garbage-collection-in-javascript/"/>
     <id>http://kass.top/2016/04/27/garbage-collection-in-javascript/</id>
     <published>2016-04-26T16:17:14.000Z</published>
-    <updated>2016-04-27T02:51:28.069Z</updated>
+    <updated>2016-04-28T15:52:19.292Z</updated>
     
     <content type="html">&lt;p&gt;JavaScript具有自动垃圾收集机制（GC），即执行上下文/执行环境（EC）会负责管理代码执行过程中使用的内存。&lt;/p&gt;
 &lt;p&gt;垃圾收集机制的原理：垃圾收集器会按照固定的时间间隔或代码执行中预定的收集时间，来周期性地找出那些不再继续使用的变量，然后释放其占用的内存。&lt;/p&gt;
@@ -132,8 +155,6 @@
     </summary>
     
     
-      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
     
   </entry>
@@ -143,7 +164,7 @@
     <link href="http://kass.top/2016/04/26/execution-context-and-scope-in-javascript/"/>
     <id>http://kass.top/2016/04/26/execution-context-and-scope-in-javascript/</id>
     <published>2016-04-26T12:19:09.000Z</published>
-    <updated>2016-04-26T13:02:39.053Z</updated>
+    <updated>2016-04-28T15:52:11.256Z</updated>
     
     <content type="html">&lt;p&gt;这篇博文主要参考 &lt;a href=&quot;http://dmitrysoshnikov.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dmitry Soshnikov&lt;/a&gt; 的几篇关于ECMA-262-3的文章，包含内容有：&lt;/p&gt;
 &lt;ul&gt;
@@ -276,8 +297,6 @@
     </summary>
     
     
-      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
     
   </entry>
@@ -287,7 +306,7 @@
     <link href="http://kass.top/2016/04/25/variables-in-javascript/"/>
     <id>http://kass.top/2016/04/25/variables-in-javascript/</id>
     <published>2016-04-25T11:18:55.000Z</published>
-    <updated>2016-04-25T12:14:04.449Z</updated>
+    <updated>2016-04-28T15:52:51.643Z</updated>
     
     <content type="html">&lt;h3 id=&quot;基本知识&quot;&gt;&lt;a href=&quot;#基本知识&quot; class=&quot;headerlink&quot; title=&quot;基本知识&quot;&gt;&lt;/a&gt;基本知识&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;变量、函数名、操作符区分大小写&lt;/li&gt;
@@ -334,8 +353,6 @@
     </summary>
     
     
-      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
     
   </entry>
@@ -345,7 +362,7 @@
     <link href="http://kass.top/2016/04/24/strict-mode-in-javascript/"/>
     <id>http://kass.top/2016/04/24/strict-mode-in-javascript/</id>
     <published>2016-04-24T08:47:24.000Z</published>
-    <updated>2016-04-25T10:53:08.489Z</updated>
+    <updated>2016-04-28T15:52:44.018Z</updated>
     
     <content type="html">&lt;p&gt;ECMAScript5引入了严格模式的概念，严格模式是JavaScript中的一种限制性更强的变种方式，在语义上与正常的JavaScript有所不同，分析更加严格。&lt;/p&gt;
 &lt;ul&gt;
@@ -449,8 +466,6 @@
     </summary>
     
     
-      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
     
   </entry>
@@ -460,7 +475,7 @@
     <link href="http://kass.top/2016/04/24/explanation-of-script-element/"/>
     <id>http://kass.top/2016/04/24/explanation-of-script-element/</id>
     <published>2016-04-24T03:01:55.000Z</published>
-    <updated>2016-04-24T07:07:58.594Z</updated>
+    <updated>2016-04-28T15:52:14.208Z</updated>
     
     <content type="html">&lt;h3 id=&quot;script元素&quot;&gt;&lt;a href=&quot;#script元素&quot; class=&quot;headerlink&quot; title=&quot;script元素&quot;&gt;&lt;/a&gt;script元素&lt;/h3&gt;&lt;p&gt;向HTML页面中插入JavaScript的方法就是使用&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;元素。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;元素有六个属性：&lt;/p&gt;
@@ -524,8 +539,6 @@
     </summary>
     
     
-      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
     
   </entry>
@@ -535,7 +548,7 @@
     <link href="http://kass.top/2016/04/22/Regular-Expressions-in-Javascript/"/>
     <id>http://kass.top/2016/04/22/Regular-Expressions-in-Javascript/</id>
     <published>2016-04-22T05:43:12.000Z</published>
-    <updated>2016-04-24T07:49:57.011Z</updated>
+    <updated>2016-04-28T15:52:29.650Z</updated>
     
     <content type="html">&lt;p&gt;JavaScript中的正则表达式和Perl的语法类似，虽然缺少了某些语言（特别是Perl）所支持的高级正则表达式特性，但功能已经非常强大的，平时的话已经足够用了。&lt;/p&gt;
 &lt;h3 id=&quot;定义方式&quot;&gt;&lt;a href=&quot;#定义方式&quot; class=&quot;headerlink&quot; title=&quot;定义方式&quot;&gt;&lt;/a&gt;定义方式&lt;/h3&gt;&lt;p&gt;JavaScript中的正则表达式可以通过两种方式定义：&lt;/p&gt;
@@ -665,8 +678,6 @@
     
     </summary>
     
-    
-      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="JavaScript" scheme="http://kass.top/tags/JavaScript/"/>
     
@@ -812,7 +823,7 @@
     <link href="http://kass.top/2016/04/20/px-em-rem-in-CSS/"/>
     <id>http://kass.top/2016/04/20/px-em-rem-in-CSS/</id>
     <published>2016-04-20T12:35:27.000Z</published>
-    <updated>2016-04-22T07:52:09.705Z</updated>
+    <updated>2016-04-28T15:52:25.766Z</updated>
     
     <content type="html">&lt;p&gt;最近我一直在做一个项目叫 &lt;a href=&quot;http://mebox.top/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;米盒&lt;/a&gt;（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~&lt;/p&gt;
 &lt;h3 id=&quot;px、em和rem&quot;&gt;&lt;a href=&quot;#px、em和rem&quot; class=&quot;headerlink&quot; title=&quot;px、em和rem&quot;&gt;&lt;/a&gt;px、em和rem&lt;/h3&gt;&lt;p&gt;px：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的。&lt;br&gt;em：相对长度单位，相对于当前对象内文本的字体尺寸。&lt;br&gt;rem：即root em，相对长度单位，相对于HTML根元素的字体尺寸。&lt;/p&gt;
@@ -837,8 +848,6 @@
     
     </summary>
     
-    
-      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="CSS" scheme="http://kass.top/tags/CSS/"/>
     
@@ -880,7 +889,7 @@
     <link href="http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/"/>
     <id>http://kass.top/2016/03/03/same-origin-policy-and-solutions-for-cross-origin-ajax-request/</id>
     <published>2016-03-02T19:06:21.000Z</published>
-    <updated>2016-04-22T07:52:17.756Z</updated>
+    <updated>2016-04-28T15:52:35.050Z</updated>
     
     <content type="html">&lt;p&gt;之前写Web项目的时候一般都是用AJAX调用服务器提供的接口获得数据，但后来遇到了AJAX由于不同源而不用跨域请求的问题。为了实现AJAX跨域请求，我重新回顾了之前在《面向Web的计算》课上讲过的同源策略（Same Origin Policy, SOP），并了解AJAX跨域请求的几种常见的解决方案。结合网上的一些文章和参考资料，整理出下面的关于同源策略和AJAX跨域请求解决方案的笔记。&lt;/p&gt;
 &lt;h3 id=&quot;同源策略（Same-Origin-Policy-SOP）&quot;&gt;&lt;a href=&quot;#同源策略（Same-Origin-Policy-SOP）&quot; class=&quot;headerlink&quot; title=&quot;同源策略（Same Origin Policy, SOP）&quot;&gt;&lt;/a&gt;同源策略（Same Origin Policy, SOP）&lt;/h3&gt;&lt;p&gt;同源策略，它是由 Netscape 提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略。&lt;/p&gt;
@@ -962,8 +971,6 @@
     
     </summary>
     
-    
-      <category term="前端" scheme="http://kass.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="安全" scheme="http://kass.top/tags/%E5%AE%89%E5%85%A8/"/>
     
