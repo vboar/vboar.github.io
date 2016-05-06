@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kass.top/"/>
-  <updated>2016-05-02T14:25:44.576Z</updated>
+  <updated>2016-05-06T05:39:26.076Z</updated>
   <id>http://kass.top/</id>
   
   <author>
@@ -14,6 +14,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MVC、MVP和MVVM的对比</title>
+    <link href="http://kass.top/2016/05/06/mvc-vs-mvp-vs-mvvm/"/>
+    <id>http://kass.top/2016/05/06/mvc-vs-mvp-vs-mvvm/</id>
+    <published>2016-05-06T05:39:13.000Z</published>
+    <updated>2016-05-06T05:39:26.076Z</updated>
+    
+    <content type="html">&lt;p&gt;这篇博文我来介绍一下MVC、MVP和MVVM以及它们之间的对比。虽然这门课是移动互联网，但因为我本身是前端方向的，所以在这篇博客里前端会涉及得多一些，，但无论是什么领域，MV*的核心思想是大致相同的。&lt;/p&gt;
+&lt;h3 id=&quot;为什么会出现MV&quot;&gt;&lt;a href=&quot;#为什么会出现MV&quot; class=&quot;headerlink&quot; title=&quot;为什么会出现MV*&quot;&gt;&lt;/a&gt;为什么会出现MV*&lt;/h3&gt;&lt;p&gt;在上个世纪早些日子，当时的软件工程师还是一堆科学家，他们写代码的用途也大多是进行一些数学运算之类的操作，不会去设计一款多功能多用途的软件，因此往往采用结构化脚本式的方式来编程，就是一个简单的获取输入、得到输出的过程。这时候的代码没有任何架构、任何分层，操作一般都是依靠命令行，根本没有UI可言。因为当时程序的特点就是功能单一、管理单一、入口单一，所以并不需要费太大力气就可以编写出一个很好的程序。&lt;/p&gt;
+&lt;p&gt;但是，老师上课也说过，需求是影响架构一个非常重要的因素。随着计算机和互联网的发展，需求也在不断地变化，用户也在发生变化，人们需要的是功能繁杂、管理统一、多入口的软件，软件的操作也从命令行逐渐转换到易用性更好的用户界面上了。但如果再采用之前结构化脚本式的方式来编码，则代码将变得非常混乱和难以维护，所以才会出现UI代码和业务逻辑代码分离的架构，UI和业务逻辑分离之后，协同完成软件操作。&lt;/p&gt;
+&lt;p&gt;随着软件和互联网行业的高速发展，需求也变得越来越庞大，那么响应的解决方案也会越来越庞大，编码也变得越来越复杂，这时候就更需要对代码模块进行细分。如何细分就涉及到哪个模块应该做哪些事情，即模块的职责分离。很简单的一个思路就是，开发图形界面应用程序时，把管理用户界面称为View，把程序的数据（数据抽象）称为Model。View和Model分层之后，View和Model之间如何粘合，View如何同步Model的变化，这就是MV&lt;em&gt;中的&lt;/em&gt;在这方面有差异的地方了，不同的MV&lt;em&gt;对此的处理方式不同。常见的MV&lt;/em&gt;架构模式有：MVC、MVP和MVVM。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-5/27446321.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;MVC&quot;&gt;&lt;a href=&quot;#MVC&quot; class=&quot;headerlink&quot; title=&quot;MVC&quot;&gt;&lt;/a&gt;MVC&lt;/h3&gt;&lt;h4 id=&quot;SmallTalk-MVC&quot;&gt;&lt;a href=&quot;#SmallTalk-MVC&quot; class=&quot;headerlink&quot; title=&quot;SmallTalk MVC&quot;&gt;&lt;/a&gt;SmallTalk MVC&lt;/h4&gt;&lt;p&gt;SmallTalk MVC是一种最原始的经典MVC，一般是指桌面软件的MVC。SmallTalk MVC把应用程序分为View、Model和Controller。其中View是用户界面，Model是数据以及处理业务逻辑，而Controller的职责是进行View和Model之间的协作的应用逻辑。&lt;/p&gt;
+&lt;p&gt;下图是View、Model和Controller之间的依赖关系图。如下图所示，View和Controller之间可以相互依赖，而View和Controller都依赖Model。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-5/97927512.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;SmallTalk MVC的架构图如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-6/52794389.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;SmallTalk MVC的具体流程是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户对View（用户界面）进行操作后，View会捕获到这个操作，然后把处理该操作的控制权转移给Controller；&lt;/li&gt;
+&lt;li&gt;Conttroller会对来自View的数据进行预处理，判断并决定调用哪个Model的接口；&lt;/li&gt;
+&lt;li&gt;Controller调用Model的接口后，Model执行相关的业务逻辑和更新数据；&lt;/li&gt;
+&lt;li&gt;当Model发生变更时，Model会通过观察者模式通知View自己发生了变更，然后View收到变更消息后就向Model请求最新的数据并且更新界面。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;B-S架构的MVC&quot;&gt;&lt;a href=&quot;#B-S架构的MVC&quot; class=&quot;headerlink&quot; title=&quot;B/S架构的MVC&quot;&gt;&lt;/a&gt;B/S架构的MVC&lt;/h4&gt;&lt;p&gt;随着互联网的发展，C/S架构的客户端软件已经不能满足需求了，于是B/S架构的网页就火了起来，B/S架构的MVC是经典MVC的变种，并不能称之为严格的MVC。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-6/85296525.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;结合上图可以得知B/S架构的MVC的具体流程如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户（浏览器）向服务器发出一个HTTP请求后，Web服务器根据URL进行路由分发，将控制权交给响应的Controller；&lt;/li&gt;
+&lt;li&gt;然后Controller执行响应的应用逻辑并对Model进行操作。Model执行业务逻辑后，Controller用Model的数据去渲染响应的View，然后将View返回给用户。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;MVP&quot;&gt;&lt;a href=&quot;#MVP&quot; class=&quot;headerlink&quot; title=&quot;MVP&quot;&gt;&lt;/a&gt;MVP&lt;/h3&gt;&lt;p&gt;MVP模式是MVC模式的一种变种和进化，主要表现在Model、View和Presenter（原Controller）之间依赖关系的不同，如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-6/8256204.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;MVP的关键点在于切断了View和Model之间的联系，即打破了View对于Model的依赖，让View只与Presenter进行交互，这样可以减少在需求变化中需要维护的对象的数量。&lt;/p&gt;
+&lt;p&gt;MVP的架构图如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-6/503637.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;MVP的具体流程如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户对View（用户界面）进行操作后，View会捕获到这个操作，然后把处理该操作的控制权转移给Persenter；&lt;/li&gt;
+&lt;li&gt;然后Presenter会执行相应的应用程序逻辑，并且对Model进行相应的操作；&lt;/li&gt;
+&lt;li&gt;Model执行相应的业务逻辑和更新数据后，通过观察者模式告知Presenter（MVC模式中是View）自己信息的变更，然后Presenter收到来自Model的变更消息后，通过View通过的接口来更新界面。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;MVVM&quot;&gt;&lt;a href=&quot;#MVVM&quot; class=&quot;headerlink&quot; title=&quot;MVVM&quot;&gt;&lt;/a&gt;MVVM&lt;/h3&gt;&lt;p&gt;MVVM模式可以说是MVP模式的一种改良。MVVM即Model、View、ViewModel，其中ViewModdel即视图的模型，它的含义包括了领域模型和视图的状态，可以把ViewModel简单理解为页面上所显示的内容的数据抽象。Model、View和ViewModel之间的依赖关系如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-6/77370370.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;MVVM的架构图如下所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-6/50275008.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;MVVM的调用流程基本上是和MVP一致的，不过在MVVM的ViewModel中有一个Binder，在MVP中Presenter负责View和Model之间的数据同步，而在MVVM中该任务交给Binder处理。当ViewModel执行应用逻辑并操作Model、Model数据发生变更时，Binder会自动把数据更新到View上；当用户对View进行操作时，Binder也自动把数据更新到Model上，即数据的双向绑定，实现界面的实时渲染和数据的实时更新。只要显式地指明View显示的数据对应的是Model哪一部分，Binder就能自动完成View和Model的同步。&lt;/p&gt;
+&lt;h1 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/livoras/blog/issues/11&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;界面之下：还原真实的MV*模式 - livoras&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/indream/p/3602348.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;从Script到Code Blocks、Code Behind到MVC、MVP、MVVM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://segmentfault.com/q/1010000000336459&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;对 MVC 和 MVP 模式的疑惑 -  segmentfault&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000003927200&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android MVP模式 简单易懂的介绍方式 -  Kaede&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这篇博文我来介绍一下MVC、MVP和MVVM以及它们之间的对比。虽然这门课是移动互联网，但因为我本身是前端方向的，所以在这篇博客里前端会涉及得多一些，，但无论是什么领域，MV*的核心思想是大致相同的。&lt;/p&gt;
+&lt;h3 id=&quot;为什么会出现MV&quot;&gt;&lt;a href=&quot;#为什么会
+    
+    </summary>
+    
+    
+      <category term="架构" scheme="http://kass.top/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript数据结构——栈</title>
