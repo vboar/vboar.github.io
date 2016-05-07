@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://vboar.qiniudn.com/16-5-6/503637.jpg">
 <meta property="og:image" content="http://vboar.qiniudn.com/16-5-6/77370370.jpg">
 <meta property="og:image" content="http://vboar.qiniudn.com/16-5-6/50275008.jpg">
-<meta property="og:updated_time" content="2016-05-06T05:39:26.076Z">
+<meta property="og:updated_time" content="2016-05-07T02:03:40.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVC、MVP和MVVM的对比">
 <meta name="twitter:description" content="这篇博文我来介绍一下MVC、MVP和MVVM以及它们之间的对比。虽然这门课是移动互联网，但因为我本身是前端方向的，所以在这篇博客里前端会涉及得多一些，，但无论是什么领域，MV*的核心思想是大致相同的。
@@ -179,7 +179,7 @@
       <p>这篇博文我来介绍一下MVC、MVP和MVVM以及它们之间的对比。虽然这门课是移动互联网，但因为我本身是前端方向的，所以在这篇博客里前端会涉及得多一些，，但无论是什么领域，MV*的核心思想是大致相同的。</p>
 <h3 id="为什么会出现MV"><a href="#为什么会出现MV" class="headerlink" title="为什么会出现MV*"></a>为什么会出现MV*</h3><p>在上个世纪早些日子，当时的软件工程师还是一堆科学家，他们写代码的用途也大多是进行一些数学运算之类的操作，不会去设计一款多功能多用途的软件，因此往往采用结构化脚本式的方式来编程，就是一个简单的获取输入、得到输出的过程。这时候的代码没有任何架构、任何分层，操作一般都是依靠命令行，根本没有UI可言。因为当时程序的特点就是功能单一、管理单一、入口单一，所以并不需要费太大力气就可以编写出一个很好的程序。</p>
 <p>但是，老师上课也说过，需求是影响架构一个非常重要的因素。随着计算机和互联网的发展，需求也在不断地变化，用户也在发生变化，人们需要的是功能繁杂、管理统一、多入口的软件，软件的操作也从命令行逐渐转换到易用性更好的用户界面上了。但如果再采用之前结构化脚本式的方式来编码，则代码将变得非常混乱和难以维护，所以才会出现UI代码和业务逻辑代码分离的架构，UI和业务逻辑分离之后，协同完成软件操作。</p>
-<p>随着软件和互联网行业的高速发展，需求也变得越来越庞大，那么响应的解决方案也会越来越庞大，编码也变得越来越复杂，这时候就更需要对代码模块进行细分。如何细分就涉及到哪个模块应该做哪些事情，即模块的职责分离。很简单的一个思路就是，开发图形界面应用程序时，把管理用户界面称为View，把程序的数据（数据抽象）称为Model。View和Model分层之后，View和Model之间如何粘合，View如何同步Model的变化，这就是MV<em>中的</em>在这方面有差异的地方了，不同的MV<em>对此的处理方式不同。常见的MV</em>架构模式有：MVC、MVP和MVVM。</p>
+<p>随着软件和互联网行业的高速发展，需求也变得越来越庞大，那么响应的解决方案也会越来越庞大，编码也变得越来越复杂，这时候就更需要对代码模块进行细分。如何细分就涉及到哪个模块应该做哪些事情，即模块的职责分离。很简单的一个思路就是，开发图形界面应用程序时，把管理用户界面称为View，把程序的数据（数据抽象）称为Model。View和Model分层之后，View和Model之间如何粘合，View如何同步Model的变化，这就是<code>MV*</code>中的<code>*</code>在这方面有差异的地方了，不同的<code>MV*</code>对此的处理方式不同。常见的<code>MV*</code>架构模式有：MVC、MVP和MVVM。</p>
 <p><img src="http://vboar.qiniudn.com/16-5-5/27446321.jpg" alt=""></p>
 <h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><h4 id="SmallTalk-MVC"><a href="#SmallTalk-MVC" class="headerlink" title="SmallTalk MVC"></a>SmallTalk MVC</h4><p>SmallTalk MVC是一种最原始的经典MVC，一般是指桌面软件的MVC。SmallTalk MVC把应用程序分为View、Model和Controller。其中View是用户界面，Model是数据以及处理业务逻辑，而Controller的职责是进行View和Model之间的协作的应用逻辑。</p>
 <p>下图是View、Model和Controller之间的依赖关系图。如下图所示，View和Controller之间可以相互依赖，而View和Controller都依赖Model。</p>
@@ -211,7 +211,7 @@
 <li>然后Presenter会执行相应的应用程序逻辑，并且对Model进行相应的操作；</li>
 <li>Model执行相应的业务逻辑和更新数据后，通过观察者模式告知Presenter（MVC模式中是View）自己信息的变更，然后Presenter收到来自Model的变更消息后，通过View通过的接口来更新界面。</li>
 </ul>
-<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM模式可以说是MVP模式的一种改良。MVVM即Model、View、ViewModel，其中ViewModdel即视图的模型，它的含义包括了领域模型和视图的状态，可以把ViewModel简单理解为页面上所显示的内容的数据抽象。Model、View和ViewModel之间的依赖关系如下图所示。</p>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM模式可以说是MVP模式的一种改良。MVVM即Model、View、ViewModel，其中ViewModel即视图的模型，它的含义包括了领域模型和视图的状态，可以把ViewModel简单理解为页面上所显示的内容的数据抽象。Model、View和ViewModel之间的依赖关系如下图所示。</p>
 <p><img src="http://vboar.qiniudn.com/16-5-6/77370370.jpg" alt=""></p>
 <p>MVVM的架构图如下所示。</p>
 <p><img src="http://vboar.qiniudn.com/16-5-6/50275008.jpg" alt=""></p>
