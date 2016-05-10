@@ -60,7 +60,7 @@
     <link href="http://kass.top/2016/05/06/mvc-vs-mvp-vs-mvvm/"/>
     <id>http://kass.top/2016/05/06/mvc-vs-mvp-vs-mvvm/</id>
     <published>2016-05-06T05:39:13.000Z</published>
-    <updated>2016-05-07T13:23:52.626Z</updated>
+    <updated>2016-05-08T04:43:53.761Z</updated>
     
     <content type="html">&lt;p&gt;这篇博文我来介绍一下MVC、MVP和MVVM以及它们之间的对比。虽然这门课是移动互联网，但因为我本身是前端方向的，所以在这篇博客里前端会涉及得多一些，但无论是什么领域，MV*的核心思想是大致相同的。&lt;/p&gt;
 &lt;h3 id=&quot;为什么会出现MV&quot;&gt;&lt;a href=&quot;#为什么会出现MV&quot; class=&quot;headerlink&quot; title=&quot;为什么会出现MV*&quot;&gt;&lt;/a&gt;为什么会出现MV*&lt;/h3&gt;&lt;p&gt;在上个世纪早些日子，当时的软件工程师还是一堆科学家，他们写代码的用途也大多是进行一些数学运算之类的操作，不会去设计一款多功能多用途的软件，因此往往采用结构化脚本式的方式来编程，就是一个简单的获取输入、得到输出的过程。这时候的代码没有任何架构、任何分层，操作一般都是依靠命令行，根本没有UI可言。因为当时程序的特点就是功能单一、管理单一、入口单一，所以并不需要费太大力气就可以编写出一个很好的程序。&lt;/p&gt;
@@ -127,7 +127,7 @@
     <link href="http://kass.top/2016/05/02/stack-data-structure-in-javascript/"/>
     <id>http://kass.top/2016/05/02/stack-data-structure-in-javascript/</id>
     <published>2016-05-02T14:25:20.000Z</published>
-    <updated>2016-05-02T14:25:44.576Z</updated>
+    <updated>2016-05-08T04:44:04.731Z</updated>
     
     <content type="html">&lt;p&gt;栈是一种后进先出（Last In Frist Out, LIFO）的有序集合。&lt;/p&gt;
 &lt;h3 id=&quot;用JavaScript实现栈&quot;&gt;&lt;a href=&quot;#用JavaScript实现栈&quot; class=&quot;headerlink&quot; title=&quot;用JavaScript实现栈&quot;&gt;&lt;/a&gt;用JavaScript实现栈&lt;/h3&gt;&lt;p&gt;可以用数组来表示栈中元素。&lt;br&gt;需要为栈实现以下方法：&lt;/p&gt;
