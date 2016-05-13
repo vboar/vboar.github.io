@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript中的this | Vboar&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript," />
+  
+
+  <meta name="description" content="JavaScript中的this是执行上下文（execution context, EC）的一个属性，而不是变量对象（variable object, VO）的一个属性。1234activeExeutionContext = &amp;#123;    VO: &amp;#123;...&amp;#125;,    this: thisValue&amp;#125;;
+this和上下文的可执行代码类型直接相关。this的值在进入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的this">
+<meta property="og:url" content="http://kass.top/2016/04/27/this-value-in-javascript/index.html">
+<meta property="og:site_name" content="Vboar's Blog">
+<meta property="og:description" content="JavaScript中的this是执行上下文（execution context, EC）的一个属性，而不是变量对象（variable object, VO）的一个属性。1234activeExeutionContext = &amp;#123;    VO: &amp;#123;...&amp;#125;,    this: thisValue&amp;#125;;
+this和上下文的可执行代码类型直接相关。this的值在进入">
+<meta property="og:updated_time" content="2016-04-28T15:52:47.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中的this">
+<meta name="twitter:description" content="JavaScript中的this是执行上下文（execution context, EC）的一个属性，而不是变量对象（variable object, VO）的一个属性。1234activeExeutionContext = &amp;#123;    VO: &amp;#123;...&amp;#125;,    this: thisValue&amp;#125;;
+this和上下文的可执行代码类型直接相关。this的值在进入">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal_style.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/reading/"
+            target="_self"
+            >
+            读书
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局代码中this的值"><span class="toc-text">全局代码中this的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数代码中this的值"><span class="toc-text">函数代码中this的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用类型"><span class="toc-text">引用类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数调用和非引用类型"><span class="toc-text">函数调用和非引用类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用类型和this的值为null"><span class="toc-text">引用类型和this的值为null</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数作为构造函数被调用"><span class="toc-text">函数作为构造函数被调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手动设置函数调用时this的值"><span class="toc-text">手动设置函数调用时this的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个例子"><span class="toc-text">一个例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-this-value-in-javascript" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">JavaScript中的this</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Justin Wong</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>JavaScript中的this是执行上下文（execution context, EC）的一个属性，而不是变量对象（variable object, VO）的一个属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">activeExeutionContext = &#123;</span><br><span class="line">    VO: &#123;...&#125;,</span><br><span class="line">    this: thisValue</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>this和上下文的可执行代码类型直接相关。this的值在进入上下文阶段就确定了，并且在执行代码阶段不能改变。</p>
+<h3 id="全局代码中this的值"><a href="#全局代码中this的值" class="headerlink" title="全局代码中this的值"></a>全局代码中this的值</h3><p>在全局代码中，this的值始终是全局对象本身。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显式定义全局对象的属性</span></span><br><span class="line"><span class="keyword">this</span>.a = <span class="number">10</span>; <span class="comment">// global.a = 10</span></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 10</span></span><br><span class="line"><span class="comment">// 通过赋值给不受限的标识符来进行隐式定义</span></span><br><span class="line">b = <span class="number">20</span>;</span><br><span class="line"><span class="built_in">console</span>..log(<span class="keyword">this</span>.b); <span class="comment">// 20</span></span><br><span class="line"><span class="comment">// 通过变量声明来进行隐式定义，因为全局上下文中的变量对象就是全局对象本身</span></span><br><span class="line"><span class="keyword">var</span> c = <span class="number">30</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.c); <span class="comment">// 30</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="函数代码中this的值"><a href="#函数代码中this的值" class="headerlink" title="函数代码中this的值"></a>函数代码中this的值</h3><p>函数代码中this的值最主要的特性是：它不是静态绑定在函数上的。<br>this的值是在进入上下文阶段确定的，对于同一函数代码，进入不同的函数上下文，this的值可能不一样。<br>一旦到了执行代码阶段，this的值就不能改变，比如不能给this赋新值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;x: <span class="number">10</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> bar = &#123;</span><br><span class="line">    x: <span class="number">20</span>,</span><br><span class="line">    test: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span> === bar);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">        <span class="keyword">this</span> = foo; <span class="comment">// error</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">bar.test(); <span class="comment">// true 20</span></span><br><span class="line">foo.test = bar.test;</span><br><span class="line">foo.test(); <span class="comment">// false 10</span></span><br></pre></td></tr></table></figure>
+<p>在一般的函数调用中，this是由激活上下文代码的调用者提供的，比如调用函数的外层上下文，this的值取决于调用函数的方式，this的值随着函数调用方式的不同而不同。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo(); <span class="comment">// global</span></span><br><span class="line"><span class="built_in">console</span>.log(foo === foo.prototype.constructor); <span class="comment">//true</span></span><br><span class="line">foo.prototype.constructor(); <span class="comment">// foo.prototype</span></span><br></pre></td></tr></table></figure>
+<p>调用一个对象的某个方法时，this的值可能不是该对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    bar: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span> === foo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">foo.bar(); <span class="comment">// foo true</span></span><br><span class="line"><span class="keyword">var</span> exampleFunc = foo.bar;</span><br><span class="line"><span class="built_in">console</span>.log(exampleFunc === foo.bar); <span class="comment">// true</span></span><br><span class="line">exampleFunc(); <span class="comment">// global false</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>了解引用类型，可以搞懂调用函数的方式如何影响this的值。</p>
+<p>引用类型的值可以用伪代码表示为一个拥有两个属性的对象：base属性（拥有属性的那个对象）和该base对象中的propertyName属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var valueOfReferenceType = &#123;</span><br><span class="line">    base: &lt;base object&gt;,</span><br><span class="line">    propertyName&quot; &lt;property name&gt;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>引用类型的值仅存在于两种情况中：</p>
+<ul>
+<li>处理一个标识符时</li>
+<li>进行属性访问时</li>
+</ul>
+<p>下面是一个例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>中间过程中，对应引用类型的值如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fooReference = &#123;</span><br><span class="line">    base: global,</span><br><span class="line">    propertyName: <span class="string">'foo'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> barReference = &#123;</span><br><span class="line">    base: global,</span><br><span class="line">    propertyName: <span class="string">'bar'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>从引用类型的值中获取一个对象实际的值需要使用GetValue方法，伪代码表示如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GetValue</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Type(value) != Reference) &#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> base = GetBase(value);</span><br><span class="line">    <span class="keyword">if</span> (base === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">ReferenceError</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> base.[[Get]](GetPropertyName(value));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上述伪代码中[[Get]]方法返回对象属性实际的值，包括从原型链中继承的属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GetValue(fooReference); <span class="comment">// 10</span></span><br><span class="line">GetValue(barReference); <span class="comment">// function object "bar"</span></span><br></pre></td></tr></table></figure>
+<p>对于属性访问来说有两种方式：点括号和中括号。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo.bar();</span><br><span class="line">foo[<span class="string">'bar'</span>]();</span><br></pre></td></tr></table></figure></p>
+<p>中间过程中，得到的引用类型的值如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fooBarReference = &#123;</span><br><span class="line">    base: foo,</span><br><span class="line">    propertyName: <span class="string">'bar'</span></span><br><span class="line">&#125;;</span><br><span class="line">GetValue(fooBarReference); <span class="comment">// function object "bar"</span></span><br></pre></td></tr></table></figure></p>
+<p>引用类型的值函数上下文中this的值的原理：<br>在一个函数上下文中，this的值由函数调用者提供，且由调用函数的方式决定。<br>如果再调用括号()的左边，有引用类型的值，那么this的值就会设置为该引用类型值的base对象。<br>所有其他情况下（非引用类型），this的值总为null。由于null对于this来说没有意义，因此会隐式转换为全局对象，即this的值为全局对象。</p>
+<p>下面对引用类型的值的两种情况进行说明。</p>
+<p>处理标识符：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line">foo(); <span class="comment">// global</span></span><br></pre></td></tr></table></figure></p>
+<p>上述代码中，调用括号的左侧是引用类型的值（因为foo是标识符）：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fooReference = &#123;</span><br><span class="line">    base: global,</span><br><span class="line">    propertyName: <span class="string">'foo'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>因此this的值被设置为引用类型的值的base对象即全局对象。</p>
+<p>属性访问：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    bar: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">foo.bar(); <span class="comment">// foo</span></span><br><span class="line"><span class="keyword">var</span> test = foo.bar;</span><br><span class="line">test(); <span class="comment">// global</span></span><br></pre></td></tr></table></figure></p>
+<p>调用函数的方式不同，this的值也不同，因为是不同的引用类型的值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fooBarReference = &#123;</span><br><span class="line">    base: foo,</span><br><span class="line">    propertyName: <span class="string">'bar'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> testReference = &#123;</span><br><span class="line">    base: global,</span><br><span class="line">    propertyName: <span class="string">'test'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="函数调用和非引用类型"><a href="#函数调用和非引用类型" class="headerlink" title="函数调用和非引用类型"></a>函数调用和非引用类型</h3><p>当调用括号左侧为非引用类型时，this的值会设置为null，并最终转换为全局对象。</p>
+<p>一个例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// null =&gt; global</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>例子中的函数对象是非引用类型对象（既不是标识符也不属于属性访问），所以this的值最终为全局对象。</p>
+<p>再一个例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    bar: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">foo.bar(); <span class="comment">// Reference, foo</span></span><br><span class="line">(foo.bar)(); <span class="comment">// Refernce, foo</span></span><br><span class="line">(foo.bar = foo.bar)(); <span class="comment">// global</span></span><br><span class="line">(foo.bar || foo.bar)(); <span class="comment">// global</span></span><br><span class="line">(foo.bar, foo.bar)(); <span class="comment">// global</span></span><br></pre></td></tr></table></figure></p>
+<p>1、引用类型，this的值设置为base对象——foo。<br>2、有一个分组操作符，但该操作符不会触发调用获取引用类型实际值的方法，如GetValue方法。所以在分组操作后得到的仍然是一个引用类型。<br>3~5、赋值操作符、逗号操作符和OR逻辑表达式都会调用GetValue方法，返回值是一个函数对象而不是引用类型的值了，那么this的值会设置为null，最后转换为全局对象。</p>
+<h3 id="引用类型和this的值为null"><a href="#引用类型和this的值为null" class="headerlink" title="引用类型和this的值为null"></a>引用类型和this的值为null</h3><p>还有一种情况，调用表达式左侧是引用类型的值，但是this的值却是null，最终会转换为全局对象。当引用类型的值的base对象为活跃对象时就会导致这种情况。</p>
+<p>例如，内部子函数在父函数中被调用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// global</span></span><br><span class="line">    &#125;</span><br><span class="line">    bar(); <span class="comment">// the same as AO.bar() =&gt; null.bar()</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>引用类型的值如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> barReference = &#123;</span><br><span class="line">    base: AO(foo),</span><br><span class="line">    propertyName: <span class="string">"bar"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>如果base是活跃对象，this的值就设置为null，最终转换为全局对象。</p>
+<p>在这种情况下，with和catch是例外的。</p>
+<p>在with语句中调用函数，并且with对象包含一个函数属性时，with语句会将该对象添加到作用域链的最前端，在活跃对象之前。调用括号左侧为引用类型的值时，base对象不再是活跃对象，而是with语句的对象。无论是内存函数还是全局函数都如此，因为with对象掩盖了作用域中更高层的对象（全局对象或活跃对象）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">with</span>(&#123;</span><br><span class="line">    foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">    &#125;,</span><br><span class="line">    x: <span class="number">20</span></span><br><span class="line">&#125;) &#123;</span><br><span class="line">    foo(); <span class="comment">// 20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fooReference = &#123;</span><br><span class="line">    base: __withObject,</span><br><span class="line">    propertyName: <span class="string">'foo'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当调用的函数是catch从句的参数时也是这样。在ECMA-262-3中，catch对象会添加到作用域链的最前端，this的值设置为catch对象。但在ECMA-262-5中，this的值设置为全局对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    e(); <span class="comment">// _catchObject in ES3, global in ES5(fixed)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ES3</span></span><br><span class="line"><span class="keyword">var</span> eReference = &#123;</span><br><span class="line">    base: __catchObject,</span><br><span class="line">    propertyName: <span class="string">'e'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// ES5 null =&gt; global</span></span><br><span class="line"><span class="keyword">var</span> eReference = &#123;</span><br><span class="line">    base: global,</span><br><span class="line">    propertyName: <span class="string">'e'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>递归调用一个非匿名函数也会发生这种情况。在第一次函数调用时，base对象是外层的活跃对象（或全局对象），在下一次递归调用时，base对象应该是存储着函数表达式可选名称的特定对象，但在这种情况下，this的值总被设置为global。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">bar</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    !bar &amp;&amp; foo(<span class="number">1</span>); <span class="comment">// "should" be special object, but always (correct) global</span></span><br><span class="line">&#125;)(); <span class="comment">// global</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="函数作为构造函数被调用"><a href="#函数作为构造函数被调用" class="headerlink" title="函数作为构造函数被调用"></a>函数作为构造函数被调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// newly created object, below - "a" object</span></span><br><span class="line">    <span class="keyword">this</span>.x = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A();</span><br><span class="line"><span class="built_in">console</span>.log(a.x); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<p>上述例子中，new操作符调用A函数内部的[[Construct]]方法，然后在对象实例创建后，调用内部的[[Call]]方法，将this的值设置为新创建的对象实例。</p>
+<blockquote>
+<p>In this case, the new operator calls the internal [[Construct]] method of the A function which, in turn, after object creation, calls the internal [[Call]] method, all the same function A, having provided as this value newly created object.</p>
+</blockquote>
+<h3 id="手动设置函数调用时this的值"><a href="#手动设置函数调用时this的值" class="headerlink" title="手动设置函数调用时this的值"></a>手动设置函数调用时this的值</h3><p>Function.prototype中定义了两个方法——apply和call，可以手动设置函数调用时this的值。这两个函数接收第一个参数作为调用上下文中this的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.b);</span><br><span class="line">   <span class="built_in">console</span>.log(c);</span><br><span class="line">&#125;</span><br><span class="line">a(<span class="number">20</span>); <span class="comment">// this === global, this.b == 10, c == 20</span></span><br><span class="line">a.call(&#123;b: <span class="number">20</span>&#125;, <span class="number">30</span>); <span class="comment">// this === &#123;b: 20&#125;, this.b == 20, c == 30</span></span><br><span class="line">a.apply(&#123;b: <span class="number">30</span>&#125;, [<span class="number">40</span>]) <span class="comment">// this === &#123;b: 30&#125;, this.b == 30, c == 40</span></span><br></pre></td></tr></table></figure>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">20</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">with</span>(&#123;</span><br><span class="line">        f2: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">        &#125;,</span><br><span class="line">        x:<span class="number">50</span></span><br><span class="line">    &#125;) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">        &#125;</span><br><span class="line">         <span class="function"><span class="keyword">function</span> <span class="title">f4</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(x);</span><br><span class="line">        &#125;</span><br><span class="line">        f1(); <span class="comment">// 20</span></span><br><span class="line">        f2(); <span class="comment">// 50</span></span><br><span class="line">        f3(); <span class="comment">// 20</span></span><br><span class="line">        f4(); <span class="comment">// 50</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+<p>进入fn函数上下文、未执行代码时，创建三个函数声明：f1、f3和f4，代码转化如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f4</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">with</span> (...) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在后面调用f1、f3、f4时，都是引用类型的值：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// f1 f3 f4 都是一样的</span></span><br><span class="line"><span class="keyword">var</span> f1Reference = &#123;</span><br><span class="line">    base: AO(fn), <span class="comment">// AO(fn&gt; =&gt; null =&gt; global</span></span><br><span class="line">    propertyName: <span class="string">'f1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以在后面代码调用f1、f3、f4函数时，函数上下文的this值都为全局对象。<br>所以调用f1、f3的输出结果（this.x =&gt; global.x）是20。</p>
+<p>函数f4是输出x，需要根据作用域链查询标识符。<br>又因为f4()位于with代码块中，会将with对象置于作用域链的最前端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Scope = [global, AO(fn), &#123;f2: funciton () &#123;...&#125;, x: 50&#125;]</span><br></pre></td></tr></table></figure></p>
+<p>所以调用f4的输出结果（x）是50。</p>
+<p>对于f2的引用类型的值：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f2Reference = &#123;</span><br><span class="line">    base: __withObject,</span><br><span class="line">    propertyName: <span class="string">'f2'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>this为with对象，所以调用f2的输出结果是50。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/" target="_blank" rel="external">JavaScript. The core.</a></li>
+<li><a href="http://dmitrysoshnikov.com/ecmascript/chapter-3-this/" target="_blank" rel="external">ECMA-262-3 in detail. Chapter 3. This.</a></li>
+<li><a href="http://goddyzhao.tumblr.com/post/11218727474/this" target="_blank" rel="external">this - goddyzhao的博客</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/reading/"
+              target="_self"
+              >
+              读书
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="JavaScript中的this" data-url="http://kass.top/2016/04/27/this-value-in-javascript/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vboar"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

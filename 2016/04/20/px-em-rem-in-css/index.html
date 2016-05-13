@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS中的单位：px、em和rem | Vboar&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="CSS," />
+  
+
+  <meta name="description" content="最近我一直在做一个项目叫 米盒（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~
+px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS中的单位：px、em和rem">
+<meta property="og:url" content="http://kass.top/2016/04/20/px-em-rem-in-css/index.html">
+<meta property="og:site_name" content="Vboar's Blog">
+<meta property="og:description" content="最近我一直在做一个项目叫 米盒（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~
+px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的">
+<meta property="og:updated_time" content="2016-04-28T15:52:25.766Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS中的单位：px、em和rem">
+<meta name="twitter:description" content="最近我一直在做一个项目叫 米盒（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~
+px、em和rempx：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal_style.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/reading/"
+            target="_self"
+            >
+            读书
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#px、em和rem"><span class="toc-text">px、em和rem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-px-em-rem-in-css" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">CSS中的单位：px、em和rem</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Justin Wong</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近我一直在做一个项目叫 <a href="http://mebox.top/" target="_blank" rel="external">米盒</a>（其实已经做了好几个月了= =），然后里面的度量单位大部分都是px，因为米盒也有Android和iOS的APP，所以并没有适配手机和做响应式什么的，所以就做了固定大小和定位的电脑网页版。但是我觉得后面肯定要做响应式的，所以参考了网上的几篇关于CSS中单位的文章，小结了一下~</p>
+<h3 id="px、em和rem"><a href="#px、em和rem" class="headerlink" title="px、em和rem"></a>px、em和rem</h3><p>px：即Pixel（像素），相对长度单位，px是相对于显示器屏幕分辨率而言的。<br>em：相对长度单位，相对于当前对象内文本的字体尺寸。<br>rem：即root em，相对长度单位，相对于HTML根元素的字体尺寸。</p>
+<p>浏览器的默认设定：<br>大多数浏览器中html和body标签中的默认字体尺寸是100%。</p>
+<blockquote>
+<p>100% = 16px = 1em = 1rem</p>
+</blockquote>
+<p>改变html标签的字体尺寸会影响到使用em和rem作为尺寸单位的标签，但px不受影响。<br>例子：<a href="https://jsfiddle.net/vboar/bs5dmjko/" target="_blank" rel="external">https://jsfiddle.net/vboar/bs5dmjko/</a></p>
+<p>简化font-size的计算：<br>将html的font-size设为62.5%，那么1em=10px，1.6em=16px。<br>例子：<a href="https://jsfiddle.net/vboar/25goahse/" target="_blank" rel="external">https://jsfiddle.net/vboar/25goahse/</a></p>
+<p>em和rem的区别：<br>em的值不是固定的，而且会继承父元素的字体尺寸；%也是会继承父元素的字体尺寸的。<br>而rem则仅仅相对于html根元素的字体尺寸而言，与父元素字体尺寸无关。<br>例子：<a href="https://jsfiddle.net/vboar/1baoLbh7/" target="_blank" rel="external">https://jsfiddle.net/vboar/1baoLbh7/</a></p>
+<p>单位的最佳实践：<br>使用rem，并使用px作为备用单位，因为rem不支持IE8及其以下版本。<br>例子：<a href="https://jsfiddle.net/vboar/Lpqpmans/" target="_blank" rel="external">https://jsfiddle.net/vboar/Lpqpmans/</a></p>
+<p>px、em、rem单位转换小工具：<br>地址：<a href="http://pxtoem.com/" target="_blank" rel="external">http://pxtoem.com/</a></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://segmentfault.com/a/1190000002702464" target="_blank" rel="external">关于CSS中的字体尺寸设置 - iLeo - SegmentFault</a></li>
+<li><a href="http://www.huolg.net/html5/html5_basis/641" target="_blank" rel="external">css中px和em,rem的区别</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/reading/"
+              target="_self"
+              >
+              读书
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="CSS中的单位：px、em和rem" data-url="http://kass.top/2016/04/20/px-em-rem-in-css/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vboar"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
