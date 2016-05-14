@@ -33,7 +33,7 @@ has(value)：如果元素在集合中">
 add(value)：向集合中添加一个新元素；
 delete(value)：从集合中移除该元素；
 has(value)：如果元素在集合中">
-<meta property="og:updated_time" content="2016-05-12T16:53:55.506Z">
+<meta property="og:updated_time" content="2016-05-14T12:24:00.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript数据结构——集合">
 <meta name="twitter:description" content="集合是一个数学概念，是由0~N个无序且唯一的项组成的数据结构。可以简单地把集合看做成一个既没有重复元素也没有顺序概念的数组。
@@ -205,7 +205,8 @@ has(value)：如果元素在集合中">
 <p>下面是初始化Set的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(set); <span class="comment">// Set &#123;1, 2, 3, 4, 5&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(set.size); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">[<span class="number">1</span>, <span class="string">"1"</span>, <span class="literal">NaN</span>, <span class="literal">NaN</span>].map(x =&gt; set.add(x));</span><br><span class="line"><span class="built_in">console</span>.log(set); <span class="comment">// Set &#123;1, "1", NaN&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>所有Set实例都继承自Set.prototype，Set.prototype的方法有：</p>
 <ul>
-<li>Set.prototype.add(value)：向Set中添加一个元素并返回Set对象；</li>
+<li>Set.prototype.size：返回Set中元素的个数；</li>
+<li>Set.prototype.add(value)：向Set中添加一个元素并返回Set对象本身；</li>
 <li>Set.prototype.delete(value)：移除Set中该元素并返回结果；</li>
 <li>Set.prototype.has(value)：返回一个布尔值，表示该元素是否存在于Set中；</li>
 <li>Set.prototype.clear()：移除Set中的所有元素；</li>
