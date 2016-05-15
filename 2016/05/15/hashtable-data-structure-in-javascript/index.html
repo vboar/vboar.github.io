@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript数据结构——散列表 | Vboar&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript," />
+  
+
+  <meta name="description" content="散列表/哈希表（HashTable），是根据键key直接访问其对应值的数据结构。即通过把键映射到表中的一个位置，以加快查找的速度，这个映射函数叫散列/哈希函数，这个表叫散列/哈希表。
+
+知乎上有一个“JavaScript中使用object[key]查找属性的过程是怎样的呢（相对于Array查找元素）？”的问题，这和散列表密切相关。实际上，JavaScript引擎对此的实现非常复杂，请参考 Redn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数据结构——散列表">
+<meta property="og:url" content="http://kass.top/2016/05/15/hashtable-data-structure-in-javascript/index.html">
+<meta property="og:site_name" content="Vboar's Blog">
+<meta property="og:description" content="散列表/哈希表（HashTable），是根据键key直接访问其对应值的数据结构。即通过把键映射到表中的一个位置，以加快查找的速度，这个映射函数叫散列/哈希函数，这个表叫散列/哈希表。
+
+知乎上有一个“JavaScript中使用object[key]查找属性的过程是怎样的呢（相对于Array查找元素）？”的问题，这和散列表密切相关。实际上，JavaScript引擎对此的实现非常复杂，请参考 Redn">
+<meta property="og:updated_time" content="2016-05-15T13:01:09.182Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript数据结构——散列表">
+<meta name="twitter:description" content="散列表/哈希表（HashTable），是根据键key直接访问其对应值的数据结构。即通过把键映射到表中的一个位置，以加快查找的速度，这个映射函数叫散列/哈希函数，这个表叫散列/哈希表。
+
+知乎上有一个“JavaScript中使用object[key]查找属性的过程是怎样的呢（相对于Array查找元素）？”的问题，这和散列表密切相关。实际上，JavaScript引擎对此的实现非常复杂，请参考 Redn">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal_style.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/reading/"
+            target="_self"
+            >
+            读书
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#散列表实现的基本框架"><span class="toc-text">散列表实现的基本框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#散列函数的选择"><span class="toc-text">散列函数的选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理冲突"><span class="toc-text">处理冲突</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-hashtable-data-structure-in-javascript" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">JavaScript数据结构——散列表</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Justin Wong</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>散列表/哈希表（HashTable），是根据键key直接访问其对应值的数据结构。即通过把键映射到表中的一个位置，以加快查找的速度，这个映射函数叫散列/哈希函数，这个表叫散列/哈希表。</p>
+<blockquote>
+<p>知乎上有一个“JavaScript中使用object[key]查找属性的过程是怎样的呢（相对于Array查找元素）？”的问题，这和散列表密切相关。实际上，JavaScript引擎对此的实现非常复杂，请参考 <a href="https://www.zhihu.com/question/30848981/answer/51997592" target="_blank" rel="external">RednaxelaFX的回答</a>。结论是：<br>V8的properties和elements都有“快速”和“慢速”模式。快速模式用密集的存储方式（FixedArray），慢速模式用哈希表（Dictionary）。对数组而言，稀疏数组一定是用慢速模式。</p>
+</blockquote>
+<p>散列表的实现要关注两个问题：</p>
+<ul>
+<li>散列函数的选择：散列函数要在散列表中均匀分配关键字；</li>
+<li>如何处理冲突：由于散列表大小有限，多个关键字可能散列到同一个值，这时候需要处理冲突。</li>
+</ul>
+<h3 id="散列表实现的基本框架"><a href="#散列表实现的基本框架" class="headerlink" title="散列表实现的基本框架"></a>散列表实现的基本框架</h3><p>对于散列表需要实现以下几个方法：</p>
+<ul>
+<li>hashCode(key)：散列函数，返回key映射到表中的位置；</li>
+<li>put(key, value)：向散列表中添加一个新元素；</li>
+<li>get(key)：根据key返回对应的值；</li>
+<li>remove(key)：根据key移除该元素。</li>
+</ul>
+<p>散列表的基本框架如下（未处理冲突）：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HashTable</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> table = [];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 一个简单的散列函数 设散列表大小为37</span></span><br><span class="line">    <span class="keyword">var</span> hashCode = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> hash = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; key.length; i++) &#123;</span><br><span class="line">            hash += key.charCodeAt(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> hash % <span class="number">37</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.put = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> position = hashCode(key);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'%d - %s'</span>, position, key);</span><br><span class="line">        table[position] = value;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.get = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> table[hashCode(key)];</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.remove = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        table[hashCode(key)] = <span class="literal">undefined</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(table);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="散列函数的选择"><a href="#散列函数的选择" class="headerlink" title="散列函数的选择"></a>散列函数的选择</h3><p>一个好的散列函数有以下几个特点：</p>
+<ul>
+<li>在散列表中均匀分配关键字；</li>
+<li>插入和检索元素的时间（即性能）短；</li>
+<li>较少的冲突。</li>
+</ul>
+<p>djb2算法，目前最被社区推荐的散列函数之一：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设散列表大小为1000，5381是一个质数，33是一个魔力数</span></span><br><span class="line"><span class="keyword">var</span> hashCode = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hash = <span class="number">5381</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; key.length; i++) &#123;</span><br><span class="line">        hash = hash * <span class="number">33</span> + key.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hash % <span class="number">1013</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://stackoverflow.com/a/4825477" target="_blank" rel="external">Answer: Why are 5381 and 33 so important in the djb2 algorithm?</a></p>
+<h3 id="处理冲突"><a href="#处理冲突" class="headerlink" title="处理冲突"></a>处理冲突</h3><p>处理散列冲突的常见方法有以下几种：</p>
+<ul>
+<li>分离链接法（链地址法）</li>
+<li>开放定址法<ul>
+<li>线性探测法</li>
+<li>二次探测法</li>
+<li>伪随机探测法</li>
+</ul>
+</li>
+<li>双散列法</li>
+</ul>
+<p>分离链接法：<br>为散列表的每一个位置创建一个链表，发生冲突的所有元素存储在同一个链表中。后加入的元素放在链表头部。使用分离链接法需要额外的存储空间。</p>
+<p>使用分离链接法处理冲突的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HashTable</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> table = [];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 链表结点</span></span><br><span class="line">    <span class="keyword">var</span> ValuePair = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">this</span>.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'['</span> + <span class="keyword">this</span>.key + <span class="string">' - '</span> + <span class="keyword">this</span>.value + <span class="string">']'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> hashCode = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> hash = <span class="number">5381</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; key.length; i++) &#123;</span><br><span class="line">            hash = hash * <span class="number">33</span> + key.charCodeAt(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> hash % <span class="number">1013</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.put = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> position = hashCode(key);</span><br><span class="line">        <span class="keyword">if</span> (table[position] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">            table[position] = <span class="keyword">new</span> LinkedList();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> vp = <span class="keyword">new</span> ValuePair(key, value);</span><br><span class="line">        table[position].insertFirst(vp);</span><br><span class="line">        <span class="built_in">console</span>.log(vp.toString());</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.get = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> position = hashCode(key);</span><br><span class="line">        <span class="keyword">if</span> (table[position] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> current = table[position].getHead();</span><br><span class="line">            <span class="keyword">while</span> (current.next) &#123;</span><br><span class="line">                <span class="keyword">if</span> (current.element.key === key) &#123;</span><br><span class="line">                    <span class="keyword">return</span> current.element.value;</span><br><span class="line">                &#125;</span><br><span class="line">                current = current.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (current.element.key === key) &#123;</span><br><span class="line">                <span class="keyword">return</span> current.element.value;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.remove = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> position = hashCode(key);</span><br><span class="line">        <span class="keyword">if</span> (table[position] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> current = table[position].getHead();</span><br><span class="line">            <span class="keyword">while</span> (current.next) &#123;</span><br><span class="line">                <span class="keyword">if</span> (current.element.key === key) &#123;</span><br><span class="line">                    table[position].remove(current.element);</span><br><span class="line">                    <span class="keyword">if</span> (table[position].isEmpty()) &#123;</span><br><span class="line">                        table[position] = <span class="literal">undefined</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                current = current.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (current.element.key === key) &#123;</span><br><span class="line">                <span class="keyword">if</span> (table[position].isEmpty()) &#123;</span><br><span class="line">                    table[position] = <span class="literal">undefined</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(table);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注：上述代码中的<code>new LinkedList()</code>是<a href="http://kass.top/2016/05/12/linkedlist-data-structure-in-javascript/">JavaScript数据结构——链表</a>中的单向链表。</p>
+<p>开放定址法：<br>一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。</p>
+<p>线性探测法：<br>下一个散列地址的探测是线性的，即1,2,3,…,m-1。<br>由于JavaScript中的数组自动扩展大小，所以在这里不考虑数组位置不足的情况，也不考虑数组大小不变、到数组末尾就重新回到数组头部。</p>
+<p>使用线性探测法处理冲突的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HashTable</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> table = [];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 链表结点</span></span><br><span class="line">    <span class="keyword">var</span> ValuePair = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">this</span>.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'['</span> + <span class="keyword">this</span>.key + <span class="string">' - '</span> + <span class="keyword">this</span>.value + <span class="string">']'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试用的简单散列函数</span></span><br><span class="line">    <span class="keyword">var</span> hashCode = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> hash = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; key.length; i++) &#123;</span><br><span class="line">            hash += key.charCodeAt(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> hash % <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.put = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> position = hashCode(key);</span><br><span class="line">        <span class="keyword">var</span> vp = <span class="keyword">new</span> ValuePair(key, value);</span><br><span class="line">        <span class="keyword">if</span> (table[position] === <span class="literal">undefined</span> || table[position].key === key) &#123;</span><br><span class="line">            table[position] = vp;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> index = ++position;</span><br><span class="line">            <span class="keyword">while</span> (table[index] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">            table[index] = vp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(vp.toString());</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.get = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> position = hashCode(key);</span><br><span class="line">        <span class="keyword">if</span> (table[position] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (table[position].key === key) &#123;</span><br><span class="line">                <span class="keyword">return</span> table[position].value;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">var</span> index = ++position;</span><br><span class="line">                <span class="keyword">while</span> ((table[index] === <span class="literal">undefined</span> || table[index].key !== key) &amp;&amp; index &lt; table.length) &#123;</span><br><span class="line">                    index++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (table[index] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (table[index].key === key) &#123;</span><br><span class="line">                    <span class="keyword">return</span> table[index].value;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.remove = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> position = hashCode(key);</span><br><span class="line">        <span class="keyword">if</span> (table[position] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (table[position].key === key) &#123;</span><br><span class="line">                table[index] = <span class="literal">undefined</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">var</span> index = ++position;</span><br><span class="line">                <span class="keyword">while</span> ((table[index] === <span class="literal">undefined</span> || table[index].key !== key) &amp;&amp; index &lt; table.length) &#123;</span><br><span class="line">                    index++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (table[index] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (table[index].key === key) &#123;</span><br><span class="line">                    table[index] = <span class="literal">undefined</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(table);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>二次探测法、伪随机探测法、双散列法有空再仔细研究~</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://book.douban.com/subject/26639401/" target="_blank" rel="external">《学习JavaScript数据结构与算法》 第7章</a></li>
+<li><a href="https://book.douban.com/subject/3351237/" target="_blank" rel="external">《数据结构与算法分析》</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/reading/"
+              target="_self"
+              >
+              读书
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="JavaScript数据结构——散列表" data-url="http://kass.top/2016/05/15/hashtable-data-structure-in-javascript/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vboar"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
