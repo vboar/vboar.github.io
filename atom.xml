@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kass.top/"/>
-  <updated>2016-05-15T13:01:09.182Z</updated>
+  <updated>2016-05-17T01:43:24.164Z</updated>
   <id>http://kass.top/</id>
   
   <author>
@@ -16,11 +16,105 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>初探Material Design</title>
+    <link href="http://kass.top/2016/05/18/introduction-to-material-design/"/>
+    <id>http://kass.top/2016/05/18/introduction-to-material-design/</id>
+    <published>2016-05-18T05:42:42.000Z</published>
+    <updated>2016-05-17T01:43:24.164Z</updated>
+    
+    <content type="html">&lt;p&gt;Material Design 是谷歌在 Google I/O 2014 上发布的全新跨平台设计语言。谷歌官方对 Material Design 的介绍是这样的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We challenged ourselves to create a visual language for our users that synthesizes the classic principles of good design with the innovation and possibility of technology and science. This is material design.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;简单来说，Material Design 就是按照传统的优秀的设计理念来设计，并与新的技术展现方式结合。&lt;/p&gt;
+&lt;p&gt;规范上有三个 Material Design 的设计原则：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Material is the metaphor.&lt;br&gt;Material，中文可翻译成材质、实体。材质即隐喻，如果我们能感知到这是一种material，我们就会自然理解它是用来做什么的。在 Material Design 中，我们可以通过光影（light）、表面（surface）和运动（motion）来传达材质隐喻，而这种隐喻本身，可以帮助我们认知对象是如何运作、如何操作。Material Design等于是强调了物理定律的扁平化设计。&lt;/li&gt;
+&lt;li&gt;Bold, graphic, intentional.&lt;br&gt;字体、空间、布局、颜色、图片的使用不仅仅只是直观的界面展现，它们还能表达信息架构、意义、帮助用户聚焦等。&lt;/li&gt;
+&lt;li&gt;Motion provides meaning.&lt;br&gt;动画效果应该是有意义、有逻辑、合理、注重细节的，动效应该是用户易于理解、帮助用户理解流程的，而不是没有意义、只追求酷炫的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目前已经使用 Material Design 进行UI设计的 Android 应用有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;谷歌系应用：Google Play、 Google 相册、Google Keep、Google+、YouTube、Chrome等，谷歌系应用全部用上了Material Design&lt;/li&gt;
+&lt;li&gt;非谷歌系应用：知乎、哔哩哔哩、WPS Office、为知笔记、Teambition、印象笔记、豆瓣等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;什么是-Material&quot;&gt;&lt;a href=&quot;#什么是-Material&quot; class=&quot;headerlink&quot; title=&quot;什么是 Material&quot;&gt;&lt;/a&gt;什么是 Material&lt;/h3&gt;&lt;p&gt;上面谈到，material 即材质、实体，但并非现实中的纸、毛玻璃、皮革等。Material 仍然是由类似现实世界的材料构成的物体，具有类似的物理特性，遵循现实世界中的物理规则，比如形状、占据空间、位置关系、投射阴影、移动等等，但 material 并不模拟现实世界中某种具体的材料，并且在必要时不必受现实世界规则的限制。&lt;/p&gt;
+&lt;h4 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Material design is a three-dimensional environment containing light, material, and cast shadows.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Material Design 是一个包含光线（light）、材质（material）和投射阴影（cast shadows）的三维空间环境。因此，环境可以用一个三维空间坐标系来度量，在这个环境中的每一个 material 对象都有 x、y 和 z 三个维度。其中 xy 平面平行于屏幕显示平面，z轴垂直于显示平面并向用户视角的方向延伸。每一个 material 对象的长度和宽度是可变的（x、y 维度），形状和位置也是可变的，但厚度固定为 1dp，在 z 轴上占据一定位置。&lt;/p&gt;
+&lt;p&gt;在 Material 环境中，虚拟的光线照射 material 对象使其投射出阴影，主光源投射出一个定向的阴影，而环境光从各个角度投射出连贯又柔和的阴影。 Material 环境中的所有阴影都是由这两种光源投射出来的， material 对象遮挡住了光线因此投射出了阴影，不同的 material 对象在z轴上的位置不同而产生不同的阴影。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-16/21199954.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Material-特性&quot;&gt;&lt;a href=&quot;#Material-特性&quot; class=&quot;headerlink&quot; title=&quot;Material 特性&quot;&gt;&lt;/a&gt;Material 特性&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Material has certain immutable characteristics and inherent behaviors.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Material 具有确定不变的特性和固定的行为，这些特性有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Solid&lt;/li&gt;
+&lt;li&gt;Occupies unique points in space&lt;/li&gt;
+&lt;li&gt;Impenetrable&lt;/li&gt;
+&lt;li&gt;Mutable shape&lt;/li&gt;
+&lt;li&gt;Changes in size only along its plane&lt;/li&gt;
+&lt;li&gt;Unbendable&lt;/li&gt;
+&lt;li&gt;Can join to other material&lt;/li&gt;
+&lt;li&gt;Can separate, split, and heal&lt;/li&gt;
+&lt;li&gt;Can be created or destroyed&lt;/li&gt;
+&lt;li&gt;Moves along any axis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Material 是一个实体，但不是现实世界的实体，它有长度和宽度以及所有 material 统一的 1dp 的厚度。&lt;br&gt;Material 会由于虚拟光源的照射而投射出阴影，material 之间的相对高度决定了阴影的效果。&lt;br&gt;内容可以以任何形状和颜色显示在 material 上，但不能超出 material 的范围，也不会改变该 material 的厚度。&lt;br&gt;输入事件不可以穿过 material，也不能超出 material。&lt;br&gt;多个 material 不能占据相同的空间，比如处在同一个 xy 平面上并且发生重叠，这是不允许的。&lt;br&gt;Material 之间是不能相互穿过的，如同现实世界中的两个实体一般。&lt;/p&gt;
+&lt;p&gt;关于 material 的变化：&lt;br&gt;Material 可以改变形状。&lt;br&gt;Material 只能沿着 xy 水平面来伸展和收缩，而不能沿 z 轴改变厚度。&lt;br&gt;Material 永远不能折叠和卷曲。&lt;br&gt;Material 可以分离、分割和复原。&lt;/p&gt;
+&lt;p&gt;关于 material 的移动：&lt;br&gt;Material 可以在环境中的任意地方自动产生或消失。&lt;br&gt;Material 可以在任意维度上移动。&lt;br&gt;Material 在 z 轴上的移动是用户交互产生的结果，并且在 z 轴上的移动会导致阴影效果的变化。&lt;/p&gt;
+&lt;h4 id=&quot;高度和阴影&quot;&gt;&lt;a href=&quot;#高度和阴影&quot; class=&quot;headerlink&quot; title=&quot;高度和阴影&quot;&gt;&lt;/a&gt;高度和阴影&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Objects in material design possess similar qualities to objects in the physical world.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Material Design 中的物体和现实世界中的物体具有相似的特性。在现实世界中，物体可以叠加和粘附在其他物体上，但不能穿过，并且物体会反应光影，Material Design 中的物体亦是如此。其中这种特性在 Material Design 中是通过 material 的高度（Elevation）和阴影（Shadows）来体现的。&lt;/p&gt;
+&lt;p&gt;高度：&lt;br&gt;高度是在 z 轴上两个不同 xy 平面之间的相对深度或距离。&lt;br&gt;由于 material 是有 1dp 厚度的，所以高度度量的是两个平面顶部之间的距离。&lt;/p&gt;
+&lt;p&gt;静止高度/默认高度：&lt;br&gt;所有的 material 不管大小如何，都有一个静止高度，这个静止高度是固定不变的。或者说，某一类型的组件的静止高度在一个特定的平台（如移动应用、电视）是固定的。&lt;/p&gt;
+&lt;p&gt;响应高度和动态高度偏移：&lt;br&gt;一些类型的组件拥有响应高度的特性，比如按钮、卡片等，会对用户输入和系统事件作出响应来改变自身的高度。动态高度偏移是组件移动的目标高度。&lt;br&gt;当组件响应用户输入和系统事件后，组件会移动到动态高度偏移的位置。一旦事件完成或被取消后，组件马上恢复到原来的静止高度上。在这个过程中，注意要避免高度冲突。&lt;/p&gt;
+&lt;p&gt;谷歌在 Spec 中给出了绝大部分移动应用组件的静止高度和动态高度偏移：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-16/26473397.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;阴影：&lt;br&gt;阴影能够让用户感知 material 之间的相对高度以及方向性的运动，阴影能够让用户区别这是在不同的平面上。&lt;br&gt;Material 的高度决定了阴影的效果，高度越大，阴影越大、越柔和；高度越小，阴影越小、越锐利；高度不变，则阴影的效果不变，即便是形状、大小发生了改变。&lt;/p&gt;
+&lt;p&gt;物体间的关系：&lt;br&gt;在 APP 中如何组织物体决定了物体相互之间的运动。物体自己可以独立运动，也可以受到比它更高层次的物体的限制的条件下运动。&lt;br&gt;所有的物体都是具有“父子”层级关系的，就像 DOM 树一样。子物体继承了父物体的一些特性，如位置、高度等，也会跟随父物体的运动。&lt;/p&gt;
+&lt;h3 id=&quot;一个案例——知乎APP&quot;&gt;&lt;a href=&quot;#一个案例——知乎APP&quot; class=&quot;headerlink&quot; title=&quot;一个案例——知乎APP&quot;&gt;&lt;/a&gt;一个案例——知乎APP&lt;/h3&gt;&lt;p&gt;知乎从3.0版本开始采用 Material Design 进行 UI 设计，但知乎3.0在某些地方实际上是违背 Material Design 的规范的。&lt;/p&gt;
+&lt;p&gt;比如对卡片的滥用，在知乎3.0中似乎可以看到“卡片即一切”。就拿首页来说，每一个条目都是一个卡片：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-17/82206254.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;而谷歌对卡片使用的官方规范是：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-17/7779949.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;对于知乎首页来说，和卡片对比，采用列表会更加合理，因为首页展示的内容类型相同并且没有太多的交互操作。在这里使用卡片会分散用户在快速浏览信息时的注意力。&lt;/p&gt;
+&lt;p&gt;除了首页的卡片外，其他的大多数页面都是由各式各样的卡片组成的。使用过多的卡片其实是一种浪费、杂乱和分离，而且对视觉的干扰很明显，不利于快速浏览。如果展示的内容是可操作的，比如左滑交互等，采用卡片设计还是很好的，否则采用列表设计更佳。&lt;/p&gt;
+&lt;p&gt;到了知乎4.0，整体来说比3.0版本更加遵循 Spec 了，但还存在着一些问题。&lt;/p&gt;
+&lt;p&gt;知乎4.0一个最大的变化就是去除了 Drawer 导航，而加入了 Bottom Navigation。但新的底部导航栏是不符合规范的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://vboar.qiniudn.com/16-5-17/987924.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Spec 给出的底部导航栏的规范高度是 56dp，而知乎4.0中的则比 56dp 要大。&lt;/p&gt;
+&lt;p&gt;除此之外，Material Design 的一个要点是使用有意义的动效，可在知乎 APP 从3.0版本开始交互动画越来越少，很多地方根本没有动画效果。&lt;/p&gt;
+&lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.google.com/design/spec/material-design/introduction.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Material Design Spec&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wiki.jikexueyuan.com/project/material-design/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Material Design 中文版 - 极客学院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/24276657&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何理解 Google 的 Material Design 设计语言？ - 知乎&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/39441425&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何评价安卓知乎3.0新版UI？ - 知乎&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/45671839&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何评价知乎 Android 客户端 4.0？ - 知乎&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Material Design 是谷歌在 Google I/O 2014 上发布的全新跨平台设计语言。谷歌官方对 Material Design 的介绍是这样的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We challenged ourselves to create a
+    
+    </summary>
+    
+    
+      <category term="设计" scheme="http://kass.top/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript数据结构——散列表</title>
     <link href="http://kass.top/2016/05/15/hashtable-data-structure-in-javascript/"/>
     <id>http://kass.top/2016/05/15/hashtable-data-structure-in-javascript/</id>
     <published>2016-05-15T13:01:10.000Z</published>
-    <updated>2016-05-15T13:01:09.182Z</updated>
+    <updated>2016-05-15T13:59:14.929Z</updated>
     
     <content type="html">&lt;p&gt;散列表/哈希表（HashTable），是根据键key直接访问其对应值的数据结构。即通过把键映射到表中的一个位置，以加快查找的速度，这个映射函数叫散列/哈希函数，这个表叫散列/哈希表。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -67,7 +161,7 @@
 &lt;p&gt;二次探测法、伪随机探测法、双散列法有空再仔细研究~&lt;/p&gt;
 &lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://book.douban.com/subject/26639401/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《学习JavaScript数据结构与算法》 第7章&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://book.douban.com/subject/3351237/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《数据结构与算法分析》&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://book.douban.com/subject/3351237/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《数据结构与算法分析》 第5章&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     
@@ -1489,30 +1583,6 @@
       <category term="安全" scheme="http://kass.top/tags/%E5%AE%89%E5%85%A8/"/>
     
       <category term="AJAX" scheme="http://kass.top/tags/AJAX/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>真的开始写博客了&gt;_&lt;#</title>
-    <link href="http://kass.top/2016/03/02/start-up-my-blog/"/>
-    <id>http://kass.top/2016/03/02/start-up-my-blog/</id>
-    <published>2016-03-02T08:01:17.000Z</published>
-    <updated>2016-05-13T02:35:19.489Z</updated>
-    
-    <content type="html">&lt;p&gt;之前很多次都搭建了自己的博客，说要开始写博客，然而从大一都大三都没有实现= = 这几天忽然意识到自己真的已经大三了，而且要找实习了！！！然后发现自己两年多好像并没有学到什么东西…也就写了几个水水的大作业和项目。平时遇到什么问题和困难就百度谷歌一下，当时懂了就解决掉那个问题，然而过了很久之后…还是不懂…看别人写的技术博客感觉很有意思，然而过了很久什么都不记得…人懒啊，以至于读书笔记、学习笔记都不怎么写，更不用说博客了…那，去应聘的时候好虚的呀…&lt;/p&gt;
-&lt;p&gt;于是，这次真的下定决心了，即便花掉不少时间，也要认真地写博客，一是巩固自己对这方面的理解，二是将来可以回头看看，可以捡回来，说不定还有什么新的理解。&lt;/p&gt;
-&lt;p&gt;新搭建的博客托管在GitHub Pages上。最近也确定了自己未来的发展方向——前端开发，那博客的内容大多应该是围绕前端开发的吧= =&lt;/p&gt;
-&lt;p&gt;最后希望自己能坚持下去，加油！！！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前很多次都搭建了自己的博客，说要开始写博客，然而从大一都大三都没有实现= = 这几天忽然意识到自己真的已经大三了，而且要找实习了！！！然后发现自己两年多好像并没有学到什么东西…也就写了几个水水的大作业和项目。平时遇到什么问题和困难就百度谷歌一下，当时懂了就解决掉那个问题，
-    
-    </summary>
-    
-    
-      <category term="日常" scheme="http://kass.top/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
