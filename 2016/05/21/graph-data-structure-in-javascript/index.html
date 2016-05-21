@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript数据结构——图 | Vboar&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,数据结构," />
+  
+
+  <meta name="description" content="图是一种非顺序的数据结构，也是一种网络结构的抽象模型。
+图的基本概念一个图G=(V,E)由以下元素组成：
+
+V：一组顶点
+E：一组边，一条边连接G中的两个顶点
+
+
+有向图：边是有向的。无向图：边是无向的。
+完全图：对于无向图来说，每两个顶点间都存在边，则该图是完全图。假设无向完全图顶点个数是n，则边数为n(n-1)/2。对于有向图来说，每两个顶点间在双向上都存在有向边，则该图是完全图。假设有向完全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数据结构——图">
+<meta property="og:url" content="http://kass.top/2016/05/21/graph-data-structure-in-javascript/index.html">
+<meta property="og:site_name" content="Vboar's Blog">
+<meta property="og:description" content="图是一种非顺序的数据结构，也是一种网络结构的抽象模型。
+图的基本概念一个图G=(V,E)由以下元素组成：
+
+V：一组顶点
+E：一组边，一条边连接G中的两个顶点
+
+
+有向图：边是有向的。无向图：边是无向的。
+完全图：对于无向图来说，每两个顶点间都存在边，则该图是完全图。假设无向完全图顶点个数是n，则边数为n(n-1)/2。对于有向图来说，每两个顶点间在双向上都存在有向边，则该图是完全图。假设有向完全">
+<meta property="og:image" content="http://vboar.qiniudn.com/16-5-21/48280436.jpg">
+<meta property="og:image" content="http://vboar.qiniudn.com/16-5-21/43056592.jpg">
+<meta property="og:updated_time" content="2016-05-21T11:40:47.089Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript数据结构——图">
+<meta name="twitter:description" content="图是一种非顺序的数据结构，也是一种网络结构的抽象模型。
+图的基本概念一个图G=(V,E)由以下元素组成：
+
+V：一组顶点
+E：一组边，一条边连接G中的两个顶点
+
+
+有向图：边是有向的。无向图：边是无向的。
+完全图：对于无向图来说，每两个顶点间都存在边，则该图是完全图。假设无向完全图顶点个数是n，则边数为n(n-1)/2。对于有向图来说，每两个顶点间在双向上都存在有向边，则该图是完全图。假设有向完全">
+<meta name="twitter:image" content="http://vboar.qiniudn.com/16-5-21/48280436.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal_style.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/project/"
+            target="_self"
+            >
+            项目
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/reading/"
+            target="_self"
+            >
+            读书
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#图的基本概念"><span class="toc-text">图的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的表示"><span class="toc-text">图的表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的遍历方式"><span class="toc-text">图的遍历方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广度优先搜索"><span class="toc-text">广度优先搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用BFS寻找最短路径"><span class="toc-text">使用BFS寻找最短路径</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深度优先搜索"><span class="toc-text">深度优先搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#改进的DFS算法"><span class="toc-text">改进的DFS算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-graph-data-structure-in-javascript" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">JavaScript数据结构——图</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.21</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Justin Wong</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>图是一种非顺序的数据结构，也是一种网络结构的抽象模型。</p>
+<h3 id="图的基本概念"><a href="#图的基本概念" class="headerlink" title="图的基本概念"></a>图的基本概念</h3><p>一个图G=(V,E)由以下元素组成：</p>
+<ul>
+<li>V：一组顶点</li>
+<li>E：一组边，一条边连接G中的两个顶点</li>
+</ul>
+<p><img src="http://vboar.qiniudn.com/16-5-21/48280436.jpg" alt=""></p>
+<p>有向图：边是有向的。<br>无向图：边是无向的。</p>
+<p>完全图：<br>对于无向图来说，每两个顶点间都存在边，则该图是完全图。假设无向完全图顶点个数是n，则边数为n(n-1)/2。<br>对于有向图来说，每两个顶点间在双向上都存在有向边，则该图是完全图。假设有向完全图顶点个数是n，则边数为n(n-1)。<br>完全图中的边数已经达到最大值。</p>
+<p>邻接顶点：同一条边连接在一起的顶点。如上图中A和B互为邻接顶点，A和E不是邻接的。</p>
+<p>顶点的度：<br>无向图中，一个顶点的度是其邻接顶点的数量。如A的度是3。<br>有向图中，顶点的度等于其入度和出度之和。其中入度是以该顶点为终点的有向边的条数，出度是以该顶点为起点的有向边的条数。</p>
+<p>路径：顶点v1,v2,…,vk的一个连续序列，其中vi和vi+1是邻接的。如上图中有路径ABEI。<br>简单路径：不包含重复顶点的路径（起点和终点可以相同）。如ABEI是一条简单路径。<br>环/回路：起点和终点相同的路径。如ACDA、ACDGCA。<br>简单回路：起点和终点相同的简单路径。如ACDA。</p>
+<p>连通图与连通分量：<br>无向图中，若从顶点v1到顶点v2有路径，则v1和v2是连通的。<br>若无向图中任意一对顶点都是连通的，则该图是连通图。<br>非连通图的极大连通子图叫连通分量。</p>
+<p>强连通图与强连通分量：<br>有向图中，若任意一对顶点在双向上都存在路径，则该图是强连通图。<br>非强连通图的极大强连通子图叫强连通分量。</p>
+<p>有向图的基础图：去除边的方向。<br>如果一个有向图的基础图是连通的，则该图是弱连通的。</p>
+<h3 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h3><p>图的表示有多种方式：</p>
+<ul>
+<li>邻接矩阵</li>
+<li>邻接表</li>
+<li>关联矩阵</li>
+</ul>
+<p>邻接矩阵：<br>用一个二维数组来表示顶点之间的连接，顶点作为数组的索引。如果所以为i的顶点和索引为j的顶点相邻，则 <code>array[i][j] === 1</code>，否则<code>array[i][j] === 0</code> 。注意无向图的邻接矩阵是对称的，有向图需要考虑有向边。<br>使用邻接矩阵存储图会有几个问题：</p>
+<ul>
+<li>如果图中的边数e远远小于n^2时，图的邻接矩阵大量元素都是零，变成稀疏矩阵，存储利用率很低。</li>
+<li>图中顶点数量可能会改变，对此二维数组不太灵活。</li>
+</ul>
+<p>邻接表：<br>邻接表由图中每个顶点的邻接顶点列表所组成。可以用一维数组表示图中的顶点；对于每个顶点的邻接顶点列表，可以用数组、链表、散列表或者字典来表示。<br>使用邻接表可以避免邻接矩阵的问题。</p>
+<p>关联矩阵：<br>关联矩阵中，矩阵的行表示顶点，列表示边。如果顶点v是边e的起点，则<code>array[v][e] === 1</code>，否则<code>array[v][e] === 0</code>。<br>关联矩阵适用于边的数量比顶点多的情况，以节省内存空间。</p>
+<p>下面的实现将用邻接表来表示图，使用一维数组存储图中所有顶点和邻接顶点列表，以及使用一个字典（Map）来存储邻接表，其中顶点作为键，其邻接顶点列表作为值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Graph</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> vertices = [];</span><br><span class="line">    <span class="keyword">var</span> adjList = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加顶点</span></span><br><span class="line">    <span class="keyword">this</span>.addVertex = <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">        vertices.push(v);</span><br><span class="line">        adjList.set(v, []);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加边</span></span><br><span class="line">    <span class="keyword">this</span>.addEdge =<span class="function"><span class="keyword">function</span>(<span class="params">v ,w</span>) </span>&#123;</span><br><span class="line">        adjList.get(v).push(w);</span><br><span class="line">        adjList.get(w).push(v); <span class="comment">// 有向图不需要</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出图</span></span><br><span class="line">    <span class="keyword">this</span>.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> s = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; vertices.length; i++) &#123;</span><br><span class="line">            s += vertices[i] + <span class="string">' -&gt; '</span>;</span><br><span class="line">            <span class="keyword">var</span> neighbors = adjList.get(vertices[i]);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; neighbors.length; j++) &#123;</span><br><span class="line">                s += neighbors[j] + <span class="string">' '</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            s += <span class="string">'\n'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> graph = <span class="keyword">new</span> Graph();</span><br><span class="line"><span class="keyword">var</span> myVertices = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; myVertices.length; i++) &#123;</span><br><span class="line">    graph.addVertex(myVertices[i]);</span><br><span class="line">&#125;</span><br><span class="line">graph.addEdge(<span class="string">'A'</span>, <span class="string">'B'</span>);</span><br><span class="line">graph.addEdge(<span class="string">'A'</span>, <span class="string">'E'</span>);</span><br><span class="line">graph.addEdge(<span class="string">'B'</span>, <span class="string">'G'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(graph.toString());</span><br><span class="line"><span class="comment">/**</span><br><span class="line">A -&gt; B E</span><br><span class="line">B -&gt; A G</span><br><span class="line">C -&gt;</span><br><span class="line">D -&gt;</span><br><span class="line">E -&gt; A</span><br><span class="line">F -&gt;</span><br><span class="line">G -&gt; B</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="图的遍历方式"><a href="#图的遍历方式" class="headerlink" title="图的遍历方式"></a>图的遍历方式</h3><p>图的遍历的用途有很多：</p>
+<ul>
+<li>寻找特定的顶点</li>
+<li>寻找两个顶点之间的路径</li>
+<li>检查图是否连通</li>
+<li>检查图是否含有环等等</li>
+</ul>
+<p>图的遍历方式有两种：</p>
+<ul>
+<li>广度优先搜索（Breadth-First Search ,BFS）</li>
+<li>深度优先搜索（Depth-First Search, DFS）</li>
+</ul>
+<p>图的遍历算法的思想：<br>追踪每一个第一次访问的顶点，并且追踪有哪些顶点还没有被完全探索。完全探索一个顶点是指查看该顶点的每一条边。对于每一条边所连接的还没有被访问过的顶点，将其标注为被发现的，并将其加进待访问顶点列表中。</p>
+<p>BFS和DFS的区别在于待访问顶点列表的数据结构的不同：</p>
+<ul>
+<li>BFS：使用队列，先入队列的顶点先被探索</li>
+<li>DFS：使用栈，顶点是沿着路径被探索的，存在新的邻接顶点就去访问</li>
+</ul>
+<p>需要用三种颜色反映顶点的状态：</p>
+<ul>
+<li>白色：表示该顶点还没有被访问</li>
+<li>灰色：表示该顶点被访问过但未被探索过</li>
+<li>黑色：表示该顶点被访问过且被完全探索过</li>
+</ul>
+<h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><p>BFS算法从指定的第一个顶点开始遍历图，先访问该顶点的所有邻接顶点，就像按层访问一样，也就是“先宽后深”地访问顶点。BFS算法是非递归的。</p>
+<p>下面是从顶点v开始的BFS算法的执行步骤：</p>
+<ul>
+<li>创建队列Q</li>
+<li>将v标识为被发现的（灰色），并将v加入队列Q中</li>
+<li>如果Q非空，循环执行以下步骤<ul>
+<li>将u从Q中出队列</li>
+<li>将u标注为被发现的（灰色）</li>
+<li>将u所有未被访问过的邻接顶点（白色）加入Q中</li>
+<li>将u标注为完全访问的（黑色）</li>
+</ul>
+</li>
+</ul>
+<p>BFS算法的实现如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> initializeColor = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> color = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; vertices.length; i++) &#123;</span><br><span class="line">        color[vertices[i]] = <span class="string">'white'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> color;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.bfs = <span class="function"><span class="keyword">function</span>(<span class="params">v, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> color = initializeColor(),</span><br><span class="line">        queue = <span class="keyword">new</span> Queue();</span><br><span class="line">    queue.enqueue(v);</span><br><span class="line">    <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">var</span> u = queue.dequeue(),</span><br><span class="line">            neighbors = adjList.get(u);</span><br><span class="line">        color[u] = <span class="string">'grey'</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; neighbors.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> w = neighbors[i];</span><br><span class="line">            <span class="keyword">if</span> (color[w] === <span class="string">'white'</span>) &#123;</span><br><span class="line">                color[w] = <span class="string">'grey'</span>;</span><br><span class="line">                queue.enqueue(w);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        color[u] = <span class="string">'black'</span>;</span><br><span class="line">        <span class="keyword">if</span> (callback) &#123;</span><br><span class="line">            callback(u);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>对于一开始的那个图，BFS的结果是：ABCDEFGHI。</p>
+<h4 id="使用BFS寻找最短路径"><a href="#使用BFS寻找最短路径" class="headerlink" title="使用BFS寻找最短路径"></a>使用BFS寻找最短路径</h4><p>问题：给定一个图G和源顶点v，找出对每个顶点u，u和v之间最短路径的距离。这个问题可以用BFS算法的修改版来解决。</p>
+<p>BFS修改的地方有：</p>
+<ul>
+<li>增加一个数组d[]，d[u]表示从v到u的距离</li>
+<li>增加一个数组pred[]，pred[u]表示u的前溯点，用来推导从v到其他每个顶点u的最短路径</li>
+</ul>
+<p>改进的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.BFS = <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> color = initializeColor(),</span><br><span class="line">        queue = <span class="keyword">new</span> Queue(),</span><br><span class="line">        d = [],</span><br><span class="line">        pred = [];</span><br><span class="line"></span><br><span class="line">    queue.enqueue(v);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; vertices.length; i++) &#123;</span><br><span class="line">        d[vertices[i]] = <span class="number">0</span>;</span><br><span class="line">        pred[vertices[i]] = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">var</span> u = queue.dequeue(),</span><br><span class="line">            neighbors = adjList.get(u);</span><br><span class="line">        color[u] = <span class="string">'grey'</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; neighbors.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> w = neighbors[i];</span><br><span class="line">            <span class="keyword">if</span> (color[w] === <span class="string">'white'</span>) &#123;</span><br><span class="line">                color[w] = <span class="string">'grey'</span>;</span><br><span class="line">                d[w] = d[u] + <span class="number">1</span>;</span><br><span class="line">                pred[w] = u;</span><br><span class="line">                queue.enqueue(w);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        color[u] = <span class="string">'black'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        distances: d,</span><br><span class="line">        predecessors: pred</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>要想得到顶点v到其他顶点的最短路径：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fromVertex = myVertices[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> shortestPathA = graph.BFS(fromVertex);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; myVertices.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> toVertex = myVertices[i],</span><br><span class="line">        path = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> v = toVertex; v !== fromVertex; v = shortestPathA.predecessors[v]) &#123;</span><br><span class="line">        path.push(v);</span><br><span class="line">    &#125;</span><br><span class="line">    path.push(fromVertex);</span><br><span class="line">    <span class="keyword">var</span> s = path.pop();</span><br><span class="line">    <span class="keyword">while</span> (!path.isEmpty()) &#123;</span><br><span class="line">        s += <span class="string">' - '</span> + path.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上述代码的思路是利用前溯点反向回溯到源顶点，利用栈输出结果。</p>
+<p>对于要计算加权图中的最短路径，BFS未必适合。除此之外，很有很多解决最短路径问题的经典算法。</p>
+<h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><p>DFS算法从第一个指定的顶点开始遍历图，沿着路径直到这条路径最后一个顶点被访问了，接着原路回退并探索下一条路径。也就是说，DFS是“先深度后广度”地访问顶点，是一个不断探查和回溯的过程，因此是一个递归算法，需要借助栈实现（由递归调用所创建的栈）。</p>
+<p>访问顶点v的步骤如下：</p>
+<ul>
+<li>将v标注为被发现的（灰色）</li>
+<li>对于v的所有未访问的邻接顶点w：<ul>
+<li>访问顶点w</li>
+</ul>
+</li>
+<li>将v标注为完全访问的（黑色）</li>
+</ul>
+<p>DFS算法的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.dfs = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> color = initializeColor();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; vertices.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (color[vertices[i]] === <span class="string">'white'</span>) &#123;</span><br><span class="line">            dfsVisit(vertices[i], color, callback);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dfsVisit = <span class="function"><span class="keyword">function</span>(<span class="params">u, color, callback</span>) </span>&#123;</span><br><span class="line">    color[u] = <span class="string">'grey'</span>;</span><br><span class="line">    <span class="keyword">if</span> (callback) &#123;</span><br><span class="line">        callback(u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> neighbors = adjList.get(u);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; neighbors.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> w = neighbors[i];</span><br><span class="line">        <span class="keyword">if</span> (color[w] === <span class="string">'white'</span>) &#123;</span><br><span class="line">            dfsVisit(w, color, callback);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    color[u] = <span class="string">'black'</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>对于一开始的那个图，BFS的结果是：ABEIFCDGH。</p>
+<h4 id="改进的DFS算法"><a href="#改进的DFS算法" class="headerlink" title="改进的DFS算法"></a>改进的DFS算法</h4><p>问题：对于给定的图G，使用DFS算法遍历G的所有顶点，构建“森林”（有根树的一个集合）以及一组源顶点（根），并输出两个数组：发现时间和完成探索实践。</p>
+<p>修改DFS的地方有：</p>
+<ul>
+<li>增加一个数组d[]，d[u]表示顶点u的发现时间</li>
+<li>增加一个数组f[]，f[u]表示当顶点u被标注为黑色时，u的完成探索时间</li>
+<li>增加一个数组p[]，p[u]表示顶点u的前溯点</li>
+</ul>
+<p>改进的DFS代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> time = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">this</span>.DFS = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> color = initializeColor(),</span><br><span class="line">        d = [],</span><br><span class="line">        f = [],</span><br><span class="line">        p = [],</span><br><span class="line">        time = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; vertices.length; i++) &#123;</span><br><span class="line">        d[vertices[i]] = <span class="number">0</span>;</span><br><span class="line">        f[vertices[i]] = <span class="number">0</span>;</span><br><span class="line">        p[vertices[i]] = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; vertices.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (color[vertices[i]] === <span class="string">'white'</span>) &#123;</span><br><span class="line">            DFSVisit(vertices[i], color, d, f, p);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        discovery: d,</span><br><span class="line">        finished: f,</span><br><span class="line">        predecessors: p</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> DFSVisit = <span class="function"><span class="keyword">function</span>(<span class="params">u, color, d, f, p</span>) </span>&#123;</span><br><span class="line">    color[u] = <span class="string">'grey'</span>;</span><br><span class="line">    d[u] = ++time;</span><br><span class="line">    <span class="keyword">var</span> neighbors = adjList.get(u);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; neighbors.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> w = neighbors[i];</span><br><span class="line">        <span class="keyword">if</span> (color[w] === <span class="string">'white'</span>) &#123;</span><br><span class="line">            p[w] = u;</span><br><span class="line">            DFSVisit(w, color, d, f, p);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    color[u] = <span class="string">'black'</span>;</span><br><span class="line">    f[u] = ++time;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>拓扑排序：</p>
+<p>举个例子，软院有很多课程，其中不少课程是有先修课程的，必须要按一定的顺序修读课程，才能保证修读任意一门课程时其先修课程已经修读过。这种顺序即拓扑有序序列，而且是不唯一的。</p>
+<p>拓扑排序，即对一个有向图构造拓扑有序序列。拓扑排序可以检测一个有向图是否有环，只有有向无环图才能成功构造出拓扑有序序列。</p>
+<p>使用上面改进的DFS算法就可以实现拓扑排序：将完成时间数组以倒序来排序即可。</p>
+<p><img src="http://vboar.qiniudn.com/16-5-21/43056592.jpg" alt=""><br>上图拓扑排序的结果是：BADCFE。</p>
+<p>当然关于图的内容还有很多很多，有空再研究啦~</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://book.douban.com/subject/26639401/" target="_blank" rel="external">《学习JavaScript数据结构与算法》 第9章</a></li>
+<li><a href="https://book.douban.com/subject/2162035/" target="_blank" rel="external">《数据结构（用面向对象方法与C++语言描述）》 第8章</a></li>
+<li><a href="https://book.douban.com/subject/3351237/" target="_blank" rel="external">《数据结构与算法分析》 第9章</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/project/"
+              target="_self"
+              >
+              项目
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/reading/"
+              target="_self"
+              >
+              读书
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="JavaScript数据结构——图" data-url="http://kass.top/2016/05/21/graph-data-structure-in-javascript/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vboar"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
