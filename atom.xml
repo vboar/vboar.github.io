@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kass.top/"/>
-  <updated>2016-05-31T01:33:03.996Z</updated>
+  <updated>2016-05-31T07:36:24.690Z</updated>
   <id>http://kass.top/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://kass.top/2016/05/31/border-in-css3/"/>
     <id>http://kass.top/2016/05/31/border-in-css3/</id>
     <published>2016-05-31T01:33:19.000Z</published>
-    <updated>2016-05-31T01:33:03.996Z</updated>
+    <updated>2016-05-31T07:36:24.690Z</updated>
     
     <content type="html">&lt;blockquote&gt;
-&lt;p&gt;时刻关注 &lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;，特别是浏览器支持和兼容性的问题。&lt;/p&gt;
+&lt;p&gt;关注CSS规范、浏览器支持和兼容性的问题：&lt;br&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Reference&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS reference - MDN&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.w3.org/TR/#tr_CSS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;STANDARDS AND DRAFTS&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://caniuse.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Can I use&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;写这篇博客只是为了记录CSS3边框中一些个人认为比较重要的知识、有趣的奇淫技巧或者是一些坑，并不是照搬手册，所以平时还是要以&lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;为主要参考手册~&lt;/p&gt;
+&lt;p&gt;写这篇博客只是为了记录CSS3边框中一些个人认为比较重要的知识、有趣的奇淫技巧或者是一些坑，并不是照搬手册。&lt;/p&gt;
 &lt;h3 id=&quot;border&quot;&gt;&lt;a href=&quot;#border&quot; class=&quot;headerlink&quot; title=&quot;border&quot;&gt;&lt;/a&gt;border&lt;/h3&gt;&lt;p&gt;CSS1和CSS2已经定义了以下边框属性：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;复合属性border&lt;/li&gt;
@@ -96,7 +96,9 @@
 &lt;/ul&gt;
 &lt;p&gt;利用box-shadow可以设置多组阴影的特性，可以很简单地实现多边框：&lt;a href=&quot;http://dabblet.com/gist/18d8be5d61882875a10a226d1f197a4b&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Reference&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS reference - MDN&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/#tr_CSS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;STANDARDS AND DRAFTS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://book.douban.com/subject/25920727/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《图解CSS3》&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
@@ -104,9 +106,7 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;时刻关注 &lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;，特别是浏览器支持和兼容性的问题。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;写这篇博客只
+&lt;p&gt;关注CSS规范、浏览器支持和兼容性的问题：&lt;br&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Reference&quot; target=&quot;_blank&quot; rel=&quot;external&quot;
     
     </summary>
     
@@ -120,11 +120,12 @@
     <link href="http://kass.top/2016/05/29/selectors-in-css3/"/>
     <id>http://kass.top/2016/05/29/selectors-in-css3/</id>
     <published>2016-05-29T13:00:23.000Z</published>
-    <updated>2016-05-29T13:09:30.294Z</updated>
+    <updated>2016-05-31T07:37:51.400Z</updated>
     
     <content type="html">&lt;blockquote&gt;
-&lt;p&gt;时刻关注 &lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;，特别是浏览器支持和兼容性的问题。&lt;/p&gt;
+&lt;p&gt;关注CSS规范、浏览器支持和兼容性的问题：&lt;br&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Reference&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS reference - MDN&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.w3.org/TR/#tr_CSS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;STANDARDS AND DRAFTS&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://caniuse.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Can I use&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;目前CSS3规范中选择器的完整列表见：&lt;a href=&quot;https://www.w3.org/TR/selectors/#selectors&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Selectors Level 3&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;CSS3中的选择器主要分为以下几类（包括CSS1和CSS2）：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;基本选择器&lt;/li&gt;
@@ -196,14 +197,14 @@
 &lt;tr&gt;
 &lt;td&gt;E~F&lt;/td&gt;
 &lt;td&gt;兄弟选择器&lt;/td&gt;
-&lt;td&gt;选择元素E的所有兄弟元素F&lt;/td&gt;
+&lt;td&gt;选择元素E的所有位于E之后的兄弟元素F&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;注意：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;后代选择器和子选择器的区别在于：后代选择器选择的是所有的后代，包括子元素、孙子元素等等，而子选择器选择的仅仅只有子元素。&lt;/li&gt;
-&lt;li&gt;相邻选择器和兄弟选择器的区别在于：相邻选择器选择的是紧邻的后面那个并且符合条件的元素，而兄弟选择器选择的是所有符合条件的同级元素。&lt;/li&gt;
+&lt;li&gt;相邻选择器和兄弟选择器的区别在于：相邻选择器选择的是紧邻的后面那个并且符合条件的元素，而兄弟选择器选择的是所有符合条件的并且位于元素E之后的同级元素。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;伪类选择器&quot;&gt;&lt;a href=&quot;#伪类选择器&quot; class=&quot;headerlink&quot; title=&quot;伪类选择器&quot;&gt;&lt;/a&gt;伪类选择器&lt;/h3&gt;&lt;p&gt;伪类选择器可以细分为：&lt;/p&gt;
 &lt;ul&gt;
@@ -247,15 +248,19 @@
 &lt;p&gt;注意：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;超链接伪类的书写顺序必须遵循“爱恨原则”（LoVe/HAte），即需要按照“link-visited-hover-active”的顺序，这样的顺序是最可靠的。&lt;/li&gt;
+&lt;li&gt;E:link和E:visited只对a标签有效。&lt;/li&gt;
 &lt;li&gt;webkit内核浏览器会默认给:focus状态的元素加上outline的样式。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;目标伪类选择器&quot;&gt;&lt;a href=&quot;#目标伪类选择器&quot; class=&quot;headerlink&quot; title=&quot;目标伪类选择器&quot;&gt;&lt;/a&gt;目标伪类选择器&lt;/h4&gt;&lt;p&gt;目标伪类选择器即E:target，作用是选择匹配E的所有元素，并且匹配元素被相关URL指向。这里可能不好理解，需要用一个例子来解释。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://dabblet.com/gist/6f4c786998b9144b37b32db661e88d60&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo&lt;/a&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;div1&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;#div1&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Click&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;style&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#div1 &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	width: 100px;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	height: 100px;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	background-color: #58a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#div1:target &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	background-color: #b26;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;style&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;当点击Click时，也就是访问&lt;a href=&quot;http://kass.top#div1，元素div1就会被设置:target的样式。&quot;&gt;http://kass.top#div1，元素div1就会被设置:target的样式。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;E:target对&lt;code&gt;display: none&lt;/code&gt;的元素进行设置也是有效的。利用这一点，可以让隐藏的元素通过&lt;code&gt;display: block&lt;/code&gt;显示出来。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h4 id=&quot;语言伪类选择器&quot;&gt;&lt;a href=&quot;#语言伪类选择器&quot; class=&quot;headerlink&quot; title=&quot;语言伪类选择器&quot;&gt;&lt;/a&gt;语言伪类选择器&lt;/h4&gt;&lt;p&gt;语言伪类选择器即E:lang(language)，作用是根据元素的语言编码匹配元素。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://dabblet.com/gist/f1e7f41e33a3a559318e145db1e5a7fd&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo&lt;/a&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;lang&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;zh-cmn-Hans&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;你好世界！&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;lang&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;en&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Hello World!&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;style&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p:lang(zh-cmn-Hans) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	color: #fb2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p:lang(en) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	color: #58a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;style&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;UI元素状态伪类选择器&quot;&gt;&lt;a href=&quot;#UI元素状态伪类选择器&quot; class=&quot;headerlink&quot; title=&quot;UI元素状态伪类选择器&quot;&gt;&lt;/a&gt;UI元素状态伪类选择器&lt;/h4&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -280,7 +285,7 @@
 &lt;/table&gt;
 &lt;p&gt;注意：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;E:checked用于type为radio或checkbox的input元素。&lt;/li&gt;
+&lt;li&gt;E:checked用于type为radio或checkbox的input元素，以及select元素中的option元素。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;结构伪类选择器&quot;&gt;&lt;a href=&quot;#结构伪类选择器&quot; class=&quot;headerlink&quot; title=&quot;结构伪类选择器&quot;&gt;&lt;/a&gt;结构伪类选择器&lt;/h4&gt;&lt;table&gt;
 &lt;thead&gt;
@@ -397,11 +402,15 @@
 &lt;/table&gt;
 &lt;p&gt;注意：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;对于前四个伪元素选择器，两种写法都是可以的，单冒号是以前的写法但现在也支持，双冒号是CSS3的写法。&lt;/li&gt;
-&lt;li&gt;对于E::first-letter和E::first-line，元素E必须是块级元素，否则没有效果，需要先转化为块级元素才行。&lt;/li&gt;
-&lt;li&gt;对于E::before和E::after，必须定义content属性。&lt;/li&gt;
-&lt;li&gt;目前E::placeholder还需要添加特定浏览器的前缀：&lt;a href=&quot;http://dabblet.com/gist/1f67b9ec97736783aab9ae7fba94f316&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;E::selection用于设置元素被选择时的前景色、背景色和文本阴影（IE11不支持文本阴影）：&lt;a href=&quot;http://dabblet.com/gist/0e2fd88a092d7056c70af4e77b54e74d&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;对于前四个伪元素选择器，两种写法都是可以的，单冒号是CSS2的写法但现在也支持，双冒号是CSS3的写法，如果不需要兼容老版浏览器，推荐使用双冒号表示伪元素选择器。&lt;/li&gt;
+&lt;li&gt;对于E::first-letter和E::first-line，元素E的display属性的值必须是block、inline-block、table-cell、list-item或table-caption（块级元素），否则没有效果。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对于E::before和E::after，必须定义content属性。&lt;br&gt;  content的取值如下：&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;normal | none | [ &amp;lt;string&amp;gt; | &amp;lt;uri&amp;gt; | &amp;lt;counter&amp;gt; | attr() | open-quote | close-quote | no-open-quote | no-close-quote ]+&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;E::before会影响到E::first-letter和E::first-line的选择。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;目前E::placeholder不是CSS3规范，需要添加特定浏览器的前缀：&lt;a href=&quot;http://dabblet.com/gist/1f67b9ec97736783aab9ae7fba94f316&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;E::selection用于设置元素被选择时的样式，也不是CSS3规范（在CSS3草案中，规范中被移除），一般可以设置color、background-color、text-shadow（IE11不支持）：&lt;a href=&quot;http://dabblet.com/gist/0e2fd88a092d7056c70af4e77b54e74d&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;属性选择器&quot;&gt;&lt;a href=&quot;#属性选择器&quot; class=&quot;headerlink&quot; title=&quot;属性选择器&quot;&gt;&lt;/a&gt;属性选择器&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
@@ -443,10 +452,12 @@
 &lt;/table&gt;
 &lt;p&gt;注意：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;最后一个是E[attr|=”val”]（因为不知道怎么转义，只好用l代替…）。&lt;/li&gt;
+&lt;li&gt;最后一个是E[attr|=”val”]（因为不知道怎么转义，只好用l代替…）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Reference&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS reference - MDN&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/#tr_CSS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;STANDARDS AND DRAFTS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://book.douban.com/subject/25920727/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《图解CSS3》&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
@@ -454,9 +465,7 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;时刻关注 &lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;，特别是浏览器支持和兼容性的问题。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;CSS3中的
+&lt;p&gt;关注CSS规范、浏览器支持和兼容性的问题：&lt;br&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Reference&quot; target=&quot;_blank&quot; rel=&quot;external&quot;
     
     </summary>
     
