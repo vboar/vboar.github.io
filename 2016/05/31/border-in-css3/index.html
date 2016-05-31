@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS3边框 | Vboar&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="CSS," />
+  
+
+  <meta name="description" content="时刻关注 CSS参考手册，特别是浏览器支持和兼容性的问题。
+
+写这篇博客只是为了记录CSS3边框中一些个人认为比较重要的知识、有趣的奇淫技巧或者是一些坑，并不是照搬手册，所以平时还是要以CSS参考手册为主要参考手册~
+borderCSS1和CSS2已经定义了以下边框属性：
+
+复合属性border
+简单属性border-width、border-style、border-color
+对于上述属性分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3边框">
+<meta property="og:url" content="http://kass.top/2016/05/31/border-in-css3/index.html">
+<meta property="og:site_name" content="Vboar's Blog">
+<meta property="og:description" content="时刻关注 CSS参考手册，特别是浏览器支持和兼容性的问题。
+
+写这篇博客只是为了记录CSS3边框中一些个人认为比较重要的知识、有趣的奇淫技巧或者是一些坑，并不是照搬手册，所以平时还是要以CSS参考手册为主要参考手册~
+borderCSS1和CSS2已经定义了以下边框属性：
+
+复合属性border
+简单属性border-width、border-style、border-color
+对于上述属性分">
+<meta property="og:updated_time" content="2016-05-31T01:33:03.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3边框">
+<meta name="twitter:description" content="时刻关注 CSS参考手册，特别是浏览器支持和兼容性的问题。
+
+写这篇博客只是为了记录CSS3边框中一些个人认为比较重要的知识、有趣的奇淫技巧或者是一些坑，并不是照搬手册，所以平时还是要以CSS参考手册为主要参考手册~
+borderCSS1和CSS2已经定义了以下边框属性：
+
+复合属性border
+简单属性border-width、border-style、border-color
+对于上述属性分">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal_style.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/series/"
+            target="_self"
+            >
+            系列
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/project/"
+            target="_self"
+            >
+            项目
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#border"><span class="toc-text">border</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#border-image"><span class="toc-text">border-image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#border-radius"><span class="toc-text">border-radius</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#box-shadow"><span class="toc-text">box-shadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-border-in-css3" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">CSS3边框</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.31</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Justin Wong</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>时刻关注 <a href="http://css.doyoe.com/" target="_blank" rel="external">CSS参考手册</a>，特别是浏览器支持和兼容性的问题。</p>
+</blockquote>
+<p>写这篇博客只是为了记录CSS3边框中一些个人认为比较重要的知识、有趣的奇淫技巧或者是一些坑，并不是照搬手册，所以平时还是要以<a href="http://css.doyoe.com/" target="_blank" rel="external">CSS参考手册</a>为主要参考手册~</p>
+<h3 id="border"><a href="#border" class="headerlink" title="border"></a>border</h3><p>CSS1和CSS2已经定义了以下边框属性：</p>
+<ul>
+<li>复合属性border</li>
+<li>简单属性border-width、border-style、border-color</li>
+<li>对于上述属性分别设置上、下、左、右边框的属性</li>
+</ul>
+<p>上述属性的语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">border：&lt;line-width&gt; || &lt;line-style&gt; || &lt;color&gt;</span><br><span class="line">border-width：&lt;line-width&gt;&#123;1,4&#125;</span><br><span class="line">border-style：&lt;line-style&gt;&#123;1,4&#125;</span><br><span class="line">border-color：&lt;color&gt;&#123;1,4&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中{1,4}表示可以是1~4个值，值的顺序遵循“TRBL”原则（Top/Right/Bottom/Left）。具体情况如下：</p>
+<ul>
+<li>4个值：按照TRBL的顺序</li>
+<li>3个值：第一个用于Top、第二个用于Right和Left，第三个用于Bottom</li>
+<li>2个值：第一个用于Top和Bottom，第二个用于Right和Left</li>
+<li>1个值：用于四边</li>
+</ul>
+<p>CSS3标准中新增了以下边框属性：</p>
+<ul>
+<li>border-image复合属性和它的简单属性</li>
+<li>border-radius和分角设置的属性</li>
+<li>box-shadow</li>
+</ul>
+<h3 id="border-image"><a href="#border-image" class="headerlink" title="border-image"></a>border-image</h3><p>border-image是一个复合属性，用于设置边框背景图像，与之相关的简单属性有：</p>
+<ul>
+<li>border-image-source：设置背景图像来源/路径</li>
+<li>border-image-slice：设置背景图像的分隔方式</li>
+<li>border-image-width：设置背景图像边框宽度</li>
+<li>border-image-outset：设置边框图像向外扩展的数值</li>
+<li>border-image-repeat：设置背景图像的铺排方式</li>
+</ul>
+<p>相关语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">border-image：&lt;&apos; border-image-source &apos;&gt; || &lt;&apos; border-image-slice &apos;&gt; [ / &lt;&apos; border-image-width &apos;&gt; | / &lt;&apos; border-image-width &apos;&gt;? / &lt;&apos; border-image-outset &apos;&gt; ]? || &lt;&apos; border-image-repeat &apos;&gt;</span><br><span class="line">border-image-source：none | &lt;image&gt;</span><br><span class="line">border-image-slice：[ &lt;number&gt; | &lt;percentage&gt; ]&#123;1,4&#125; &amp;&amp; fill?</span><br><span class="line">border-image-width：[ &lt;length&gt; | &lt;percentage&gt; | &lt;number&gt; | auto ]&#123;1,4&#125;</span><br><span class="line">border-image-outset：[ &lt;length&gt; | &lt;number&gt; ]&#123;1,4&#125;</span><br><span class="line">border-image-repeat：[ stretch | repeat | round | space ]&#123;1,2&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于border-image-source中的<code>&lt;image&gt;</code>，可以使用url地址或者渐变，这个属性会替代border-style。</p>
+<p>对于border-image-slice：</p>
+<ul>
+<li>该属性按照TRBL四个方位分隔图像，将图像分成9份（即九宫格），即4个角、4条边和中间区域，如果不加上关键字fill，则中间区域是透明的</li>
+<li>关键字fill的铺排方式遵循border-image-repeat的设定</li>
+<li><code>&lt;number&gt;</code>指的是浮点数值，不带单位</li>
+</ul>
+<p>对于border-image-width，如果使用auto，则该属性使用与border-image-slice相同的值。</p>
+<p>对于border-image-repeat：</p>
+<ul>
+<li>如果只有1个值，表示水平方向和垂直方向的铺排方式；如果有2个值，则分别表示水平方向和垂直方向的铺排方式</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>部分浏览器可能不支持简单属性，所以最好使用border-image这个复合属性设置</li>
+</ul>
+<h3 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h3><p>border-radius用于设置对象的圆角半径长度，语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-radius：[ &lt;length&gt; | &lt;percentage&gt; ]&#123;1,4&#125; [ / [ &lt;length&gt; | &lt;percentage&gt; ]&#123;1,4&#125; ]?</span><br></pre></td></tr></table></figure></p>
+<p>注意：</p>
+<ul>
+<li>border-radius的4个值依次是border-top-left-radius、border-top-right-radius、border-bottom-right-radius、border-bottom-left-radius，可以是1~4个值，具体情况和border属性类似</li>
+<li>如果<code>/</code>不存在，值表示的是水平半径和垂直半径（圆角为1/4圆）；如果<code>/</code>存在，<code>/</code>前面的值表示的是水平半径，<code>/</code>后面表示的值是垂直半径</li>
+<li>如果border-radius值小于或等于border-width值，那么元素内部边框就没有圆角效果，如果大于的话，元素内部边框的圆角半径（内径）就等于border-radius值（外径）减去border-width的值：<a href="http://dabblet.com/gist/4425d627ea90b896b56207edefbda1cf" target="_blank" rel="external">Demo</a></li>
+</ul>
+<p>利用border-radius可以制作特殊图形：</p>
+<ul>
+<li>圆：<a href="http://dabblet.com/gist/a63417ba2f125b93451460d5da1062cd" target="_blank" rel="external">Demo</a></li>
+<li>半圆：<a href="http://dabblet.com/gist/da0457fe1f6235d47811f8b1646e37a1" target="_blank" rel="external">Demo</a></li>
+<li>1/4圆：<a href="http://dabblet.com/gist/0f69bf847945ac17ff90e4bb68715866" target="_blank" rel="external">Demo</a></li>
+<li>椭圆：<a href="http://dabblet.com/gist/542ac125351102bff958d896ee95b698" target="_blank" rel="external">Demo</a></li>
+</ul>
+<h3 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h3><p>box-shadow是用于设置对象的阴影，可以设置多组阴影（每组以逗号分隔）。</p>
+<p>box-shadow的语法规则如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-shadow：none | &lt;shadow&gt; [ , &lt;shadow&gt; ]*</span><br><span class="line">&lt;shadow&gt; = inset? &amp;&amp; &lt;length&gt;&#123;2,4&#125; &amp;&amp; &lt;color&gt;?</span><br></pre></td></tr></table></figure></p>
+<p>对于<code>&lt;length&gt;{2,4}</code>：</p>
+<ul>
+<li>第1个：x-offset，阴影水平偏移值，可以为负值，必要</li>
+<li>第2个：y-offset，阴影垂直偏移值，可以为负值，必要</li>
+<li>第3个：blur-radius，阴影模糊值，不可以为负值，可选</li>
+<li>第4个：spread-radius，阴影外延值，可以为负值，可选</li>
+</ul>
+<p>利用box-shadow可以设置多组阴影的特性，可以很简单地实现多边框：<a href="http://dabblet.com/gist/18d8be5d61882875a10a226d1f197a4b" target="_blank" rel="external">Demo</a></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://css.doyoe.com/" target="_blank" rel="external">CSS参考手册</a></li>
+<li><a href="https://book.douban.com/subject/25920727/" target="_blank" rel="external">《图解CSS3》</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/series/"
+              target="_self"
+              >
+              系列
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/project/"
+              target="_self"
+              >
+              项目
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="CSS3边框" data-url="http://kass.top/2016/05/31/border-in-css3/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vboar"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
