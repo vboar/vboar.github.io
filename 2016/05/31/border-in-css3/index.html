@@ -33,7 +33,9 @@ borderCSS1和CSS2已经定义了以下边框属性：
 
 复合属性border
 简单属性border-width、border-st">
-<meta property="og:updated_time" content="2016-05-31T07:36:24.690Z">
+<meta property="og:image" content="http://vboar.qiniudn.com/16-5-31/24460906.jpg">
+<meta property="og:image" content="http://vboar.qiniudn.com/16-5-31/12857239.jpg">
+<meta property="og:updated_time" content="2016-06-01T05:36:49.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3边框">
 <meta name="twitter:description" content="关注CSS规范、浏览器支持和兼容性的问题：CSS reference - MDNCSS参考手册STANDARDS AND DRAFTSCan I use
@@ -43,6 +45,7 @@ borderCSS1和CSS2已经定义了以下边框属性：
 
 复合属性border
 简单属性border-width、border-st">
+<meta name="twitter:image" content="http://vboar.qiniudn.com/16-5-31/24460906.jpg">
 
   
 
@@ -198,12 +201,17 @@ borderCSS1和CSS2已经定义了以下边框属性：
 <li>4个值：按照TRBL的顺序</li>
 <li>3个值：第一个用于Top、第二个用于Right和Left，第三个用于Bottom</li>
 <li>2个值：第一个用于Top和Bottom，第二个用于Right和Left</li>
-<li>1个值：用于四边</li>
+<li>1个值：用于四条边</li>
+</ul>
+<p><img src="http://vboar.qiniudn.com/16-5-31/24460906.jpg" alt=""></p>
+<p>注意：</p>
+<ul>
+<li>推荐使用border属性来重置（reset）关于边框的属性。</li>
 </ul>
 <p>CSS3标准中新增了以下边框属性：</p>
 <ul>
 <li>border-image复合属性和它的简单属性</li>
-<li>border-radius和分角设置的属性</li>
+<li>border-radius和各个角分别设置的属性</li>
 <li>box-shadow</li>
 </ul>
 <h3 id="border-image"><a href="#border-image" class="headerlink" title="border-image"></a>border-image</h3><p>border-image是一个复合属性，用于设置边框背景图像，与之相关的简单属性有：</p>
@@ -218,23 +226,28 @@ borderCSS1和CSS2已经定义了以下边框属性：
 <p>对于border-image-source中的<code>&lt;image&gt;</code>，可以使用url地址或者渐变，这个属性会替代border-style。</p>
 <p>对于border-image-slice：</p>
 <ul>
-<li>该属性按照TRBL四个方位分隔图像，将图像分成9份（即九宫格），即4个角、4条边和中间区域，如果不加上关键字fill，则中间区域是透明的</li>
-<li>关键字fill的铺排方式遵循border-image-repeat的设定</li>
-<li><code>&lt;number&gt;</code>指的是浮点数值，不带单位</li>
+<li>该属性按照TRBL四个方位分隔图像，将图像分成9份（即九宫格），即4个角、4条边和中间区域，如果不加上关键字fill，则中间区域是透明的。</li>
+<li>关键字fill的铺排方式遵循border-image-repeat的设定。</li>
+<li><code>&lt;number&gt;</code>指的是浮点数值，不带单位。</li>
 </ul>
 <p>对于border-image-width，如果使用auto，则该属性使用与border-image-slice相同的值。</p>
 <p>对于border-image-repeat：</p>
 <ul>
-<li>如果只有1个值，表示水平方向和垂直方向的铺排方式；如果有2个值，则分别表示水平方向和垂直方向的铺排方式</li>
+<li>如果只有1个值，表示水平方向和垂直方向的铺排方式；如果有2个值，则分别表示水平方向和垂直方向的铺排方式。</li>
 </ul>
 <p>注意：</p>
 <ul>
-<li>部分浏览器可能不支持简单属性，所以最好使用border-image这个复合属性设置</li>
+<li>部分浏览器可能不支持简单属性，所以推荐使用border-image这个复合属性设置。</li>
+<li>如果边框背景图像没有设置或不能显示，则边框样式为border-style所设置的。</li>
 </ul>
+<p><a href="http://dabblet.com/gist/13df451984a99d39ed29e2f1c3a6cd21" target="_blank" rel="external">Demo</a></p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Border-image_generator" target="_blank" rel="external">Border-image generator</a></p>
+</blockquote>
 <h3 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h3><p>border-radius用于设置对象的圆角半径长度，语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-radius：[ &lt;length&gt; | &lt;percentage&gt; ]&#123;1,4&#125; [ / [ &lt;length&gt; | &lt;percentage&gt; ]&#123;1,4&#125; ]?</span><br></pre></td></tr></table></figure></p>
 <p>注意：</p>
 <ul>
-<li>border-radius的4个值依次是border-top-left-radius、border-top-right-radius、border-bottom-right-radius、border-bottom-left-radius，可以是1~4个值，具体情况和border属性类似</li>
+<li>border-radius的4个值依次是border-top-left-radius、border-top-right-radius、border-bottom-right-radius、border-bottom-left-radius，可以是1~4个值，具体情况和border属性类似<br>  <img src="http://vboar.qiniudn.com/16-5-31/12857239.jpg" alt=""></li>
 <li>如果<code>/</code>不存在，值表示的是水平半径和垂直半径（圆角为1/4圆）；如果<code>/</code>存在，<code>/</code>前面的值表示的是水平半径，<code>/</code>后面表示的值是垂直半径</li>
 <li>如果border-radius值小于或等于border-width值，那么元素内部边框就没有圆角效果，如果大于的话，元素内部边框的圆角半径（内径）就等于border-radius值（外径）减去border-width的值：<a href="http://dabblet.com/gist/4425d627ea90b896b56207edefbda1cf" target="_blank" rel="external">Demo</a></li>
 </ul>
@@ -245,6 +258,9 @@ borderCSS1和CSS2已经定义了以下边框属性：
 <li>1/4圆：<a href="http://dabblet.com/gist/0f69bf847945ac17ff90e4bb68715866" target="_blank" rel="external">Demo</a></li>
 <li>椭圆：<a href="http://dabblet.com/gist/542ac125351102bff958d896ee95b698" target="_blank" rel="external">Demo</a></li>
 </ul>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Border-radius_generator" target="_blank" rel="external">Border-radius generator</a></p>
+</blockquote>
 <h3 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h3><p>box-shadow是用于设置对象的阴影，可以设置多组阴影（每组以逗号分隔）。</p>
 <p>box-shadow的语法规则如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-shadow：none | &lt;shadow&gt; [ , &lt;shadow&gt; ]*</span><br><span class="line">&lt;shadow&gt; = inset? &amp;&amp; &lt;length&gt;&#123;2,4&#125; &amp;&amp; &lt;color&gt;?</span><br></pre></td></tr></table></figure></p>
 <p>对于<code>&lt;length&gt;{2,4}</code>：</p>
@@ -255,6 +271,9 @@ borderCSS1和CSS2已经定义了以下边框属性：
 <li>第4个：spread-radius，阴影外延值，可以为负值，可选</li>
 </ul>
 <p>利用box-shadow可以设置多组阴影的特性，可以很简单地实现多边框：<a href="http://dabblet.com/gist/18d8be5d61882875a10a226d1f197a4b" target="_blank" rel="external">Demo</a></p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Box-shadow_generator" target="_blank" rel="external">Box-shadow generator</a></p>
+</blockquote>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank" rel="external">CSS reference - MDN</a></li>
 <li><a href="http://css.doyoe.com/" target="_blank" rel="external">CSS参考手册</a></li>

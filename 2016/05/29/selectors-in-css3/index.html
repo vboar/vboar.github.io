@@ -53,7 +53,7 @@ CSS3中的选择器主要分为以下几类（包括CSS1和CSS2）：
 选择器
 名称
 描述">
-<meta property="og:updated_time" content="2016-05-31T07:37:51.400Z">
+<meta property="og:updated_time" content="2016-05-31T08:08:53.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3选择器">
 <meta name="twitter:description" content="关注CSS规范、浏览器支持和兼容性的问题：CSS reference - MDNCSS参考手册STANDARDS AND DRAFTSCan I use
@@ -344,7 +344,7 @@ CSS3中的选择器主要分为以下几类（包括CSS1和CSS2）：
 <h4 id="目标伪类选择器"><a href="#目标伪类选择器" class="headerlink" title="目标伪类选择器"></a>目标伪类选择器</h4><p>目标伪类选择器即E:target，作用是选择匹配E的所有元素，并且匹配元素被相关URL指向。这里可能不好理解，需要用一个例子来解释。</p>
 <p><a href="http://dabblet.com/gist/6f4c786998b9144b37b32db661e88d60" target="_blank" rel="external">Demo</a></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#div1"</span>&gt;</span>Click<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><br><span class="line">#div1 &#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background-color: #58a;</span><br><span class="line">&#125;</span><br><span class="line">#div1:target &#123;</span><br><span class="line">	background-color: #b26;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>当点击Click时，也就是访问<a href="http://kass.top#div1，元素div1就会被设置:target的样式。">http://kass.top#div1，元素div1就会被设置:target的样式。</a></p>
+<p>当点击Click时，也就是访问<code>http://kass.top#div1</code>，元素div1就会被设置:target的样式。</p>
 <p>注意：</p>
 <ul>
 <li>E:target对<code>display: none</code>的元素进行设置也是有效的。利用这一点，可以让隐藏的元素通过<code>display: block</code>显示出来。</li>
@@ -542,7 +542,7 @@ CSS3中的选择器主要分为以下几类（包括CSS1和CSS2）：
 </table>
 <p>注意：</p>
 <ul>
-<li>最后一个是E[attr|=”val”]（因为不知道怎么转义，只好用l代替…）</li>
+<li>最后一个是E[attr|=”val”]（因为不知道MD表格中的|怎么转义，只好用l代替…）</li>
 </ul>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank" rel="external">CSS reference - MDN</a></li>
