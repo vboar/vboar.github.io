@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS3背景 | Vboar&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="CSS," />
+  
+
+  <meta name="description" content="关注CSS规范、浏览器支持和兼容性的问题：CSS reference - MDNCSS参考手册STANDARDS AND DRAFTSCan I use
+
+CSS3中关于背景的属性有：
+
+background
+background-color
+background-image
+background-repeat
+background-attachment
+background-position">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3背景">
+<meta property="og:url" content="http://kass.top/2016/06/01/background-in-css3/index.html">
+<meta property="og:site_name" content="Vboar's Blog">
+<meta property="og:description" content="关注CSS规范、浏览器支持和兼容性的问题：CSS reference - MDNCSS参考手册STANDARDS AND DRAFTSCan I use
+
+CSS3中关于背景的属性有：
+
+background
+background-color
+background-image
+background-repeat
+background-attachment
+background-position">
+<meta property="og:updated_time" content="2016-06-02T16:06:00.709Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3背景">
+<meta name="twitter:description" content="关注CSS规范、浏览器支持和兼容性的问题：CSS reference - MDNCSS参考手册STANDARDS AND DRAFTSCan I use
+
+CSS3中关于背景的属性有：
+
+background
+background-color
+background-image
+background-repeat
+background-attachment
+background-position">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal_style.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/series/"
+            target="_self"
+            >
+            系列
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/project/"
+            target="_self"
+            >
+            项目
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#background-color"><span class="toc-text">background-color</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#background-image"><span class="toc-text">background-image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#background-repeat"><span class="toc-text">background-repeat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#background-attachment"><span class="toc-text">background-attachment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#background-position"><span class="toc-text">background-position</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#background-origin"><span class="toc-text">background-origin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#background-clip"><span class="toc-text">background-clip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#background-size"><span class="toc-text">background-size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#background"><span class="toc-text">background</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-background-in-css3" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">CSS3背景</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.06.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Justin Wong</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>关注CSS规范、浏览器支持和兼容性的问题：<br><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank" rel="external">CSS reference - MDN</a><br><a href="http://css.doyoe.com/" target="_blank" rel="external">CSS参考手册</a><br><a href="https://www.w3.org/TR/#tr_CSS" target="_blank" rel="external">STANDARDS AND DRAFTS</a><br><a href="http://caniuse.com/" target="_blank" rel="external">Can I use</a></p>
+</blockquote>
+<p>CSS3中关于背景的属性有：</p>
+<ul>
+<li>background</li>
+<li>background-color</li>
+<li>background-image</li>
+<li>background-repeat</li>
+<li>background-attachment</li>
+<li>background-position</li>
+<li>background-origin</li>
+<li>background-clip</li>
+<li>background-size</li>
+</ul>
+<p>由于background是符合属性，所以先了解它的简单属性。</p>
+<h3 id="background-color"><a href="#background-color" class="headerlink" title="background-color"></a>background-color</h3><ul>
+<li>background-color用于设置元素背景颜色。</li>
+<li>和其他background属性不同，background-color只允许设置一种颜色，不支持多背景颜色。</li>
+<li>如果同时定义了背景颜色和背景图像，背景图像覆盖在背景颜色之上。</li>
+<li>background-color的覆盖区域是border-box：<a href="http://dabblet.com/gist/72e50f57c1f6450325337c24037745f0" target="_blank" rel="external">Demo</a></li>
+</ul>
+<h3 id="background-image"><a href="#background-image" class="headerlink" title="background-image"></a>background-image</h3><ul>
+<li>background-image用于设置元素背景图像。</li>
+<li>background-image的属性值可以是url地址、渐变等等。</li>
+<li>background-image支持设置多背景图像，用逗号隔开；相应的，后面提到的属性也是用逗号隔开。</li>
+</ul>
+<h3 id="background-repeat"><a href="#background-repeat" class="headerlink" title="background-repeat"></a>background-repeat</h3><ul>
+<li>background-repeat用于设置背景图像在元素中的铺排方式。</li>
+<li>background-repeat的语法如下：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background-repeat：&lt;repeat-style&gt; [ , &lt;repeat-style&gt; ]*</span><br><span class="line">&lt;repeat-style&gt; = repeat-x | repeat-y | [repeat | space | round | no-repeat]&#123;1,2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="background-attachment"><a href="#background-attachment" class="headerlink" title="background-attachment"></a>background-attachment</h3><ul>
+<li>background-attachment用于设置元素背景图像随滚动轴的移动方式。</li>
+<li>background-attachment的属性值可以是：<ul>
+<li>fixed：背景图像相对于视窗固定，一般适用于html和body标签</li>
+<li>scroll：背景图像相对于元素固定，元素内容滚动背景图像不会随之滚动</li>
+<li>local：背景图像相对于元素内容固定，即跟随元素内容滚动<br>具体看Demo理解三个属性值的不同：<a href="http://dabblet.com/gist/377192877854fb3d097c4e68a1e51857" target="_blank" rel="external">Demo</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="background-position"><a href="#background-position" class="headerlink" title="background-position"></a>background-position</h3><ul>
+<li>background-position用于设置元素背景图像的初始位置。</li>
+<li><p>background-position的语法如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">background-position：&lt;position&gt; [ , &lt;position&gt; ]*</span><br><span class="line">&lt;position&gt; =</span><br><span class="line">[ left | center | right | top | bottom | &lt;percentage&gt; | &lt;length&gt; ] |</span><br><span class="line">[ left | center | right | &lt;percentage&gt; | &lt;length&gt; ] [ top | center | bottom | &lt;percentage&gt; | &lt;length&gt; ] |</span><br><span class="line">[ center | [ left | right ] [ &lt;percentage&gt; | &lt;length&gt; ]? ] &amp;&amp; [ center | [ top | bottom ] [ &lt;percentage&gt; | &lt;length&gt; ]? ]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上面的语法看起来比较复杂，简单来说就是可以接收1~4个值（关键字、偏移量），具体情况如下所示：</p>
+<ul>
+<li>只提供1个值：该值大多用于横坐标，纵坐标默认为50%（即center）；但当值为关键字top和bottom时，用于纵坐标，横坐标默认为50%。</li>
+<li>提供2个值：分别用于横坐标和纵坐标。</li>
+<li>提供3或4个值：在关键字的基础上再偏移，偏移量前面必须是一个边界关键字（TRBL）：<a href="http://dabblet.com/gist/86045173f06cff9c23dba02d9ed3accd" target="_blank" rel="external">Demo</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="background-origin"><a href="#background-origin" class="headerlink" title="background-origin"></a>background-origin</h3><ul>
+<li>background-origin用于设置元素背景图像计算background-position时的参考原点。</li>
+<li>background-origin的属性值可以是：<ul>
+<li>border-box：从border外边缘开始显示背景图像。</li>
+<li>padding-box（默认）：从padding外边缘/border内边缘开始显示背景图像。</li>
+<li>content-box：从content外边缘/padding内边缘开始显示背景图像。</li>
+</ul>
+</li>
+<li>当background-attachment的属性值为fixed时，background-origin的设置无效，此时背景图像的位置始终是相对于当前视窗的。</li>
+</ul>
+<h3 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip"></a>background-clip</h3><ul>
+<li>background-clip用于定义元素背景图像的裁剪区域。</li>
+<li>background-clip的属性值和background-origin的一致，它们的区别在于两个属性的作用不同：background-origin是定义背景图像计算位置的参考原点，而background-origin则是定义裁剪区域，在区域外的图像部分将不显示。</li>
+<li>在webkit上还有一个属性值是text，可以实现用背景图像填充文本的效果：<a href="http://dabblet.com/gist/cab8c003a84bfc5164eefaf8a417fe18" target="_blank" rel="external">Demo</a></li>
+</ul>
+<h3 id="background-size"><a href="#background-size" class="headerlink" title="background-size"></a>background-size</h3><ul>
+<li>background-size用于设置元素背景图像的尺寸大小。</li>
+<li><p>background-side的语法如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background-size：&lt;bg-size&gt; [ , &lt;bg-size&gt; ]*</span><br><span class="line">&lt;bg-size&gt; = [ &lt;length&gt; | &lt;percentage&gt; | auto ]&#123;1,2&#125; | cover | contain</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>针对上面的语法，具体情况如下：</p>
+<ul>
+<li>cover：单一值，等比缩放到完全覆盖容器，可能会超出容器。</li>
+<li>contain：单一值，等比缩放到宽度或高度与容器的宽度或高度相等，背景图像始终被包含在容器内。</li>
+<li>1个值：该值定义图像的宽度，高度默认为auto，此时图像按照宽度进行等比缩放。</li>
+<li>2个值：分别定义图像的宽度和高度。</li>
+</ul>
+</li>
+</ul>
+<h3 id="background"><a href="#background" class="headerlink" title="background"></a>background</h3><ul>
+<li>background是一个复合属性，用于设置元素背景颜色和图像。</li>
+<li><p>background的语法如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">background：[ &lt;bg-layer&gt;, ]* &lt;final-bg-layer&gt;</span><br><span class="line">&lt;bg-layer&gt; = &lt;bg-image&gt; || &lt;position&gt; [ / &lt;bg-size&gt; ]? || &lt;repeat-style&gt; || &lt;attachment&gt; || &lt;box&gt;&#123;1,2&#125;</span><br><span class="line">&lt;final-bg-layer&gt; = &lt;bg-image&gt; || &lt;position&gt; [ / &lt;bg-size&gt; ]? || &lt;repeat-style&gt; || &lt;attachment&gt; || &lt;box&gt;&#123;1,2&#125; || &lt;&apos; background-color &apos;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>“||”表示属性是可选的，并且顺序是随意的。</p>
+</li>
+<li>对于\<box\> || \<box\>，分别定义background-origin和background-clip。如果只有1个值，表示background-origin和background-clip设置了同一个值。</box\></box\></li>
+<li>如果定义了多背景，先定义的背景在上层，后定义的在下层，上层的背景会覆盖下层，背景颜色在最后定义（注：背景颜色只能定义一个）。</li>
+<li>如果使用简单属性定义多背景，background-image需要设置多个，而其他属性可以设置一个或多个，如果是多个的话用逗号隔开；如果是一个，表示所有背景都使用相同的属性。</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank" rel="external">CSS reference - MDN</a></li>
+<li><a href="http://css.doyoe.com/" target="_blank" rel="external">CSS参考手册</a></li>
+<li><a href="https://www.w3.org/TR/#tr_CSS" target="_blank" rel="external">STANDARDS AND DRAFTS</a></li>
+<li><a href="https://book.douban.com/subject/25920727/" target="_blank" rel="external">《图解CSS3》</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/series/"
+              target="_self"
+              >
+              系列
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/project/"
+              target="_self"
+              >
+              项目
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="CSS3背景" data-url="http://kass.top/2016/06/01/background-in-css3/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vboar"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
