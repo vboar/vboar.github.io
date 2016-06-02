@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kass.top/"/>
-  <updated>2016-06-02T16:06:00.709Z</updated>
+  <updated>2016-06-02T16:18:08.806Z</updated>
   <id>http://kass.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kass.top/2016/06/01/background-in-css3/"/>
     <id>http://kass.top/2016/06/01/background-in-css3/</id>
     <published>2016-06-01T06:25:14.000Z</published>
-    <updated>2016-06-02T16:06:00.709Z</updated>
+    <updated>2016-06-02T16:18:08.806Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;关注CSS规范、浏览器支持和兼容性的问题：&lt;br&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Reference&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS reference - MDN&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.w3.org/TR/#tr_CSS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;STANDARDS AND DRAFTS&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://caniuse.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Can I use&lt;/a&gt;&lt;/p&gt;
@@ -37,7 +37,7 @@
 &lt;li&gt;background-clip&lt;/li&gt;
 &lt;li&gt;background-size&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;由于background是符合属性，所以先了解它的简单属性。&lt;/p&gt;
+&lt;p&gt;由于background是复合属性，所以先了解它的简单属性。&lt;/p&gt;
 &lt;h3 id=&quot;background-color&quot;&gt;&lt;a href=&quot;#background-color&quot; class=&quot;headerlink&quot; title=&quot;background-color&quot;&gt;&lt;/a&gt;background-color&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;background-color用于设置元素背景颜色。&lt;/li&gt;
 &lt;li&gt;和其他background属性不同，background-color只允许设置一种颜色，不支持多背景颜色。&lt;/li&gt;
@@ -112,7 +112,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;“||”表示属性是可选的，并且顺序是随意的。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;对于\&lt;box\&gt; || \&lt;box\&gt;，分别定义background-origin和background-clip。如果只有1个值，表示background-origin和background-clip设置了同一个值。&lt;/box\&gt;&lt;/box\&gt;&lt;/li&gt;
+&lt;li&gt;对于&lt;code&gt;&amp;lt;box&amp;gt; || &amp;lt;box&amp;gt;&lt;/code&gt;，分别定义background-origin和background-clip。如果只有1个值，表示background-origin和background-clip设置了同一个值。&lt;/li&gt;
 &lt;li&gt;如果定义了多背景，先定义的背景在上层，后定义的在下层，上层的背景会覆盖下层，背景颜色在最后定义（注：背景颜色只能定义一个）。&lt;/li&gt;
 &lt;li&gt;如果使用简单属性定义多背景，background-image需要设置多个，而其他属性可以设置一个或多个，如果是多个的话用逗号隔开；如果是一个，表示所有背景都使用相同的属性。&lt;/li&gt;
 &lt;/ul&gt;
