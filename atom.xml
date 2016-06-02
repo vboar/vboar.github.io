@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kass.top/"/>
-  <updated>2016-06-02T16:18:08.806Z</updated>
+  <updated>2016-06-02T16:22:07.610Z</updated>
   <id>http://kass.top/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>CSS3背景</title>
-    <link href="http://kass.top/2016/06/01/background-in-css3/"/>
-    <id>http://kass.top/2016/06/01/background-in-css3/</id>
-    <published>2016-06-01T06:25:14.000Z</published>
-    <updated>2016-06-02T16:18:08.806Z</updated>
+    <link href="http://kass.top/2016/06/03/background-in-css3/"/>
+    <id>http://kass.top/2016/06/03/background-in-css3/</id>
+    <published>2016-06-02T16:21:14.000Z</published>
+    <updated>2016-06-02T16:22:07.610Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;关注CSS规范、浏览器支持和兼容性的问题：&lt;br&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Reference&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS reference - MDN&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://css.doyoe.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSS参考手册&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.w3.org/TR/#tr_CSS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;STANDARDS AND DRAFTS&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://caniuse.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Can I use&lt;/a&gt;&lt;/p&gt;
